@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/projects',[
+   'as' => 'projects.all',
+   'uses' => 'ProjectsController@getProjects'
+]);
+
+Route::get('/projects/{id}',[
+   'as' => 'projects.one',
+   'uses' => 'ProjectsController@getProjectById'
+]);
