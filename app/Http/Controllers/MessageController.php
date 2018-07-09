@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Constituency;
 use App\Message;
 use App\Project;
@@ -35,7 +36,8 @@ class MessageController extends Controller
     {
         $result = "";
         $constituencies = DB::table('constituencies')->get();
-        return view('contact',compact('constituencies','result'));
+        $categories = Category::all();
+        return view('contact',compact('constituencies','result','categories'));
     }
 
     /**
@@ -55,8 +57,6 @@ class MessageController extends Controller
             'message' => $request['message']
         ]);
 
-        $result = "";
-
         if ($message){
             $result = "success";
         } else {
@@ -65,7 +65,7 @@ class MessageController extends Controller
 
         $constituencies = DB::table('constituencies')->get();
 
-        return view('contact',compact('result','constituencies'));
+        return redirect()->back()->with(['message'=>$result,'constituencies'=>$constituencies]);
     }
 
     /**
@@ -111,7 +111,10 @@ class MessageController extends Controller
     public function destroy($id)
     {
         $message = Message::find($id);
-        $message->delete();
-        return back();
+        if($message->delete()) {
+            return redirect()->back()->with('message', "success");
+        } else {
+            return redirect()->back()->with('message', "error");
+        }
     }
 }

@@ -8,6 +8,6 @@ class Ward extends Model
 {
     protected $fillable = [
         'name',
-        'constituency'
+        'constituency_id'
     ];
 }

@@ -9,7 +9,7 @@ class Project extends Model
     protected $fillable = ['name',
             'description',
             'category',
-            'constituency',
+            'constituency_id',
             'ward',
             'budget',
             'completion',

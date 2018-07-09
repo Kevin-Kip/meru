@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
+//TODO import routes for api
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -41,3 +43,21 @@ Route::delete('/projects/{id}',[
     'as' => 'projects.delete',
     'uses' => 'ProjectsController@deleteProject'
 ]);
+
+//For Charts
+Route::get('/count/',[
+    'as' => 'count',
+    'uses' => 'PdfController@count'
+])->middleware('cors');
+Route::get('/count/completed',[
+    'as' => 'count.completed',
+    'uses' => 'PdfController@completed'
+])->middleware('cors');
+Route::get('/chart-data/',[
+    'as' => 'chart-data',
+    'uses' => 'PdfController@chartData'
+])->middleware('cors');
+Route::get('constituencies/{id}/wards',[
+    'as' => 'wards',
+    'uses' => 'WardController@getById'
+])->middleware('cors');

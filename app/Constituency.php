@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Constituency extends Model
 {
     protected $fillable = [
-      'name'
+      'constituency_name'
     ];
 }

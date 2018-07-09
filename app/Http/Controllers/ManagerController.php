@@ -6,7 +6,9 @@ use App\Constituency;
 use App\Message;
 use App\Project;
 use App\User;
+use App\Ward;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ManagerController extends Controller
 {
@@ -22,7 +24,9 @@ class ManagerController extends Controller
         $usercount = User::count();
         $constituencycount = Constituency::count();
         $projects = Project::all();
-        return view('admin.admin', compact('messagecount','projectcount','usercount','constituencycount','projects'));
+        $completed = DB::table('projects')->where('completion','=',100)->count();
+        $ongoing = DB::table('projects')->where('completion','<',100)->count();
+        return view('admin.admin', compact('messagecount','ongoing','completed','projectcount','usercount','constituencycount','projects'));
     }
 
     public function showConstituencies(){
@@ -40,7 +44,9 @@ class ManagerController extends Controller
         $usercount = User::count();
         $constituencycount = Constituency::count();
         $projects = Project::all();
-        return view('users.dashboard', compact('messagecount','projectcount','usercount','constituencycount','projects'));
+        $completed = DB::table('projects')->where('completion','=',100)->count();
+        $ongoing = DB::table('projects')->where('completion','<',100)->count();
+        return view('users.dashboard', compact('messagecount','ongoing','completed','projectcount','usercount','constituencycount','projects'));
     }
 
     public function userProjects(){
@@ -77,7 +83,7 @@ class ManagerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create-constituency');
     }
 
     /**
@@ -88,7 +94,18 @@ class ManagerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $constituency = Constituency::create([
+           'name' => $request['name']
+        ]);
+        $ward = Ward::create([
+           'name' => $request['ward'],
+           'constituency' => $request['name']
+        ]);
+        if ($constituency && $ward){
+            return back()->with('message',"success");
+        } else {
+            return back()->with('message',"error");
+        }
     }
 
     /**

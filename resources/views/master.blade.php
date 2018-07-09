@@ -1,71 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>Meru @yield('title')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="http://webthemez.com" />
+    <!-- css -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('home/materialize/css/materialize.min.css')}}" media="screen,projection" />
+    <link href="{{ asset('home/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{ asset('home/css/fancybox/jquery.fancybox.css')}}" rel="stylesheet">
+    <link href="{{ asset('home/css/flexslider.css')}}" rel="stylesheet" />
+    <link href="{{ asset('home/css/style.css')}}" rel="stylesheet" />
 
-    <title>@yield('title')</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/modern-business.css')}}" rel="stylesheet">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
 </head>
-
 <body>
+<div id="wrapper" class="home-page">
+    <!-- start header -->
+    <header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ url('/') }}"><i class="icon-info-blocks material-icons"></i>Meru</a>
+                </div>
+                <div class="navbar-collapse collapse ">
+                    <ul class="nav navbar-nav">
+                        <li class=@yield('isHome')><a class="waves-effect waves-dark" href="{{ url('/') }}">Home</a></li>
+                        <li class=@yield('isProjects')><a class="waves-effect waves-dark" href="{{ url('projects') }}">All Projects</a></li>
+                        <li class="dropdown @yield('isConstituency')">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">Constituencies<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @foreach($constituencies as $constituency)
+                                    <li><a class="waves-effect waves-dark" href="{{ route('projects.constituency',['id'=>$constituency->id]) }}">{{ $constituency->constituency_name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li class="dropdown @yield('isCategory')">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">Categories<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @foreach($categories as $category)
+                                    <li><a class="waves-effect waves-dark" href="{{ route('projects.category',['id'=>$category->id]) }}">{{ $category->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li  class=@yield('isContact')><a class="waves-effect waves-dark" href="{{ url('/contact') }}">Contact</a></li>
+                        <li><a class="waves-effect waves-dark" href="{{ url('/auth/login') }}">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
 
-<!-- Navigation -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="{{ route('projects.home') }}">Meru County</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('projects.all') }}">All Projects</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Constituencies
-                    </a>
-                    @if('constituencies')
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                        @foreach($constituencies as $constituency)
-                            <a class="dropdown-item" href="{{ route('projects.constituency',['name'=>$constituency->id]) }}">{{ $constituency->name }}</a>
-                        @endforeach
+    @yield('content')
+
+
+<footer>
+    <div id="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="copyright">
+                        <p>
+                            <span>&copy; Copyright 2017 All right reserved.</span>
+                        </p>
                     </div>
-                    @endif
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('message.create') }}">Contact Us</a>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
     </div>
-</nav>
-
-@yield('content')
-
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-    </div>
-    <!-- /.container -->
 </footer>
-
-<!-- Bootstrap core JavaScript -->
-<script src="{{ asset('vendor/jquery/jquery.min.js')}}"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
+</div>
+<a href="#" class="scrollup waves-effect waves-dark"><i class="fa fa-angle-up active"></i></a>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ asset('js/jquery.js')}}"></script>
+<script src="{{ asset('js/jquery.easing.1.3.js')}}"></script>
+<script src="{{ asset('materialize/js/materialize.min.js')}}"></script>
+<script src="{{ asset('js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/jquery.fancybox.pack.js')}}"></script>
+<script src="{{ asset('js/jquery.fancybox-media.js')}}"></script>
+<script src="{{ asset('js/jquery.flexslider.js')}}"></script>
+<script src="{{ asset('js/animate.js')}}"></script>
+<!-- Vendor Scripts -->
+<script src="{{ asset('js/modernizr.custom.js')}}"></script>
+<script src="{{ asset('js/jquery.isotope.min.js')}}"></script>
+<script src="{{ asset('js/jquery.magnific-popup.min.js')}}"></script>
+<script src="{{ asset('js/animate.js')}}"></script>
+<script src="{{ asset('js/custom.js')}}"></script>
 </body>
-
 </html>

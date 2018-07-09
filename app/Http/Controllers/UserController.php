@@ -6,9 +6,12 @@ use App\Constituency;
 use App\Message;
 use App\Project;
 use App\User;
+use App\Ward;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
@@ -56,7 +59,7 @@ class UserController extends Controller
             'password' => $request['password']
         ], false)){
             if (Auth::user()->role = "Admin"){
-                return redirect()->route('admin.home');
+                return redirect()->route('admin.home')->with('user',Auth::user());
             } else {
                 return redirect()->route('users.dashboard');
             }
@@ -75,18 +78,30 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function newUser(){
+        $message = "";
+        $constituencies = Constituency::all();
+        $wards = Ward::all();
+        return view('admin.create-user',compact('message','constituencies','wards'));
+    }
+
     public function store(Request $request)
     {
         $user = User::create([
             'email' => $request['email'],
-            'password' => $request['password'],
+            'password' => Hash::make($request['password']),
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
             'phone' => $request['phone'],
-            'constituency' => $request['constituency'],
-            'ward' => $request['ward'],
             'role' => $request['role']
         ]);
+
+        if ($user){
+            return redirect()->back()->with('message',"success");
+        } else {
+            return redirect()->back()->with('message',"error");
+        }
     }
 
     /**
@@ -108,7 +123,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users = User::find($id);
+        $constituencies = Constituency::all();
+        $contractors = DB::table('users')->where('role','=',"Contractor")->get();
+        $wards = Ward::all();
+        return view('admin.edit-user', compact('users','constituencies','contractors','wards'));
     }
 
     /**
@@ -120,7 +139,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //todo fix
+        if (User::find($id)->update($request->all())){
+            return redirect()->back()->with('message',"success");
+        } else {
+            return redirect()->back()->with('message',"error");
+        }
     }
 
     /**
@@ -131,6 +155,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        if ($user->delete()){
+            return redirect()->back()->with('message', "success");
+        } else {
+            return redirect()->back()->with('message', "error");
+        }
     }
 }

@@ -18,7 +18,8 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('category');
-            $table->string('constituency');
+            $table->integer('constituency_id')->unsigned();
+            $table->foreign('constituency_id')->references('id')->on('projects');
             $table->string('ward');
             $table->string('budget');
             $table->integer('completion');

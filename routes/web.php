@@ -35,17 +35,21 @@ Route::post('admin/projects/create', [
     'as' => 'project.save',
     'uses' => 'ProjectControllerWeb@store'
 ]);
-Route::delete('/projects/{id}', [
+Route::delete('admin/projects/{id}/delete', [
     'as' => 'project.delete',
     'uses' => 'ProjectControllerWeb@destroy'
 ]);
-Route::put('/projects/{id}', [
+Route::put('admin/projects/{id}/edit', [
     'as' => 'project.edit',
     'uses' => 'WebProjectsController@update'
 ]);
-Route::get('/projects/constituency/{id}',[
+Route::get('projects/constituency/{id}',[
     'as' => 'projects.constituency',
     'uses' => 'ProjectControllerWeb@byConstituency'
+]);
+Route::get('projects/category/{id}',[
+    'as' => 'projects.category',
+    'uses' => 'ProjectControllerWeb@byCategory'
 ]);
 //Users
 Route::get('/admin/people',[
@@ -80,6 +84,14 @@ Route::get('/users/messages',[
     'as' => 'users.messages',
     'uses' => 'ManagerController@userMessages'
 ]);
+Route::get('/users/people/new', [
+   'as' => 'user.create',
+   'uses' => 'UserController@newUser'
+]);
+Route::post('/users/people/new', [
+    'as' => 'user.save',
+    'uses' => 'UserController@store'
+]);
 /*admin panel*/
 Route::get('/users/admin', [
    'as' => 'admin.home',
@@ -97,13 +109,45 @@ Route::get('/admin/projects', [
     'as' => 'admin.projects',
     'uses' => 'ProjectControllerWeb@showForAdmin'
 ]);
-Route::delete('/admin/messages/{id}/delete', [
+Route::post('/admin/projects/{id}/delete', [
+    'as' => 'project.delete',
+    'uses' => 'ProjectControllerWeb@destroy'
+]);
+Route::get('/admin/projects/{id}/edit', [
+    'as' => 'project.edit',
+    'uses' => 'ProjectControllerWeb@edit'
+]);
+Route::post('/admin/projects/{id}/edit', [
+    'as' => 'project.update',
+    'uses' => 'ProjectControllerWeb@update'
+]);
+Route::post('/admin/messages/{id}/delete', [
     'as' => 'message.delete',
     'uses' => 'MessageController@destroy'
+]);
+Route::post('/admin/people/{id}/delete',[
+    'as' => 'user.delete',
+    'uses' => 'UserController@destroy'
+]);
+Route::get('/admin/people/{id}/edit',[
+    'as' => 'user.edit',
+    'uses' => 'UserController@edit'
+]);
+Route::post('/admin/people/{id}/edit',[
+    'as' => 'user.update',
+    'uses' => 'UserController@update'
 ]);
 Route::get('/admin/constituencies',[
    'as' => 'constituencies.all',
    'uses' => 'ManagerController@showConstituencies'
+]);
+Route::get('/admin/constituencies/new', [
+   'as' => 'constituency.create',
+   'uses' => 'ManagerController@create'
+]);
+Route::post('/admin/constituencies/new', [
+    'as' => 'constituency.save',
+    'uses' => 'ManagerController@store'
 ]);
 /*admin panel*/
 Route::get('/contact', [
@@ -120,3 +164,24 @@ Route::post('/contact/', [
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//get pdf TODO
+Route::get('/report',[
+    'as' => 'projects.report',
+   'uses' => 'PdfController@index'
+]);
+Route::get('/count',[
+    'as' => 'count.all',
+    'uses' => 'PdfController@count'
+]);
+Route::get('/count/ongoing',[
+    'as' => 'count.ongoing',
+    'uses' => 'PdfController@ongoing'
+]);
+
+Route::get('/constituencies',[
+   'as' => 'constituencies.all',
+'uses' => 'ManagerController@showConstituencies'
+//   'uses' => 'WardController@constituencies' TODO
+]);
+//counts

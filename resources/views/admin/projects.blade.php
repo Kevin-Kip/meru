@@ -1,9 +1,31 @@
 @extends('admin.master')
 @section('content')
+
+    @if(session()->has('message'))
+        @if(session()->get('message') == "success")
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> Message Deleted Successfully
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @elseif(session()->get('message') == "error")
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Ooops!</strong> Could Not Delete Message
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+    @endif
         <div class="text-white">
             <a class="btn btn-primary" href="{{ route('project.create') }}">
                 <i class="fa fa-plus"></i>
                 Add New Project
+            </a>
+            <a class="btn btn-primary" href="{{ url('/report') }}">
+                <i class="fa fa-book"></i>
+                Generate Report
             </a>
         </div>
         <p></p>
@@ -39,10 +61,15 @@
                                     <td>{{ $project->completion }}</td>
                                     <td>{{ $project->due_date }}</td>
                                     <td>
-                                        <button class="btn btn-success" data-toggle="modal" data-target="">Edit</button>
+                                        <a href="{{ route('project.edit',['id'=>$project->id]) }}" class="btn btn-primary">
+                                            Edit
+                                        </a>
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger" data-toggle="modal" data-target="">Delete</button>
+                                        <form action="{{ route('project.delete',['id'=>$project->id]) }}" method="post">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

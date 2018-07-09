@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
+    <title>Admin - Create New Project</title>
     <!-- Bootstrap core CSS-->
     <link href="{{ asset('admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projects">
-                <a class="nav-link" href="{{ route('admin.home') }}">
+                <a class="nav-link" href="{{ route('admin.projects') }}">
                     <i class="fa fa-fw fa-tasks"></i>
                     <span class="nav-link-text">Projects</span>
                 </a>
@@ -125,7 +125,7 @@
         <!-- Message Card-->
         @if('message')
             @if($message == "success")
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-success alert-dismissible show" role="alert">
                     <strong>Success!</strong> Saved Successfully
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -157,52 +157,65 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="name">Project Name:</label>
-                            <input class="form-control" type="text" name="name" id="name" required autofocus>
+                            <input class="form-control" value="{{ (session()->has('project')) ? $project->name : "" }}" type="text" name="name" id="name" required autofocus>
                         </div>
                         <div class="form-group">
                             <label for="description">Description:</label>
-                            <input class="form-control" type="text" name="description" id="description" required>
+                            <input class="form-control" value="{{ (session()->has('project')) ? $project->description : "" }}" type="text" name="description" id="description" required>
                         </div>
                         <div class="form-group">
                             <label for="category">Category:</label>
                             <select name="category" id="category" class="form-control">
-                                <option value="roads">Roads</option>
-                                <option value="water-and-sanitaion">Water and Sanitation</option>
-                                <option value="agriculture">Agriculture</option>
-                                <option value="ict">ICT</option>
-                                <option value="health">Health</option>
-                                <option value="education">Education</option>
+                                <option disabled selected value> -- select an option -- </option>
+                                @if('constituencies')
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="constituency">Constituency:</label>
                             <select name="constituency" id="constituency" class="form-control">
-                                <option value="buuri">Buuri</option>
-                                <option value="central-imenti">Central Imenti</option>
-                                <option value="igembe-north">Igembe North</option>
-                                <option value="igembe-south">Igembe South</option>
-                                <option value="igembe-central">Igembe Central</option>
-                                <option value="north-imenti">North Imenti</option>
-                                <option value="south-imenti">South Imenti</option>
-                                <option value="tigania-east">Tigania East</option>
-                                <option value="tigania-west">Tigania West</option>
+                                <option disabled selected value> -- select an option -- </option>
+                                @if('constituencies')
+                                    @foreach($constituencies as $constituency)
+                                        <option value="{{ $constituency->id }}">{{ $constituency->constituency_name }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="budget">Budget:</label>
-                            <input class="form-control" type="text" name="budget" id="budget" required>
+                            <input class="form-control" value="{{ (session()->has('project')) ? $project->budget : "" }}" placeholder="eg. 65.8 Billion" type="text" name="budget" id="budget" required>
                         </div>
                         <div class="form-group">
                             <label for="completion">Completion (%):</label>
-                            <input class="form-control" type="number" min="0" max="100" name="completion" id="completion" required>
+                            <input class="form-control" value="{{ (session()->has('project')) ? $project->completion : 0 }}" type="number" min="0" max="100" name="completion" id="completion" required>
                         </div>
                         <div class="form-group">
                             <label for="contractor">Contractor:</label>
-                            <input class="form-control" type="text" name="contractor" id="contractor" required>
+                            <select name="contractor" id="contractor" class="form-control" required>
+                                <option disabled selected value> -- select an contractor -- </option>
+                                @if('contractors')
+                                    @foreach($contractors as $contractor)
+                                        <option value="{{ $contractor->first_name." ".$contractor->last_name }}">{{ $contractor->first_name." ".$contractor->last_name }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ward">Ward:</label>
+                            <select name="ward" id="ward" class="form-control" required>
+                                <option disabled selected value> -- select an option -- </option>
+                                @foreach($wards as $ward)
+                                    <option value="{{ $ward->name }}">{{ $ward->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="due_date">Due Date:</label>
-                            <input class="form-control" type="datetime-local" name="due_date" id="due_date" required>
+                            <input class="form-control" value="{{ (session()->has('project')) ? $project->due_date : "" }}" type="date" name="due_date" id="due_date" required>
                         </div>
                         <div class="form-group">
                             <label for="file">Photos:</label>
@@ -214,7 +227,6 @@
                     </form>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
     </div>
     <!-- /.container-fluid-->
@@ -245,7 +257,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="{{ url('/logout') }}">Logout</a>
                 </div>
             </div>
         </div>
@@ -263,7 +275,28 @@
     <script src="{{ asset('admin/js/sb-admin.min.js')}}"></script>
     <!-- Custom scripts for this page-->
     <script src="{{ asset('admin/js/sb-admin-datatables.min.js')}}"></script>
-    <script src="{{ asset('admin/js/sb-admin-charts.min.js')}}"></script>
+    <script src="{{ asset('admin/js/sb-admin-charts.js')}}"></script>
+
+    <script>
+        $("#constituency").change(function () {
+            let id = document.getElementById('constituency').value;
+            $.ajax({
+                'url':"http://127.0.0.1:8000/"+id+"/constituencies/1/wards",
+                'method': "GET",
+                'dataType': 'json',
+                success: function (data) {
+                    alert(data);
+                    for (let i = 0; i < data.length;i++ ){
+                        alert(i)
+                    }
+                },
+                error: function (error) {
+                    alert("An error occured. Cound not fetch wards");
+                    console.log(error)
+                }
+            })
+        })
+    </script>
 </div>
 </body>
 
