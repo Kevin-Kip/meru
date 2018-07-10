@@ -47,7 +47,7 @@
                             </ul>
                         </li>
                         <li class="dropdown @yield('isCategory')">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">Categories<b class="caret"></b></a>
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">Departments<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 @foreach($categories as $category)
                                     <li><a class="waves-effect waves-dark" href="{{ route('projects.category',['id'=>$category->id]) }}">{{ $category->name }}</a></li>

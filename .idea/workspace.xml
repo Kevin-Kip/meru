@@ -62,7 +62,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/storage/framework/views/ccc803b90af741e60d55db97aa062b70e034d7cf.php" />
         <option value="$PROJECT_DIR$/storage/framework/views/de15895e3f89a48a93078ede2418a815d7ac889d.php" />
         <option value="$PROJECT_DIR$/storage/framework/views/e001f2c6f751208e23ee82734dd01070884d9911.php" />
         <option value="$PROJECT_DIR$/public/admin/js/sb-admin-charts.min.js" />
@@ -113,6 +112,7 @@
         <option value="$PROJECT_DIR$/resources/views/admin/messages.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/users/messages.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/constituencies.blade.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -431,12 +431,12 @@
       <workItem from="1531054754295" duration="12654000" />
       <workItem from="1531130475514" duration="8600000" />
       <workItem from="1531142703638" duration="1080000" />
-      <workItem from="1531218576086" duration="4848000" />
+      <workItem from="1531218576086" duration="5163000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="262662000" />
+    <option name="totallyTimeSpent" value="262977000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -449,6 +449,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="33" width="1366" height="733" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32890365" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -456,7 +457,7 @@
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32890365" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.6744186" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.6744186" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3110774" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32928678" />
@@ -741,14 +742,6 @@
         <state relative-caret-position="-5709" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-427" />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/constituency.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -884,6 +877,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="60" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="15">
+            <caret line="1" selection-start-line="1" selection-end-line="1" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
