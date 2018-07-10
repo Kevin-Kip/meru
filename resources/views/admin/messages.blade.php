@@ -42,7 +42,7 @@
                                 <tr>
                                     <td>{{ $message->sender_first_name ." ".$message->sender_last_name }}</td>
                                     <td>{{ $message->email }}</td>
-                                    <td>{{ $message->constituency }}</td>
+                                    <td>{{ $message->sender_constituency }}</td>
                                     <td>{{ $message->message }}</td>
                                     <td>{{ $message->created_at }}</td>
                                     <td>

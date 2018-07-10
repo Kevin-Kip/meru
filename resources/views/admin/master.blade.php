@@ -51,6 +51,12 @@
                     <span class="nav-link-text">Constituencies</span>
                 </a>
             </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+                <a class="nav-link" href="{{ url('/report') }}">
+                    <i class="fa fa-fw fa-book"></i>
+                    <span class="nav-link-text">Generate Report</span>
+                </a>
+            </li>
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">

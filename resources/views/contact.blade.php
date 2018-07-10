@@ -90,10 +90,10 @@
             <div class="control-group form-group">
               <div class="controls">
                 <label for="constituency">Constituency:</label>
-                  <select class="form-control" name="constituency" id="constituency">
+                  <select class="form-control" name="sender_constituency" id="constituency">
                       @if('constituencies')
                           @foreach($constituencies as $constituency)
-                              <option>{{ $constituency->name }}</option>
+                              <option value="{{ $constituency->constituency_name }}">{{ $constituency->constituency_name }}</option>
                           @endforeach
                       @endif
                   </select>

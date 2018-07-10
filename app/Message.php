@@ -10,7 +10,7 @@ class Message extends Model
         'sender_first_name',
         'sender_last_name',
         'email',
-        'constituency',
+        'sender_constituency',
         'message',
     ];
 }

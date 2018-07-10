@@ -49,13 +49,14 @@ class MessageController extends Controller
     public function store(Request $request)
     {
 
-        $message = Message::create([
-            'sender_first_name' => $request['sender_first_name'],
-            'sender_last_name' => $request['sender_last_name'],
-            'email' => $request['email'],
-            'constituency' => $request['constituency'],
-            'message' => $request['message']
-        ]);
+//        $message = Message::create([
+//            'sender_first_name' => $request['sender_first_name'],
+//            'sender_last_name' => $request['sender_last_name'],
+//            'email' => $request['email'],
+//            'sender_constituency' => $request['constituency'],
+//            'message' => $request['message']
+//        ]);
+        $message = Message::create($request->all());
 
         if ($message){
             $result = "success";

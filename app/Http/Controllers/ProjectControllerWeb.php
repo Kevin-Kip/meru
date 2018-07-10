@@ -43,7 +43,7 @@ class ProjectControllerWeb extends Controller
         $projectcount = Project::count();
         $usercount = User::count();
         $constituencycount = Constituency::count();
-        $projects = Project::all();
+        $projects = DB::table('projects')->join('constituencies','projects.constituency_id','=','constituencies.id')->get();
         return view('admin.projects',compact('messagecount','projectcount','usercount','constituencycount','projects'));
     }
     /**

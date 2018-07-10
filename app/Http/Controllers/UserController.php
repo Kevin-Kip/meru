@@ -40,18 +40,8 @@ class UserController extends Controller
      */
     public function create()
     {
-//        $constituencies = Constituency::all();
         return view('auth.login');
     }
-
-//    public function loguserin($email){
-//        $user = User::find($email);
-//        if ($user){
-//            return "YES";
-//        } else {
-//            return "NO";
-//        }
-//    }
 
     public function loguserin(Request $request){
         if(Auth::attempt([
@@ -139,7 +129,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //todo fix
         if (User::find($id)->update($request->all())){
             return redirect()->back()->with('message',"success");
         } else {

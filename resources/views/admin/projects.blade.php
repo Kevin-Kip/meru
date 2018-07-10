@@ -23,10 +23,6 @@
                 <i class="fa fa-plus"></i>
                 Add New Project
             </a>
-            <a class="btn btn-primary" href="{{ url('/report') }}">
-                <i class="fa fa-book"></i>
-                Generate Report
-            </a>
         </div>
         <p></p>
         <!-- Example DataTables Card-->
@@ -56,7 +52,7 @@
                                     <td>{{ $project->name }}</td>
                                     <td>{{ $project->description }}</td>
                                     <td>{{ $project->category }}</td>
-                                    <td>{{ $project->constituency }}</td>
+                                    <td>{{ $project->constituency_name }}</td>
                                     <td>{{ $project->budget }}</td>
                                     <td>{{ $project->completion }}</td>
                                     <td>{{ $project->due_date }}</td>

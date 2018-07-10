@@ -32,7 +32,7 @@
                                 <td>{{ $project->name }}</td>
                                 <td>{{ $project->description }}</td>
                                 <td>{{ $project->category }}</td>
-                                <td>{{ $project->constituency }}</td>
+                                <td>{{ $project->constituency_name }}</td>
                                 <td>{{ $project->budget }}</td>
                                 <td>{{ $project->completion }}</td>
                                 <td>{{ $project->due_date }}</td>

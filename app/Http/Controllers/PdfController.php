@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Constituency;
-use App\Message;
 use App\Project;
-use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PdfController extends Controller
 {
@@ -18,15 +16,7 @@ class PdfController extends Controller
      */
     public function index()
     {
-        $messagecount = Message::count();
-        $projectcount = Project::count();
-        $usercount = User::count();
-        $constituencycount = Constituency::count();
-        $completed = DB::table('projects')->where('completion','=',100)->count();
-        $ongoing = DB::table('projects')->where('completion','<',100)->count();
-        $projects = Project::all();
-        $pdf = \PDF::loadview('users.report', compact('projects','completed','ongoing','messagecount','projectcount','usercount','constituencycount'));
-        return $pdf->download('meru-report.pdf');
+        return Excel::download(new ReportExport(),'report.xlsx');
     }
 
     /**
@@ -36,7 +26,6 @@ class PdfController extends Controller
      */
     public function count()
     {
-//        return response()->json(['count'=>DB::table('projects')->count()]);
         return DB::table('projects')->where("name",'=',"Dam")->pluck('id');
     }
 
@@ -79,60 +68,5 @@ class PdfController extends Controller
             'total' => $totalCount,
             'full' => $full
         ]);
-    }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
