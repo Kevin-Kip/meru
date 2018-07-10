@@ -45,16 +45,16 @@
             </div>
 
             <div class="row service-v1 margin-bottom-40">
-                @foreach($categories as $category)
-                    <a href="{{ url('projects/category/'.$category->id) }}">
+                @foreach($departments as $department)
+                    <a href="{{ url('projects/category/'.$department->id) }}">
                         <div class="col-md-4 md-margin-bottom-40">
                             <div class="card small">
                                 <div class="card-image">
-                                    <img class="img-responsive" src="{{ asset($category->photo)}}" alt="">
-                                    <span class="card-title">{{ $category->name }}</span>
+                                    <img class="img-responsive" src="{{ asset($department->photo)}}" alt="">
+                                    <span class="card-title">{{ $department->name }}</span>
                                 </div>
                                 <div class="card-content">
-                                    <p>{{ $category->description }}</p>
+                                    <p>{{ $department->description }}</p>
                                 </div>
                             </div>
                         </div>

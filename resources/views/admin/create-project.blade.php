@@ -164,12 +164,12 @@
                             <input class="form-control" value="{{ (session()->has('project')) ? $project->description : "" }}" type="text" name="description" id="description" required>
                         </div>
                         <div class="form-group">
-                            <label for="category">Category:</label>
+                            <label for="category">Department:</label>
                             <select name="category" id="category" class="form-control">
                                 <option disabled selected value> -- select an option -- </option>
                                 @if('constituencies')
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                    @foreach($departments as $department)
+                                        <option value="{{ $department->name }}">{{ $department->name }}</option>
                                     @endforeach
                                 @endif
                             </select>

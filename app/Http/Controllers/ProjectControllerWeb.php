@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Department;
 use App\Constituency;
 use App\Photo;
 use App\Project;
@@ -25,16 +25,16 @@ class ProjectControllerWeb extends Controller
         $constituencies = Constituency::all();
         $photos = DB::table('photos')->take(10)->get();
         $message = "";
-        $categories  = Category::all();
-        return view('index', compact('projects','constituencies','message','photos','categories'));
+        $departments  = Department::all();
+        return view('index', compact('projects','constituencies','message','photos','departments'));
     }
 
     public function fetchAll(){
         $projects = DB::table('projects')->join('constituencies','projects.constituency_id','=','constituencies.id')->join('photos','projects.id','=','photos.project_id')->get();
         $constituencies = Constituency::all();
         $photos = Photo::all();
-        $categories = Category::all();
-        return view('projects',compact('constituencies','projects','photos','categories'));
+        $departments = Department::all();
+        return view('projects',compact('constituencies','projects','photos','departments'));
     }
 
 
@@ -56,9 +56,9 @@ class ProjectControllerWeb extends Controller
         $message = "";
         $constituencies = Constituency::all();
         $wards = Ward::all();
-        $categories = Category::all();
+        $departments = Department::all();
         $contractors = DB::table('users')->where('role','=',"Contractor")->get();
-        return view('admin.create-project',compact('categories','message','constituencies','contractors','wards'));
+        return view('admin.create-project',compact('departments','message','constituencies','contractors','wards'));
     }
 
     public function byConstituency($constituencyId){
@@ -66,17 +66,17 @@ class ProjectControllerWeb extends Controller
         $constituencyName =  $constituency[0]->constituency_name;
         $projects = DB::table('projects')->where('constituency_id','=',$constituencyId)->join('constituencies','projects.constituency_id','=','constituencies.id')->join('photos','projects.id','=','photos.project_id')->get();
         $constituencies = Constituency::all();
-        $categories = Category::all();
-        return view('constituency',compact('constituencies','projects','constituencyName','categories'));
+        $departments = Department::all();
+        return view('constituency',compact('constituencies','projects','constituencyName','departments'));
     }
 
-    public function byCategory($categoryId){
-        $category = DB::table('categories')->where('id','=',$categoryId)->get();
-        $categoryName = $category[0]->name;
+    public function byCategory($departmentId){
+        $department = DB::table('departments')->where('id','=',$departmentId)->get();
+        $categoryName = $department[0]->name;
         $constituencies = Constituency::all();
-        $categories = Category::all();
+        $departments = Department::all();
         $projects = DB::table('projects')->where('category','=',$categoryName)->join('constituencies','projects.constituency_id','=','constituencies.id')->join('photos','projects.id','=','photos.project_id')->get();
-        return view('category',compact('projects','constituencies','categoryName','categories'));
+        return view('category',compact('projects','constituencies','categoryName','departments'));
     }
 
     /**
@@ -129,12 +129,12 @@ class ProjectControllerWeb extends Controller
      */
     public function show($id)
     {
-        $categories = Category::all();
+        $departments = Department::all();
         $constituencies = Constituency::all();
         $project = Project::findOrFail($id);
         $photos = DB::table('photos')->where('project_id','=',$id)->get();
         if ($project){
-            return view('project', compact('categories','constituencies','project','photos'));
+            return view('project', compact('departments','constituencies','project','photos'));
         }
     }
 

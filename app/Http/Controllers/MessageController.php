@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Department;
 use App\Constituency;
 use App\Message;
 use App\Project;
@@ -36,8 +36,8 @@ class MessageController extends Controller
     {
         $result = "";
         $constituencies = DB::table('constituencies')->get();
-        $categories = Category::all();
-        return view('contact',compact('constituencies','result','categories'));
+        $departments = Department::all();
+        return view('contact',compact('constituencies','result','departments'));
     }
 
     /**

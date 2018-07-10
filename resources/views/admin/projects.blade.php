@@ -36,7 +36,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
-                            <th>Category</th>
+                            <th>Department</th>
                             <th>Constituency</th>
                             <th>Budget</th>
                             <th>Completion</th>
