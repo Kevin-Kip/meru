@@ -11,7 +11,7 @@
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Delete</th>
+                        <th>Wards</th>
                     </tr>
                     </thead>
                     @if('users')

@@ -42,7 +42,7 @@
                                         </div>
                                     </div>
                                     <p>Due: <strong>{{ $project->due_date }}</strong></p>
-                                    <p>Category: {{ $project->category }}</p>
+                                    <p>Department: {{ $project->category }}</p>
                                     <p>{{ $project->constituency_name }} constituency</p>
                                     <p>{{ $project->ward }} ward</p>
                                     <p>Contractor: <strong>{{ $project->contractor }}</strong></p>

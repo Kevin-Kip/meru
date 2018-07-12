@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 09, 2018 at 03:30 PM
+-- Generation Time: Jul 12, 2018 at 08:29 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -39,32 +39,6 @@ CREATE TABLE `admins` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
---
-
-CREATE TABLE `categories` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `photo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`id`, `name`, `description`, `photo`, `created_at`, `updated_at`) VALUES
-(1, 'Health', 'The national government has invested heavily to make access to health care a reality for millions of Kenyans at affordable or no cost. The Government distributed World Class medical equipment to all counties, introduced a free maternity health program and expanded National Hospital Insurance Fund.', 'home/img/health.jpg', '2018-06-30 21:00:00', '2018-07-06 21:00:00'),
-(2, 'Education', 'Kenya is the 7th largest funder of Education in the world. The Education sector continues to be the largest recipient of government budget totalling over Ksh.300 billion annually. The government has made interventions at every level of education to increase access to quality education to Kenyans.', '/home/img/education.jpg', '2018-07-01 21:00:00', '2018-07-02 21:00:00'),
-(3, 'Roads', 'Development of Key Infrastructure has been a key focus of the Government, in particular Roads, Rail, Energy and Water Infrastructure. These are critical interventions that are are required to jump start the economy and vault the country to middle-income industrialized status as spelt out in Vision 2030.', 'home/img/roads.jpg', '2018-06-30 21:00:00', '2018-07-03 21:00:00'),
-(4, 'ICT', 'Information, Communication and Technology is a major priority for the Kenya government as it seeks to transform the country into a knowledge-based economy. Digital Literacy Programme, KONZA Technopolis, Ajira and Presidential Digital Talent Programme are key programmes under ICT', 'home/img/ict.jpg', '2018-06-30 21:00:00', '2018-07-06 21:00:00'),
-(5, 'Agriculture and Food Security', 'The government’s efforts to make food cheap and available to all Kenyans are bearing fruit with various initiatives aimed at supporting farming, livestock rearing and fish production initiated. More farmers are accessing subsidized inputs to lower their cost of production and boost earnings.', 'home/img/food.jpg', '2018-06-30 21:00:00', '2018-07-06 21:00:00');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `constituencies`
 --
 
@@ -93,6 +67,32 @@ INSERT INTO `constituencies` (`id`, `constituency_name`, `created_at`, `updated_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `departments`
+--
+
+CREATE TABLE `departments` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`id`, `name`, `description`, `photo`, `created_at`, `updated_at`) VALUES
+(1, 'Health', 'The national government has invested heavily to make access to health care a reality for millions of Kenyans at affordable or no cost. The Government distributed World Class medical equipment to all counties, introduced a free maternity health program and expanded National Hospital Insurance Fund.', 'home/img/health.jpg', '2018-06-30 21:00:00', '2018-07-06 21:00:00'),
+(2, 'Education', 'Kenya is the 7th largest funder of Education in the world. The Education sector continues to be the largest recipient of government budget totalling over Ksh.300 billion annually. The government has made interventions at every level of education to increase access to quality education to Kenyans.', '/home/img/education.jpg', '2018-07-01 21:00:00', '2018-07-02 21:00:00'),
+(3, 'Roads', 'Development of Key Infrastructure has been a key focus of the Government, in particular Roads, Rail, Energy and Water Infrastructure. These are critical interventions that are are required to jump start the economy and vault the country to middle-income industrialized status as spelt out in Vision 2030.', 'home/img/roads.jpg', '2018-06-30 21:00:00', '2018-07-03 21:00:00'),
+(4, 'ICT', 'Information, Communication and Technology is a major priority for the Kenya government as it seeks to transform the country into a knowledge-based economy. Digital Literacy Programme, KONZA Technopolis, Ajira and Presidential Digital Talent Programme are key programmes under ICT', 'home/img/ict.jpg', '2018-06-30 21:00:00', '2018-07-06 21:00:00'),
+(5, 'Agriculture and Food Security', 'The government’s efforts to make food cheap and available to all Kenyans are bearing fruit with various initiatives aimed at supporting farming, livestock rearing and fish production initiated. More farmers are accessing subsidized inputs to lower their cost of production and boost earnings.', 'home/img/food.jpg', '2018-06-30 21:00:00', '2018-07-06 21:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `messages`
 --
 
@@ -106,6 +106,13 @@ CREATE TABLE `messages` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `sender_first_name`, `sender_last_name`, `email`, `sender_constituency`, `message`, `created_at`, `updated_at`) VALUES
+(2, 'Sample', 'User', 'mailmail@mail.com', 'Igembe Central', 'SAMPLE MESSAGE', '2018-07-12 03:22:28', '2018-07-12 03:22:28');
 
 -- --------------------------------------------------------
 
@@ -131,7 +138,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2018_06_24_100946_create_constituencies_table', 1),
 (7, '2018_06_24_105700_create_photos_table', 1),
 (8, '2018_06_27_140620_create_messages_table', 1),
-(9, '2018_07_06_095538_create_categories_table', 1),
+(9, '2018_07_06_095538_create_departments_table', 1),
 (10, '2018_06_24_101003_create_wards_table', 2);
 
 -- --------------------------------------------------------
@@ -274,17 +281,17 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `admins_email_unique` (`email`);
 
 --
--- Indexes for table `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `constituencies`
 --
 ALTER TABLE `constituencies`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `constituencies_name_unique` (`constituency_name`);
+
+--
+-- Indexes for table `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `messages`
@@ -343,20 +350,20 @@ ALTER TABLE `wards`
 ALTER TABLE `admins`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
 -- AUTO_INCREMENT for table `constituencies`
 --
 ALTER TABLE `constituencies`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
+-- AUTO_INCREMENT for table `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
