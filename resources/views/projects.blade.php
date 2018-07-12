@@ -24,6 +24,7 @@
       <div class="row">
         @if('projects')
           @foreach($projects as $project)
+              {{--TODO fix this--}}
                   <a href="{{ url('/projects/'.$project->id) }}">
                       <div class="col-md-4 md-margin-bottom-40">
                       <div class="card small">

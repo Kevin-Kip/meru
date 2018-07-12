@@ -172,8 +172,18 @@
                             <input class="form-control" value="{{ $users->phone }}" type="text" name="phone" id="phone" required>
                         </div>
                         <div class="form-group">
+                            <label for="constituency">Constituency</label>
+                            <select name="constituency" id="constituency" class="form-control">
+                                <option disabled selected value> -- select an option -- </option>
+                                @foreach($constituencies as $constituency)
+                                    <option value="{{ $constituency->constituency_name }}">{{ $constituency->constituency_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="role">Role:</label>
                             <select name="role" id="role" class="form-control">
+                                <option disabled selected value> -- select an option -- </option>
                                 <option value="Admin">Admin</option>
                                 <option value="Secretary">Secretary</option>
                                 <option value="Contractor">Contractor</option>

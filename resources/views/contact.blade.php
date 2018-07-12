@@ -91,6 +91,7 @@
               <div class="controls">
                 <label for="constituency">Constituency:</label>
                   <select class="form-control" name="sender_constituency" id="constituency">
+                    <option disabled selected value> -- select an option -- </option>
                       @if('constituencies')
                           @foreach($constituencies as $constituency)
                               <option value="{{ $constituency->constituency_name }}">{{ $constituency->constituency_name }}</option>

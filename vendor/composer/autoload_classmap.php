@@ -6,9 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Constituency' => $baseDir . '/app/Constituency.php',
+    'App\\Department' => $baseDir . '/app/Department.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
@@ -21,6 +21,7 @@ return array(
     'App\\Http\\Controllers\\PdfController' => $baseDir . '/app/Http/Controllers/PdfController.php',
     'App\\Http\\Controllers\\ProjectControllerWeb' => $baseDir . '/app/Http/Controllers/ProjectControllerWeb.php',
     'App\\Http\\Controllers\\ProjectsController' => $baseDir . '/app/Http/Controllers/ProjectsController.php',
+    'App\\Http\\Controllers\\ReportExport' => $baseDir . '/app/Http/Controllers/ReportExport.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Controllers\\WardController' => $baseDir . '/app/Http/Controllers/WardController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',

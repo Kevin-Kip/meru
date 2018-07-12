@@ -176,14 +176,24 @@
                             <input class="form-control" type="password" name="password" id="password" required>
                         </div>
                         <div class="form-group">
+                            <label for="constituency">Constituency</label>
+                            <select name="constituency" id="constituency" class="form-control">
+                                <option disabled selected value> -- select an option -- </option>
+                                @foreach($constituencies as $constituency)
+                                    <option value="{{ $constituency->constituency_name }}">{{ $constituency->constituency_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="role">Role:</label>
                             <select name="role" id="role" class="form-control">
-                                <option value="roads">Admin</option>
-                                <option value="water-and-sanitaion">Secretary</option>
-                                <option value="agriculture">Contractor</option>
-                                <option value="ict">Procurement Manager</option>
-                                <option value="health">Procurement Officer</option>
-                                <option value="education">Finance Officer</option>
+                                <option disabled selected value> -- select an option -- </option>
+                                <option value="Admin">Admin</option>
+                                <option value="Secretary">Secretary</option>
+                                <option value="Contractor">Contractor</option>
+                                <option value="Procurement Manager">Procurement Manager</option>
+                                <option value="Procurement Officer">Procurement Officer</option>
+                                <option value="Finance Officer">Finance Officer</option>
                             </select>
                         </div>
                         <div class="form-group">

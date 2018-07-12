@@ -37,8 +37,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="aligncenter">
-                        <h2 class="aligncenter">Main Categories</h2>
-                        These are some of the main project categories we focus on developing.
+                        <h2 class="aligncenter">Main Departments</h2>
+                        These are some of the main project departments we focus on developing.
                     </div>
                     <br/>
                 </div>

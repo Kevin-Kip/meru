@@ -161,6 +161,7 @@
                         <div class="form-group">
                             <label for="category">Category:</label>
                             <select name="category" id="category" class="form-control">
+                                <option disabled selected value> -- select an option -- </option>
                                 <option value="roads">Roads</option>
                                 <option value="water-and-sanitaion">Water and Sanitation</option>
                                 <option value="agriculture">Agriculture</option>
@@ -172,6 +173,7 @@
                         <div class="form-group">
                             <label for="constituency">Constituency:</label>
                             <select name="constituency" id="constituency" class="form-control">
+                                <option disabled selected value> -- select an option -- </option>
                                 @if('constituencies')
                                     @foreach($constituencies as $constituency)
                                         <option value="{{ $constituency->name }}">{{ $constituency->name }}</option>
@@ -200,6 +202,7 @@
                         <div class="form-group">
                             <label for="ward">Ward:</label>
                             <select name="ward" id="ward" class="form-control" required>
+                                <option disabled selected value> -- select an option -- </option>
                                 @if('wards')
                                     @foreach($wards as $ward)
                                         <option value="{{ $ward->name }}">{{ $ward->name }}</option>

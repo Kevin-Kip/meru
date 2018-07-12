@@ -84,6 +84,7 @@ class UserController extends Controller
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
             'phone' => $request['phone'],
+            'constituency' => $request['constituency'],
             'role' => $request['role']
         ]);
 
