@@ -45,7 +45,7 @@
                     <span class="nav-link-text">Messages</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Constituencies">
                 <a class="nav-link" href="{{ route('constituencies.all') }}">
                     <i class="fa fa-fw fa-envelope-o"></i>
                     <span class="nav-link-text">Constituencies</span>
@@ -60,40 +60,6 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-fw fa-envelope"></i>
-                    <span class="d-lg-none">Messages
-              <span class="badge badge-pill badge-primary">12 New</span>
-            </span>
-                    <span class="indicator text-primary d-none d-lg-block">
-              <i class="fa fa-fw fa-circle"></i>
-            </span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-                    <h6 class="dropdown-header">New Messages:</h6>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <strong>David Miller</strong>
-                        <span class="small float-right text-muted">11:21 AM</span>
-                        <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <strong>Jane Smith</strong>
-                        <span class="small float-right text-muted">11:21 AM</span>
-                        <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <strong>John Doe</strong>
-                        <span class="small float-right text-muted">11:21 AM</span>
-                        <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item small" href="#">View all messages</a>
-                </div>
-            </li>
             <li class="nav-item">
                 <form class="form-inline my-2 my-lg-0 mr-lg-2">
                     <div class="input-group">
@@ -152,31 +118,30 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="name">Project Name:</label>
-                            <input class="form-control" value="{{ $project[0]->project_name }}" type="text" name="name" id="name" required autofocus>
+                            <input class="form-control" value="{{ $project[0]->project_name }}" type="text" name="project_name" id="name" required autofocus>
                         </div>
                         <div class="form-group">
                             <label for="description">Description:</label>
-                            <input class="form-control" value="{{ $project[0]->project_description }}" type="text" name="description" id="description" required>
+                            <input class="form-control" value="{{ $project[0]->project_description }}" type="text" name="project_description" id="description" required>
                         </div>
                         <div class="form-group">
-                            <label for="category">Category:</label>
-                            <select name="category" id="category" class="form-control">
+                            <label for="category">Department:</label>
+                            <select name="project_category" id="category" class="form-control">
                                 <option disabled selected value> -- select an option -- </option>
-                                <option value="roads">Roads</option>
-                                <option value="water-and-sanitaion">Water and Sanitation</option>
-                                <option value="agriculture">Agriculture</option>
-                                <option value="ict">ICT</option>
-                                <option value="health">Health</option>
-                                <option value="education">Education</option>
+                                @if('constituencies')
+                                    @foreach($departments as $department)
+                                        <option value="{{ $department->department_name }}">{{ $department->department_name }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="constituency">Constituency:</label>
-                            <select name="constituency" id="constituency" class="form-control">
+                            <select name="project_constituency" id="constituency" class="form-control">
                                 <option disabled selected value> -- select an option -- </option>
                                 @if('constituencies')
                                     @foreach($constituencies as $constituency)
-                                        <option value="{{ $constituency->constituency_name }}">{{ $constituency->constituency_name }}</option>
+                                        <option value="{{ $constituency->constituency_id }}">{{ $constituency->constituency_name }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -201,7 +166,7 @@
                         </div>
                         <div class="form-group">
                             <label for="ward">Ward:</label>
-                            <select name="ward" id="ward" class="form-control" required>
+                            <select name="project_ward" id="ward" class="form-control" required>
                                 <option disabled selected value> -- select an option -- </option>
                                 @if('wards')
                                     @foreach($wards as $ward)

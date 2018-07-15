@@ -167,7 +167,7 @@
                             <label for="category">Department:</label>
                             <select name="category" id="category" class="form-control">
                                 <option disabled selected value> -- select an option -- </option>
-                                @if('constituencies')
+                                @if('departments')
                                     @foreach($departments as $department)
                                         <option value="{{ $department->department_name }}">{{ $department->department_name }}</option>
                                     @endforeach

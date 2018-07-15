@@ -153,11 +153,11 @@
                         {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input class="form-control" value="{{ $users[0]->user_email }}" type="email" name="email" id="email" required autofocus>
+                                <input class="form-control" value="{{ $users[0]->user_email }}" type="email" name="user_email" id="email" required autofocus>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password:</label>
-                                <input class="form-control" value="{{ $users[0]->user_password }}" type="password" name="password" id="password" required>
+                                <input class="form-control" value="{{ $users[0]->user_password }}" type="password" name="user_password" id="password" required>
                             </div>
                         <div class="form-group">
                             <label for="first_name">First Name:</label>
@@ -173,7 +173,7 @@
                         </div>
                         <div class="form-group">
                             <label for="constituency">Constituency</label>
-                            <select name="constituency" id="constituency" class="form-control">
+                            <select name="user_constituency" id="constituency" class="form-control">
                                 <option disabled selected value> -- select an option -- </option>
                                 @foreach($constituencies as $constituency)
                                     <option value="{{ $constituency->constituency_name }}">{{ $constituency->constituency_name }}</option>
@@ -182,7 +182,7 @@
                         </div>
                         <div class="form-group">
                             <label for="role">Role:</label>
-                            <select name="role" id="role" class="form-control">
+                            <select name="user_role" id="role" class="form-control">
                                 <option disabled selected value> -- select an option -- </option>
                                 <option value="Admin">Admin</option>
                                 <option value="Secretary">Secretary</option>

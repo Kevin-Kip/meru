@@ -128,9 +128,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $user_id)
+    public function update(Request $request, $id)
     {
-        if (User::find($user_id)->update($request->all())){
+        if (User::where('user_id',$id)->update($request->except('_token','submit'))){
             return redirect()->back()->with('message',"success");
         } else {
             return redirect()->back()->with('message',"error");
@@ -145,7 +145,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
+        $user = User::where('user_id',$id);
         if ($user->delete()){
             return redirect()->back()->with('message', "success");
         } else {

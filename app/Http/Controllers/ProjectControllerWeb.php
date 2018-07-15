@@ -21,7 +21,8 @@ class ProjectControllerWeb extends Controller
      */
     public function index()
     {
-        $projects = DB::table('projects')->take(3)->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->get();
+        $projects = DB::table('projects')->take(3)
+            ->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->get();
         $constituencies = Constituency::all();
         $photos = DB::table('photos')->take(10)->get();
         $message = "";
@@ -30,13 +31,14 @@ class ProjectControllerWeb extends Controller
     }
 
     public function fetchAll(){
-        $projects = DB::table('projects')->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->join('photos','projects.project_id','=','photos.photo_project')->get();
+        $projects = DB::table('projects')
+            ->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')
+            ->join('photos','projects.project_id','=','photos.photo_project')
+            ->get();
         $constituencies = Constituency::all();
-        $photos = Photo::all();
         $departments = Department::all();
         return $projects;
-        //TODO Fix this
-//        return view('projects',compact('constituencies','projects','photos','departments'));
+//        return view('projects',compact('constituencies','projects','departments'));
     }
 
 
@@ -155,7 +157,8 @@ class ProjectControllerWeb extends Controller
         $constituencies = Constituency::all();
         $wards = Ward::all();
         $contractors = DB::table('users')->where('user_role','=',"Contractor")->get();
-        return view('admin.edit-project',compact('project','message','constituencies','contractors','wards'));
+        $departments = Department::all();
+        return view('admin.edit-project',compact('project','departments','message','constituencies','contractors','wards'));
     }
 
     /**
@@ -167,7 +170,7 @@ class ProjectControllerWeb extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (Project::where('project_id',$id)->update($request->all())){
+        if (Project::where('project_id',$id)->update($request->except('_token','submit'))){
             return redirect()->back()->with('message',"success");
         } else {
             return redirect()->back()->with('message',"error");
