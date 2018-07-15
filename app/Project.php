@@ -16,4 +16,12 @@ class Project extends Model
             'contractor',
             'due_date',
             'added_by'];
+
+    public function photos(){
+        return $this->belongsTo(Photo::class,'project_id','photo_project');
+    }
+
+    public function constituency(){
+        $this->belongsTo(Constituency::class);
+    }
 }

@@ -29,7 +29,7 @@
                       <div class="col-md-4 md-margin-bottom-40">
                       <div class="card small">
                         <div class="card-image">
-                          <img class="img-responsive" src="{{ asset($project->photo_path)}}" alt="">
+                          <img class="img-responsive" src="{{ asset($project->photos['photo_path'])}}" alt="">
                           <span class="card-title">{{ $project->project_name }}</span>
                         </div>
                         <div class="card-content">

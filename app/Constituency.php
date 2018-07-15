@@ -9,4 +9,8 @@ class Constituency extends Model
     protected $fillable = [
       'constituency_name'
     ];
+
+    public function project(){
+        return $this->belongsTo(Project::class);
+    }
 }

@@ -7,6 +7,7 @@ use App\Constituency;
 use App\Photo;
 use App\Project;
 use App\Message;
+use App\Summary;
 use App\User;
 use App\Ward;
 use Illuminate\Http\Request;
@@ -31,14 +32,10 @@ class ProjectControllerWeb extends Controller
     }
 
     public function fetchAll(){
-        $projects = DB::table('projects')
-            ->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')
-            ->join('photos','projects.project_id','=','photos.photo_project')
-            ->get();
+        $projects =  Project::with('photos')->get();
         $constituencies = Constituency::all();
         $departments = Department::all();
-        return $projects;
-//        return view('projects',compact('constituencies','projects','departments'));
+        return view('projects',compact('photos','constituencies','projects','departments'));
     }
 
 
@@ -68,7 +65,7 @@ class ProjectControllerWeb extends Controller
     public function byConstituency($constituencyId){
         $constituency = DB::table('constituencies')->where('constituency_id','=',$constituencyId)->get();
         $constituencyName =  $constituency[0]->constituency_name;
-        $projects = DB::table('projects')->where('constituency_id','=',$constituencyId)->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->join('photos','projects.project_id','=','photos.photo_project')->get();
+        $projects =  Project::with('photos')->get();
         $constituencies = Constituency::all();
         $departments = Department::all();
         return view('constituency',compact('constituencies','projects','constituencyName','departments'));
@@ -79,7 +76,7 @@ class ProjectControllerWeb extends Controller
         $categoryName = $department[0]->department_name;
         $constituencies = Constituency::all();
         $departments = Department::all();
-        $projects = DB::table('projects')->where('project_category','=',$categoryName)->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->join('photos','projects.project_id','=','photos.photo_project')->get();
+        $projects =  Project::with('photos')->get();
         return view('category',compact('projects','constituencies','categoryName','departments'));
     }
 
@@ -91,8 +88,6 @@ class ProjectControllerWeb extends Controller
      */
     public function store(Request $request)
     {
-
-//        return $request->all();
         $project = Project::create([
             'project_name' => $request['name'],
             'project_description' => $request['description'],
@@ -107,8 +102,6 @@ class ProjectControllerWeb extends Controller
         ]);
 
         $files = $request['file'];
-
-//        return $project;
 
         if ($request->hasFile('file')){
             foreach ($files as $file){

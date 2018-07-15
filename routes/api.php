@@ -34,11 +34,6 @@ Route::put('/projects/{id}', [
     'uses' => 'ProjectsController@updateProject'
 ]);
 
-Route::get('/projects/{id}',[
-    'as' => 'projects.one',
-    'uses' => 'ProjectsController@getProjectById'
-]);
-
 Route::delete('/projects/{id}',[
     'as' => 'projects.delete',
     'uses' => 'ProjectsController@deleteProject'
@@ -49,14 +44,22 @@ Route::get('/count/',[
     'as' => 'count',
     'uses' => 'PdfController@count'
 ])->middleware('cors');
-Route::get('/count/completed',[
-    'as' => 'count.completed',
+
+Route::get('/projects/completed',[
+    'as' => 'projects.completed',
     'uses' => 'PdfController@completed'
 ])->middleware('cors');
+
+Route::get('/projects/ongoing',[
+    'as' => 'projects.ongoing',
+    'uses' => 'PdfController@ongoing'
+])->middleware('cors');
+
 Route::get('/chart-data/',[
     'as' => 'chart-data',
     'uses' => 'PdfController@chartData'
 ])->middleware('cors');
+
 Route::get('constituencies/{id}/wards',[
     'as' => 'wards',
     'uses' => 'WardController@getById'

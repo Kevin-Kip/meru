@@ -26,15 +26,15 @@ class PdfController extends Controller
      */
     public function count()
     {
-        return DB::table('projects')->where("name",'=',"Dam")->pluck('id');
+        return DB::table('projects')->where("name",'=',"Dam")->pluck('project_id');
     }
 
     public function ongoing(){
-        return response()->json(['ongoing'=>DB::table('projects')->where('completion','<',100)->count()]);
+        return Project::where('completion','<',100)->get();
     }
 
     public function completed(){
-        return response()->json(['completed'=>DB::table('projects')->where('completion','=',100)->count()]);
+        return Project::where('completion','=',100)->get();
     }
 
     public function chartData(){
