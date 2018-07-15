@@ -41,12 +41,12 @@
                             @foreach($messages as $message)
                                 <tr>
                                     <td>{{ $message->sender_first_name ." ".$message->sender_last_name }}</td>
-                                    <td>{{ $message->email }}</td>
+                                    <td>{{ $message->sender_email }}</td>
                                     <td>{{ $message->sender_constituency }}</td>
                                     <td>{{ $message->message }}</td>
                                     <td>{{ $message->created_at }}</td>
                                     <td>
-                                        <form action="{{ route('message.delete',['id'=>$message->id]) }}" method="post">
+                                        <form action="{{ route('message.delete',['id'=>$message->message_id]) }}" method="post">
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>

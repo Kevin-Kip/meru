@@ -29,9 +29,9 @@
                         <tbody>
                         @foreach($projects as $project)
                             <tr>
-                                <td>{{ $project->name }}</td>
-                                <td>{{ $project->description }}</td>
-                                <td>{{ $project->category }}</td>
+                                <td>{{ $project->project_name }}</td>
+                                <td>{{ $project->project_description }}</td>
+                                <td>{{ $project->project_category }}</td>
                                 <td>{{ $project->constituency_name }}</td>
                                 <td>{{ $project->budget }}</td>
                                 <td>{{ $project->completion }}</td>

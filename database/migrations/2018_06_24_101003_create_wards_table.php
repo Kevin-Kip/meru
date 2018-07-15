@@ -14,10 +14,10 @@ class CreateWardsTable extends Migration
     public function up()
     {
         Schema::create('wards', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
-            $table->integer('constituency_id')->unsigned();
-            $table->foreign('constituency_id')->references('id')->on('constituencies');
+            $table->increments('ward_id');
+            $table->string('ward_name')->unique();
+            $table->integer('ward_constituency')->unsigned();
+            $table->foreign('ward_constituency')->references('constituency_id')->on('constituencies');
             $table->timestamps();
         });
     }

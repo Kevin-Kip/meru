@@ -139,7 +139,7 @@
                     </button>
                 </div>
             @elseif($message = "")
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible show" role="alert">
                     <strong>Welcome!</strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -157,11 +157,11 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="name">Project Name:</label>
-                            <input class="form-control" value="{{ (session()->has('project')) ? $project->name : "" }}" type="text" name="name" id="name" required autofocus>
+                            <input class="form-control" type="text" name="name" id="name" required autofocus>
                         </div>
                         <div class="form-group">
                             <label for="description">Description:</label>
-                            <input class="form-control" value="{{ (session()->has('project')) ? $project->description : "" }}" type="text" name="description" id="description" required>
+                            <input class="form-control" type="text" name="description" id="description" required>
                         </div>
                         <div class="form-group">
                             <label for="category">Department:</label>
@@ -169,7 +169,7 @@
                                 <option disabled selected value> -- select an option -- </option>
                                 @if('constituencies')
                                     @foreach($departments as $department)
-                                        <option value="{{ $department->name }}">{{ $department->name }}</option>
+                                        <option value="{{ $department->department_name }}">{{ $department->department_name }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -180,18 +180,18 @@
                                 <option disabled selected value> -- select an option -- </option>
                                 @if('constituencies')
                                     @foreach($constituencies as $constituency)
-                                        <option value="{{ $constituency->id }}">{{ $constituency->constituency_name }}</option>
+                                        <option value="{{ $constituency->constituency_id }}">{{ $constituency->constituency_name }}</option>
                                     @endforeach
                                 @endif
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="budget">Budget:</label>
-                            <input class="form-control" value="{{ (session()->has('project')) ? $project->budget : "" }}" placeholder="eg. 65.8 Billion" type="text" name="budget" id="budget" required>
+                            <input class="form-control" placeholder="eg. 65.8 Billion" type="text" name="budget" id="budget" required>
                         </div>
                         <div class="form-group">
                             <label for="completion">Completion (%):</label>
-                            <input class="form-control" value="{{ (session()->has('project')) ? $project->completion : 0 }}" type="number" min="0" max="100" name="completion" id="completion" required>
+                            <input class="form-control" type="number" min="0" max="100" name="completion" id="completion" required>
                         </div>
                         <div class="form-group">
                             <label for="contractor">Contractor:</label>
@@ -209,13 +209,13 @@
                             <select name="ward" id="ward" class="form-control" required>
                                 <option disabled selected value> -- select an option -- </option>
                                 @foreach($wards as $ward)
-                                    <option value="{{ $ward->name }}">{{ $ward->name }}</option>
+                                    <option value="{{ $ward->ward_name }}">{{ $ward->ward_name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="due_date">Due Date:</label>
-                            <input class="form-control" value="{{ (session()->has('project')) ? $project->due_date : "" }}" type="date" name="due_date" id="due_date" required>
+                            <input class="form-control" type="date" name="due_date" id="due_date" required>
                         </div>
                         <div class="form-group">
                             <label for="file">Photos:</label>

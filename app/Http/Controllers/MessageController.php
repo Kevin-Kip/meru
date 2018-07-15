@@ -49,14 +49,13 @@ class MessageController extends Controller
     public function store(Request $request)
     {
 
-//        $message = Message::create([
-//            'sender_first_name' => $request['sender_first_name'],
-//            'sender_last_name' => $request['sender_last_name'],
-//            'email' => $request['email'],
-//            'sender_constituency' => $request['constituency'],
-//            'message' => $request['message']
-//        ]);
-        $message = Message::create($request->all());
+        $message = Message::create([
+            'sender_first_name' => $request['sender_first_name'],
+            'sender_last_name' => $request['sender_last_name'],
+            'sender_email' => $request['email'],
+            'sender_constituency' => $request['sender_constituency'],
+            'message' => $request['message']
+        ]);
 
         if ($message){
             $result = "success";
@@ -111,7 +110,7 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
-        $message = Message::find($id);
+        $message = Message::where('message_id',$id);
         if($message->delete()) {
             return redirect()->back()->with('message', "success");
         } else {

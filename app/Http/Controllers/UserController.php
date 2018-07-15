@@ -79,13 +79,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = User::create([
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
+            'user_email' => $request['email'],
+            'user_password' => Hash::make($request['password']),
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
             'phone' => $request['phone'],
-            'constituency' => $request['constituency'],
-            'role' => $request['role']
+            'user_constituency' => $request['constituency'],
+            'user_role' => $request['role']
         ]);
 
         if ($user){
@@ -114,9 +114,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $users = User::find($id);
+        $users = DB::table('users')->where('user_id','=',$id)->get();
         $constituencies = Constituency::all();
-        $contractors = DB::table('users')->where('role','=',"Contractor")->get();
+        $contractors = DB::table('users')->where('user_role','=',"Contractor")->get();
         $wards = Ward::all();
         return view('admin.edit-user', compact('users','constituencies','contractors','wards'));
     }
@@ -128,9 +128,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_id)
     {
-        if (User::find($id)->update($request->all())){
+        if (User::find($user_id)->update($request->all())){
             return redirect()->back()->with('message',"success");
         } else {
             return redirect()->back()->with('message',"error");

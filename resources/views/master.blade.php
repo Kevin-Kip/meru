@@ -42,7 +42,7 @@
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">Constituencies<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 @foreach($constituencies as $constituency)
-                                    <li><a class="waves-effect waves-dark" href="{{ route('projects.constituency',['id'=>$constituency->id]) }}">{{ $constituency->constituency_name }}</a></li>
+                                    <li><a class="waves-effect waves-dark" href="{{ route('projects.constituency',['id'=>$constituency->constituency_id]) }}">{{ $constituency->constituency_name }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
@@ -50,7 +50,7 @@
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">Departments<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 @foreach($departments as $department)
-                                    <li><a class="waves-effect waves-dark" href="{{ route('projects.category',['id'=>$department->id]) }}">{{ $department->name }}</a></li>
+                                    <li><a class="waves-effect waves-dark" href="{{ route('projects.category',['id'=>$department->department_id]) }}">{{ $department->department_name }}</a></li>
                                 @endforeach
                             </ul>
                         </li>

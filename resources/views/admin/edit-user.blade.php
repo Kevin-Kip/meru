@@ -149,27 +149,27 @@
                 <i class="fa fa-table"></i> New Project</div>
             <div class="card-bodyalign-content-center">
                 <div class="col-sm-12">
-                    <form action="{{ route('user.update',['id'=>$users->id]) }}" method="post">
+                    <form action="{{ route('user.update',['id'=>$users[0]->user_id]) }}" method="post">
                         {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input class="form-control" value="{{ $users->email }}" type="email" name="email" id="email" required autofocus>
+                                <input class="form-control" value="{{ $users[0]->user_email }}" type="email" name="email" id="email" required autofocus>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password:</label>
-                                <input class="form-control" value="{{ $users->password }}" type="password" name="password" id="password" required>
+                                <input class="form-control" value="{{ $users[0]->user_password }}" type="password" name="password" id="password" required>
                             </div>
                         <div class="form-group">
                             <label for="first_name">First Name:</label>
-                            <input class="form-control" value="{{ $users->first_name }}" type="text" name="first_name" id="first_name" required>
+                            <input class="form-control" value="{{ $users[0]->first_name }}" type="text" name="first_name" id="first_name" required>
                         </div>
                         <div class="form-group">
                             <label for="last_name">Last Name:</label>
-                            <input class="form-control" value="{{ $users->last_name }}" type="text" name="last_name" id="last_name" required>
+                            <input class="form-control" value="{{ $users[0]->last_name }}" type="text" name="last_name" id="last_name" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone:</label>
-                            <input class="form-control" value="{{ $users->phone }}" type="text" name="phone" id="phone" required>
+                            <input class="form-control" value="{{ $users[0]->phone }}" type="text" name="phone" id="phone" required>
                         </div>
                         <div class="form-group">
                             <label for="constituency">Constituency</label>

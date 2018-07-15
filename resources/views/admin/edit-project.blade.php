@@ -125,7 +125,7 @@
         <!-- Message Card-->
         @if(session()->has('message'))
             @if(session()->get('message') == "success")
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-success alert-dismissible show" role="alert">
                     <strong>Success!</strong> Updated Successfully
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -148,15 +148,15 @@
                 <i class="fa fa-table"></i> New Project</div>
             <div class="card-bodyalign-content-center">
                 <div class="col-sm-12">
-                    <form action="{{ route('project.update',['id'=>$project[0]->id]) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('project.update',['id'=>$project[0]->project_id]) }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="name">Project Name:</label>
-                            <input class="form-control" value="{{ $project[0]->name }}" type="text" name="name" id="name" required autofocus>
+                            <input class="form-control" value="{{ $project[0]->project_name }}" type="text" name="name" id="name" required autofocus>
                         </div>
                         <div class="form-group">
                             <label for="description">Description:</label>
-                            <input class="form-control" value="{{ $project[0]->description }}" type="text" name="description" id="description" required>
+                            <input class="form-control" value="{{ $project[0]->project_description }}" type="text" name="description" id="description" required>
                         </div>
                         <div class="form-group">
                             <label for="category">Category:</label>
@@ -176,7 +176,7 @@
                                 <option disabled selected value> -- select an option -- </option>
                                 @if('constituencies')
                                     @foreach($constituencies as $constituency)
-                                        <option value="{{ $constituency->name }}">{{ $constituency->name }}</option>
+                                        <option value="{{ $constituency->constituency_name }}">{{ $constituency->constituency_name }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -205,7 +205,7 @@
                                 <option disabled selected value> -- select an option -- </option>
                                 @if('wards')
                                     @foreach($wards as $ward)
-                                        <option value="{{ $ward->name }}">{{ $ward->name }}</option>
+                                        <option value="{{ $ward->ward_name }}">{{ $ward->ward_name }}</option>
                                     @endforeach
                                 @endif
                             </select>

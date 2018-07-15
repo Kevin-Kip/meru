@@ -4,14 +4,14 @@
     @if(session()->has('message'))
         @if(session()->get('message') == "success")
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Success!</strong> Message Deleted Successfully
+                <strong>Success!</strong> Deleted Successfully
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         @elseif(session()->get('message') == "error")
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Ooops!</strong> Could Not Delete Message
+                <strong>Ooops!</strong> Could Not Delete
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -34,6 +34,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Description</th>
                             <th>Department</th>
@@ -49,20 +50,21 @@
                             <tbody>
                             @foreach($projects as $project)
                                 <tr>
-                                    <td>{{ $project->name }}</td>
-                                    <td>{{ $project->description }}</td>
-                                    <td>{{ $project->category }}</td>
+                                    <td>{{ $project->project_id }}</td>
+                                    <td>{{ $project->project_name }}</td>
+                                    <td>{{ $project->project_description }}</td>
+                                    <td>{{ $project->project_category }}</td>
                                     <td>{{ $project->constituency_name }}</td>
                                     <td>{{ $project->budget }}</td>
                                     <td>{{ $project->completion }}</td>
                                     <td>{{ $project->due_date }}</td>
                                     <td>
-                                        <a href="{{ route('project.edit',['id'=>$project->id]) }}" class="btn btn-primary">
+                                        <a href="{{ route('project.edit',['id'=>$project->project_id]) }}" class="btn btn-primary">
                                             Edit
                                         </a>
                                     </td>
                                     <td>
-                                        <form action="{{ route('project.delete',['id'=>$project->id]) }}" method="post">
+                                        <form action="{{ route('project.delete',['id'=>$project->project_id]) }}" method="post">
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>

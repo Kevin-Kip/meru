@@ -19,7 +19,7 @@
                         @foreach($constituencies as $constituency)
                             <tr>
                                 <td>{{ $constituency->constituency_name }}</td>
-                                <td><button class="btn btn-success" id="val" onclick="showDialog({{ $constituency->id }})">View Wards</button></td>
+                                <td><button class="btn btn-success" id="val" onclick="showDialog({{ $constituency->constituency_id }})">View Wards</button></td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -59,7 +59,7 @@
                 success: function (data) {
                     mBody.empty();
                     for (let i = 0; i < data.length; i++) {
-                        mBody.append("<p>"+data[i].name+"</p>");
+                        mBody.append("<p>"+data[i].ward_name+"</p>");
                     }
                     $("#wardModal").modal('show');
                 },

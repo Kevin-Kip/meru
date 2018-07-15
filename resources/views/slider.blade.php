@@ -4,7 +4,7 @@
         <ul class="slides">
             @foreach($photos as $photo)
                 <li>
-                    <img style="max-height: 500px" src="{{ asset($photo->path)}}" alt="" />
+                    <img style="max-height: 500px" src="{{ asset($photo->photo_path)}}" alt="" />
                 </li>
             @endforeach
         </ul>

@@ -18,6 +18,6 @@ class WardController extends Controller
     }
 
     public function getById($id){
-        return DB::table('wards')->where('constituency_id','=',$id)->get();
+        return DB::table('wards')->where('ward_constituency','=',$id)->get();
     }
 }

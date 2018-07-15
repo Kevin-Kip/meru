@@ -98,7 +98,6 @@
                           @endforeach
                       @endif
                   </select>
-                {{--<input type="text" class="form-control" id="constituency" autofocus required data-validation-required-message="Please enter your name.">--}}
                 <p class="help-block"></p>
               </div>
             </div>

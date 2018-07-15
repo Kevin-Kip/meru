@@ -53,7 +53,7 @@ class PdfController extends Controller
         $full = array();
 
         foreach ($constituencies as $constituency){
-            $count = DB::table('projects')->where('constituency_id','=',$constituency->id)->count();
+            $count = DB::table('projects')->where('project_constituency','=',$constituency->constituency_id)->count();
             $full[$constituency->constituency_name] = $count;
         }
 

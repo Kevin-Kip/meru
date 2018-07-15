@@ -14,7 +14,7 @@ class CreateConstituenciesTable extends Migration
     public function up()
     {
         Schema::create('constituencies', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('constituency_id');
             $table->string('constituency_name')->unique();
             $table->timestamps();
         });

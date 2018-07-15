@@ -43,7 +43,7 @@ class ManagerController extends Controller
         $projectcount = Project::count();
         $usercount = User::count();
         $constituencycount = Constituency::count();
-        $projects = DB::table('projects')->join('constituencies','projects.constituency_id','=','constituencies.id')->get();
+        $projects = DB::table('projects')->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->get();
         $completed = DB::table('projects')->where('completion','=',100)->count();
         $ongoing = DB::table('projects')->where('completion','<',100)->count();
         return view('users.dashboard', compact('messagecount','ongoing','completed','projectcount','usercount','constituencycount','projects'));
@@ -54,7 +54,7 @@ class ManagerController extends Controller
         $projectcount = Project::count();
         $usercount = User::count();
         $constituencycount = Constituency::count();
-        $projects = DB::table('projects')->join('constituencies','projects.constituency_id','=','constituencies.id')->get();
+        $projects = DB::table('projects')->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->get();
         return view('users.projects', compact('messagecount','projectcount','usercount','constituencycount','projects'));
     }
 

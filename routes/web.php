@@ -39,10 +39,7 @@ Route::delete('admin/projects/{id}/delete', [
     'as' => 'project.delete',
     'uses' => 'ProjectControllerWeb@destroy'
 ]);
-Route::put('admin/projects/{id}/edit', [
-    'as' => 'project.edit',
-    'uses' => 'WebProjectsController@update'
-]);
+
 Route::get('projects/constituency/{id}',[
     'as' => 'projects.constituency',
     'uses' => 'ProjectControllerWeb@byConstituency'
@@ -165,7 +162,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//get pdf TODO
 Route::get('/report',[
     'as' => 'projects.report',
    'uses' => 'PdfController@index'

@@ -14,13 +14,13 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('description');
-            $table->string('category');
-            $table->integer('constituency_id')->unsigned();
-            $table->foreign('constituency_id')->references('id')->on('constituencies')->onDelete('cascade');
-            $table->string('ward');
+            $table->increments('project_id');
+            $table->string('project_name');
+            $table->string('project_description');
+            $table->string('project_category');
+            $table->integer('project_constituency')->unsigned();
+            $table->foreign('project_constituency')->references('constituency_id')->on('constituencies')->onDelete('cascade');
+            $table->string('project_ward');
             $table->string('budget');
             $table->integer('completion');
             $table->string('contractor');

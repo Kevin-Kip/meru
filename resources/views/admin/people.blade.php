@@ -3,7 +3,7 @@
 
     @if(session()->has('message'))
         @if(session()->get('message') == "success")
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible show" role="alert">
                 <strong>Success!</strong> Deleted Successfully
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -48,16 +48,16 @@
                             @foreach($users as $user)
                                 <tr>
                                     <td>{{ $user->first_name ." ".$user->last_name }}</td>
-                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->user_email }}</td>
                                     <td>{{ $user->phone }}</td>
-                                    <td>{{ $user->role }}</td>
+                                    <td>{{ $user->user_role }}</td>
                                     <td>
-                                        <a href="{{ route('user.edit',['id'=>$user->id]) }}" class="btn btn-primary">
+                                        <a href="{{ route('user.edit',['id'=>$user->user_id]) }}" class="btn btn-primary">
                                             Edit
                                         </a>
                                     </td>
                                     <td>
-                                        <form action="{{ route('user.delete',['id'=>$user->id]) }}" method="post">
+                                        <form action="{{ route('user.delete',['id'=>$user->user_id]) }}" method="post">
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>

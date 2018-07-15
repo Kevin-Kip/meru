@@ -21,7 +21,7 @@ class ProjectControllerWeb extends Controller
      */
     public function index()
     {
-        $projects = DB::table('projects')->take(3)->join('constituencies','projects.constituency_id','=','constituencies.id')->get();
+        $projects = DB::table('projects')->take(3)->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->get();
         $constituencies = Constituency::all();
         $photos = DB::table('photos')->take(10)->get();
         $message = "";
@@ -30,11 +30,13 @@ class ProjectControllerWeb extends Controller
     }
 
     public function fetchAll(){
-        $projects = DB::table('projects')->join('constituencies','projects.constituency_id','=','constituencies.id')->join('photos','projects.id','=','photos.project_id')->get();
+        $projects = DB::table('projects')->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->join('photos','projects.project_id','=','photos.photo_project')->get();
         $constituencies = Constituency::all();
         $photos = Photo::all();
         $departments = Department::all();
-        return view('projects',compact('constituencies','projects','photos','departments'));
+        return $projects;
+        //TODO Fix this
+//        return view('projects',compact('constituencies','projects','photos','departments'));
     }
 
 
@@ -43,7 +45,7 @@ class ProjectControllerWeb extends Controller
         $projectcount = Project::count();
         $usercount = User::count();
         $constituencycount = Constituency::count();
-        $projects = DB::table('projects')->join('constituencies','projects.constituency_id','=','constituencies.id')->get();
+        $projects = DB::table('projects')->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->get();
         return view('admin.projects',compact('messagecount','projectcount','usercount','constituencycount','projects'));
     }
     /**
@@ -57,25 +59,25 @@ class ProjectControllerWeb extends Controller
         $constituencies = Constituency::all();
         $wards = Ward::all();
         $departments = Department::all();
-        $contractors = DB::table('users')->where('role','=',"Contractor")->get();
+        $contractors = DB::table('users')->where('user_role','=',"Contractor")->get();
         return view('admin.create-project',compact('departments','message','constituencies','contractors','wards'));
     }
 
     public function byConstituency($constituencyId){
-        $constituency = DB::table('constituencies')->where('id','=',$constituencyId)->get();
+        $constituency = DB::table('constituencies')->where('constituency_id','=',$constituencyId)->get();
         $constituencyName =  $constituency[0]->constituency_name;
-        $projects = DB::table('projects')->where('constituency_id','=',$constituencyId)->join('constituencies','projects.constituency_id','=','constituencies.id')->join('photos','projects.id','=','photos.project_id')->get();
+        $projects = DB::table('projects')->where('constituency_id','=',$constituencyId)->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->join('photos','projects.project_id','=','photos.photo_project')->get();
         $constituencies = Constituency::all();
         $departments = Department::all();
         return view('constituency',compact('constituencies','projects','constituencyName','departments'));
     }
 
     public function byCategory($departmentId){
-        $department = DB::table('departments')->where('id','=',$departmentId)->get();
-        $categoryName = $department[0]->name;
+        $department = DB::table('departments')->where('department_id','=',$departmentId)->get();
+        $categoryName = $department[0]->department_name;
         $constituencies = Constituency::all();
         $departments = Department::all();
-        $projects = DB::table('projects')->where('category','=',$categoryName)->join('constituencies','projects.constituency_id','=','constituencies.id')->join('photos','projects.id','=','photos.project_id')->get();
+        $projects = DB::table('projects')->where('project_category','=',$categoryName)->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->join('photos','projects.project_id','=','photos.photo_project')->get();
         return view('category',compact('projects','constituencies','categoryName','departments'));
     }
 
@@ -87,12 +89,14 @@ class ProjectControllerWeb extends Controller
      */
     public function store(Request $request)
     {
+
+//        return $request->all();
         $project = Project::create([
-            'name' => $request['name'],
-            'description' => $request['description'],
-            'category' => $request['category'],
-            'constituency_id' => $request['constituency'],
-            'ward' => $request['ward'],
+            'project_name' => $request['name'],
+            'project_description' => $request['description'],
+            'project_category' => $request['category'],
+            'project_constituency' => $request['constituency'],
+            'project_ward' => $request['ward'],
             'budget' => $request['budget'],
             'completion' => $request['completion'],
             'contractor' => $request['contractor'],
@@ -102,14 +106,14 @@ class ProjectControllerWeb extends Controller
 
         $files = $request['file'];
 
+//        return $project;
+
         if ($request->hasFile('file')){
             foreach ($files as $file){
-                $filename = $file->getClientOriginalName();
-//                $path = $file->storeAs('public/uploads/'.$request['name'],$filename);
                 $path = $file->storePublicly('/uploads/'.$request['name'],'public');
                 $photo = new Photo();
-                $photo->path = $path;
-                $photo->project_id = $project->id;
+                $photo->photo_path = $path;
+                $photo->photo_project = $project->id;
                 $photo->save();
             }
         }
@@ -131,8 +135,8 @@ class ProjectControllerWeb extends Controller
     {
         $departments = Department::all();
         $constituencies = Constituency::all();
-        $project = Project::findOrFail($id);
-        $photos = DB::table('photos')->where('project_id','=',$id)->get();
+        $project = DB::table('projects')->where('project_id','=',$id)->get();
+        $photos = DB::table('photos')->where('photo_project','=',$id)->get();
         if ($project){
             return view('project', compact('departments','constituencies','project','photos'));
         }
@@ -147,10 +151,10 @@ class ProjectControllerWeb extends Controller
     public function edit($id)
     {
         $message = "";
-        $project = DB::table('projects')->where('id','=',$id)->get();
+        $project = DB::table('projects')->where('project_id','=',$id)->get();
         $constituencies = Constituency::all();
         $wards = Ward::all();
-        $contractors = DB::table('users')->where('role','=',"Contractor")->get();
+        $contractors = DB::table('users')->where('user_role','=',"Contractor")->get();
         return view('admin.edit-project',compact('project','message','constituencies','contractors','wards'));
     }
 
@@ -163,7 +167,7 @@ class ProjectControllerWeb extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (Project::find($id)->update($request->all())){
+        if (Project::where('project_id',$id)->update($request->all())){
             return redirect()->back()->with('message',"success");
         } else {
             return redirect()->back()->with('message',"error");
@@ -178,7 +182,7 @@ class ProjectControllerWeb extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::findOrFail($id);
+        $project = Project::where('project_id',$id);
         if ($project->delete()){
             return redirect()->back()->with('message',"success");
         } else {

@@ -25,12 +25,12 @@
       <div class="row">
         @if('projects')
           @foreach($projects as $project)
-                  <a href="{{ url('/projects/'.$project->id) }}">
+                  <a href="{{ url('/projects/'.$project->project_id) }}">
                     <div class="col-md-4 md-margin-bottom-40">
                       <div class="card small">
                         <div class="card-image">
-                          <img class="img-responsive" src="{{ asset($project->path)}}" alt="">
-                          <span class="card-title">{{ $project->name }}</span>
+                          <img class="img-responsive" src="{{ asset($project->photo_path)}}" alt="">
+                          <span class="card-title">{{ $project->project_name }}</span>
                         </div>
                         <div class="card-content">
                             <p>Budget: {{ $project->budget }}</p>
@@ -42,9 +42,9 @@
                                 </div>
                             </div>
                             <p>Due: <strong>{{ $project->due_date }}</strong></p>
-                            <p>Department: {{ $project->category }}</p>
+                            <p>Department: {{ $project->project_category }}</p>
                             <p>{{ $project->constituency_name }} constituency</p>
-                            <p>{{ $project->ward }} ward</p>
+                            <p>{{ $project->project_ward }} ward</p>
                             <p>Contractor: <strong>{{ $project->contractor }}</strong></p>
                         </div>
                       </div>
