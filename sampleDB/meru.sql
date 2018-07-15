@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 12, 2018 at 08:29 AM
+-- Generation Time: Jul 15, 2018 at 11:35 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -43,7 +43,7 @@ CREATE TABLE `admins` (
 --
 
 CREATE TABLE `constituencies` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `constituency_id` int(10) UNSIGNED NOT NULL,
   `constituency_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -53,16 +53,8 @@ CREATE TABLE `constituencies` (
 -- Dumping data for table `constituencies`
 --
 
-INSERT INTO `constituencies` (`id`, `constituency_name`, `created_at`, `updated_at`) VALUES
-(1, 'Buuri', '2018-06-30 21:00:00', '2018-07-02 21:00:00'),
-(2, 'South Imenti', '2018-07-01 21:00:00', '2018-07-06 21:00:00'),
-(3, 'North Imenti', '2018-06-30 21:00:00', '2018-07-03 21:00:00'),
-(4, 'Tigania East', '2018-07-01 21:00:00', '2018-07-06 21:00:00'),
-(5, 'Tigania West', '2018-06-30 21:00:00', '2018-07-03 21:00:00'),
-(6, 'Igembe South', '2018-06-30 21:00:00', '2018-07-04 21:00:00'),
-(7, 'Central Imenti', '2018-06-30 21:00:00', '2018-07-03 21:00:00'),
-(8, 'Igembe Central', '2018-07-01 21:00:00', '2018-07-04 21:00:00'),
-(9, 'Igembe North', '2018-07-01 21:00:00', '2018-07-02 21:00:00');
+INSERT INTO `constituencies` (`constituency_id`, `constituency_name`, `created_at`, `updated_at`) VALUES
+(1, 'Buuri', '2018-06-30 21:00:00', '2018-07-14 21:00:00');
 
 -- --------------------------------------------------------
 
@@ -71,10 +63,10 @@ INSERT INTO `constituencies` (`id`, `constituency_name`, `created_at`, `updated_
 --
 
 CREATE TABLE `departments` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `photo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `department_id` int(10) UNSIGNED NOT NULL,
+  `department_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `department_description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `department_photo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -83,12 +75,8 @@ CREATE TABLE `departments` (
 -- Dumping data for table `departments`
 --
 
-INSERT INTO `departments` (`id`, `name`, `description`, `photo`, `created_at`, `updated_at`) VALUES
-(1, 'Health', 'The national government has invested heavily to make access to health care a reality for millions of Kenyans at affordable or no cost. The Government distributed World Class medical equipment to all counties, introduced a free maternity health program and expanded National Hospital Insurance Fund.', 'home/img/health.jpg', '2018-06-30 21:00:00', '2018-07-06 21:00:00'),
-(2, 'Education', 'Kenya is the 7th largest funder of Education in the world. The Education sector continues to be the largest recipient of government budget totalling over Ksh.300 billion annually. The government has made interventions at every level of education to increase access to quality education to Kenyans.', '/home/img/education.jpg', '2018-07-01 21:00:00', '2018-07-02 21:00:00'),
-(3, 'Roads', 'Development of Key Infrastructure has been a key focus of the Government, in particular Roads, Rail, Energy and Water Infrastructure. These are critical interventions that are are required to jump start the economy and vault the country to middle-income industrialized status as spelt out in Vision 2030.', 'home/img/roads.jpg', '2018-06-30 21:00:00', '2018-07-03 21:00:00'),
-(4, 'ICT', 'Information, Communication and Technology is a major priority for the Kenya government as it seeks to transform the country into a knowledge-based economy. Digital Literacy Programme, KONZA Technopolis, Ajira and Presidential Digital Talent Programme are key programmes under ICT', 'home/img/ict.jpg', '2018-06-30 21:00:00', '2018-07-06 21:00:00'),
-(5, 'Agriculture and Food Security', 'The government’s efforts to make food cheap and available to all Kenyans are bearing fruit with various initiatives aimed at supporting farming, livestock rearing and fish production initiated. More farmers are accessing subsidized inputs to lower their cost of production and boost earnings.', 'home/img/food.jpg', '2018-06-30 21:00:00', '2018-07-06 21:00:00');
+INSERT INTO `departments` (`department_id`, `department_name`, `department_description`, `department_photo`, `created_at`, `updated_at`) VALUES
+(1, 'Health', 'The national government has invested heavily to make access to health care a reality for millions of Kenyans at affordable or no cost. The Government distributed World Class medical equipment to all counties, introduced a free maternity health program and expanded National Hospital Insurance Fund.', 'home/img/health.jpg', '2018-06-30 21:00:00', '2018-07-08 21:00:00');
 
 -- --------------------------------------------------------
 
@@ -97,22 +85,15 @@ INSERT INTO `departments` (`id`, `name`, `description`, `photo`, `created_at`, `
 --
 
 CREATE TABLE `messages` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `message_id` int(10) UNSIGNED NOT NULL,
   `sender_first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sender_last_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sender_email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sender_constituency` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `message` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `messages`
---
-
-INSERT INTO `messages` (`id`, `sender_first_name`, `sender_last_name`, `email`, `sender_constituency`, `message`, `created_at`, `updated_at`) VALUES
-(2, 'Sample', 'User', 'mailmail@mail.com', 'Igembe Central', 'SAMPLE MESSAGE', '2018-07-12 03:22:28', '2018-07-12 03:22:28');
 
 -- --------------------------------------------------------
 
@@ -134,12 +115,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2018_06_09_154208_create_admins_table', 1),
-(4, '2018_06_09_154217_create_projects_table', 1),
-(5, '2018_06_24_100946_create_constituencies_table', 1),
-(7, '2018_06_24_105700_create_photos_table', 1),
-(8, '2018_06_27_140620_create_messages_table', 1),
-(9, '2018_07_06_095538_create_departments_table', 1),
-(10, '2018_06_24_101003_create_wards_table', 2);
+(4, '2018_06_24_100946_create_constituencies_table', 1),
+(5, '2018_06_24_101003_create_wards_table', 1),
+(6, '2018_06_27_140620_create_messages_table', 1),
+(7, '2018_07_12_121820_create_departments_table', 1),
+(8, '2018_07_12_122428_create_projects_table', 1),
+(11, '2018_07_12_122516_create_photos_table', 2);
 
 -- --------------------------------------------------------
 
@@ -160,9 +141,9 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `photos` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `path` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `project_id` int(10) UNSIGNED NOT NULL,
+  `photo_id` int(10) UNSIGNED NOT NULL,
+  `photo_path` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_project` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -171,14 +152,19 @@ CREATE TABLE `photos` (
 -- Dumping data for table `photos`
 --
 
-INSERT INTO `photos` (`id`, `path`, `project_id`, `created_at`, `updated_at`) VALUES
-(1, 'uploads/Dam/3KlcEyDpv1771IYb847xFBAnvW70EdCYDL7UkjQl.png', 1, '2018-06-30 21:00:00', '2018-07-06 21:00:00'),
-(2, 'uploads/Airstrip/MOpwTWG5pzMGyjHM4wHcVuwwecNW5MYxWFCGgvYv.jpeg', 4, '2018-07-08 15:44:49', '2018-07-08 15:44:49'),
-(3, 'uploads/mmmmmm/e2GtwCV9hbOAFTfZj1bFQ6aGQV4SBU0tNQwCEeZJ.jpeg', 6, '2018-07-08 15:55:04', '2018-07-08 15:55:04'),
-(4, 'uploads/Dam Water/ypzSBl9ghHNskKrWjO0qZow4cspDYeHzT7WG0Q5q.jpeg', 8, '2018-07-08 15:56:58', '2018-07-08 15:56:58'),
-(5, 'uploads/uuuu/82vbPHyXIi6o51Hey6MTykYjLn6EVZh5t3RXAzxk.jpeg', 9, '2018-07-08 15:58:59', '2018-07-08 15:58:59'),
-(6, 'uploads/vvvvvvvvvvvv/snOfO3GvPHu7yumTmUMQalJleWQias86oTaD9o9v.jpeg', 10, '2018-07-08 16:02:52', '2018-07-08 16:02:52'),
-(7, 'uploads/vvvvvvvvvvvv/GyaA2XfYKW2x7PDEvoGg0GwRx27UC86N27Bivd9H.jpeg', 10, '2018-07-08 16:02:52', '2018-07-08 16:02:52');
+INSERT INTO `photos` (`photo_id`, `photo_path`, `photo_project`, `created_at`, `updated_at`) VALUES
+(1, 'uploads/A newer test/eKH2WpwCu6g6A8wIZFxRXohv1pCX3epsrF2rQ3rd.jpeg', 7, '2018-07-15 14:51:22', '2018-07-15 14:51:22'),
+(2, 'uploads/A newer test/auIsBzwKbGvygznhI57lc3xChHHVaTqTTmIIt90O.jpeg', 7, '2018-07-15 14:51:22', '2018-07-15 14:51:22'),
+(3, 'uploads/vvvvvvvvvvvvvvvvvvvvvvvvvvvv/ZF7UHqxTTmCoMqURz7d1P1ihdQFelRJt2gEQIB0C.jpeg', 8, '2018-07-15 16:25:36', '2018-07-15 16:25:36'),
+(4, 'uploads/vvvvvvvvvvvvvvvvvvvvvvvvvvvv/2SOZ0lCkxiGKmrnjENyCa9jpKLvTLGmieqCq70K4.jpeg', 8, '2018-07-15 16:25:36', '2018-07-15 16:25:36'),
+(5, 'uploads/vvvvvvvvvvvvvvvvvvvvvvvvvvvv/lI77a1YknBG8cRoDyND3p9U7qObmH1lHu0S27tyO.jpeg', 8, '2018-07-15 16:25:36', '2018-07-15 16:25:36'),
+(6, 'uploads/vvvvvvvvvvvvvvvvvvvvvvvvvvvv/f02MHDanUBgX9UxW6ygrHGDVs4MkH6ykmJzjml1U.jpeg', 8, '2018-07-15 16:25:36', '2018-07-15 16:25:36'),
+(7, 'uploads/vvvvvvvvvvvvvvvvvvvvvvvvvvvv/EvXTMbJVqtc5ZPRjl08L5VkCsoD3cW1tzNPgB1s5.jpeg', 8, '2018-07-15 16:25:36', '2018-07-15 16:25:36'),
+(8, 'uploads/vvvvvvvvvvvvvvvvvvvvvvvvvvvv/H4DfddVRtcz3C5G0Mf0N3KaR3jod7U64n9gr8jYK.jpeg', 8, '2018-07-15 16:25:36', '2018-07-15 16:25:36'),
+(9, 'uploads/New Completed/CKME2AxcAdxFaZV3bF7jxpsD4valgu9KIc6ONGGE.jpeg', 9, '2018-07-15 18:18:52', '2018-07-15 18:18:52'),
+(10, 'uploads/New Completed/JwKBKb6Scb4uahrwHEOYvgAGNnGZfHZQZljLkKW7.jpeg', 9, '2018-07-15 18:18:52', '2018-07-15 18:18:52'),
+(11, 'uploads/New Completed/oFXzR6NjvnSdRVoAXt7FfQFWYVoWIShdaoca2Kfp.jpeg', 9, '2018-07-15 18:18:52', '2018-07-15 18:18:52'),
+(12, 'uploads/New Completed/nMhcJingIcuNPHk74QCxgNf4BfyHZsrRwQ4KCBdI.jpeg', 9, '2018-07-15 18:18:52', '2018-07-15 18:18:52');
 
 -- --------------------------------------------------------
 
@@ -187,12 +173,12 @@ INSERT INTO `photos` (`id`, `path`, `project_id`, `created_at`, `updated_at`) VA
 --
 
 CREATE TABLE `projects` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `constituency_id` int(10) UNSIGNED NOT NULL,
-  `ward` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `project_id` int(10) UNSIGNED NOT NULL,
+  `project_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `project_description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `project_category` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `project_constituency` int(10) UNSIGNED NOT NULL,
+  `project_ward` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `budget` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `completion` int(11) NOT NULL,
   `contractor` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -206,15 +192,10 @@ CREATE TABLE `projects` (
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `name`, `description`, `category`, `constituency_id`, `ward`, `budget`, `completion`, `contractor`, `due_date`, `added_by`, `created_at`, `updated_at`) VALUES
-(1, 'Dam', 'Dam to provide water for irrigation and home use to the beautiful people of our great county.', 'Agriculture and Food Security', 1, 'Giteretu', '345 Billion', 47, 'Kelvin Pac', '2018-07-07', 'Admin', '2018-07-08 15:28:33', '2018-07-08 15:28:33'),
-(2, 'Tarmac Road', 'Dam to provide water for irrigation and home use to the beautiful people of our great county.', 'Agriculture and Food Security', 1, 'Giteretu', '345 Billion', 97, 'Kelvin Pac', '2018-07-04', 'Admin', '2018-07-08 15:39:12', '2018-07-08 15:39:12'),
-(3, 'Tarmac Road', 'Dam to provide water for irrigation and home use to the beautiful people of our great county.', 'Agriculture and Food Security', 1, 'Giteretu', '345 Billion', 97, 'Kelvin Pac', '2018-07-04', 'Admin', '2018-07-08 15:43:40', '2018-07-08 15:43:40'),
-(4, 'Airstrip', 'Dam to provide water for irrigation and home use to the beautiful people of our great county.', 'Agriculture and Food Security', 1, 'Giteretu', '345 Billion', 17, 'Kelvin Pac', '2018-07-04', 'Admin', '2018-07-08 15:44:49', '2018-07-08 15:44:49'),
-(6, 'mmmmmm', 'gggggggggggggggggggggggggggggg', 'Health', 6, 'Giteretu', '234 Million', 34, 'Kelvin Pac', '2018-07-06', 'Admin', '2018-07-08 15:55:04', '2018-07-08 15:55:04'),
-(8, 'Dam Water', 'qqqqqqqqqqqqqqqqqqqqqq', 'Roads', 8, 'Giteretu', '4 Billion', 78, 'Kelvin Pac', '2018-07-06', 'Admin', '2018-07-08 15:56:58', '2018-07-08 15:56:58'),
-(9, 'uuuu', 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 'ICT', 4, 'Giteretu', '77 Billion', 100, 'Kelvin Pac', '2018-07-03', 'Admin', '2018-07-08 15:58:59', '2018-07-08 15:58:59'),
-(10, 'vvvvvvvvvvvv', 'cccccccccccccccccccc', 'Agriculture and Food Security', 4, 'Giteretu', '6 Billion', 65, 'Kelvin Pac', '2018-07-28', 'Admin', '2018-07-08 16:02:52', '2018-07-08 16:02:52');
+INSERT INTO `projects` (`project_id`, `project_name`, `project_description`, `project_category`, `project_constituency`, `project_ward`, `budget`, `completion`, `contractor`, `due_date`, `added_by`, `created_at`, `updated_at`) VALUES
+(7, 'A newer test', 'Vet nwe onw to tesy things out kabisa', 'Health', 1, 'Gakoromone', '345 Billion', 54, 'Kelvin Pac', '2018-08-04', 'Admin', '2018-07-15 14:51:22', '2018-07-15 14:51:22'),
+(8, 'vvvvvvvvvvvvvvvvvvvvvvvvvvvv', 'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv', 'Health', 1, 'Gakoromone', '6 Billion', 98, 'Kelvin Pac', '2019-10-19', 'Admin', '2018-07-15 16:25:36', '2018-07-15 16:25:36'),
+(9, 'New Completed', 'Completed Project to test', 'Health', 1, 'Gakoromone', '45 Million', 100, 'Kelvin Pac', '2018-07-28', 'Admin', '2018-07-15 18:18:52', '2018-07-15 18:18:52');
 
 -- --------------------------------------------------------
 
@@ -223,15 +204,14 @@ INSERT INTO `projects` (`id`, `name`, `description`, `category`, `constituency_i
 --
 
 CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `user_email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `last_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `constituency` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ward` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_constituency` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_role` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -241,9 +221,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`, `phone`, `constituency`, `ward`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'masterfork5@gmail.com', '$2y$12$YKcMO5L2DmB.f21nQ9Exm.b.MTNYj8FKuP8SSw5aLjyS8CRvrKFgC', 'Kevin', 'Kiprotich', '0734567845', 'Buuri', 'Giteretu', 'Admin', NULL, '2018-06-30 21:00:00', '2018-07-02 21:00:00'),
-(2, 'kelvinpac@gmail.com', '$2y$12$PL5F0UB1Vj4CAeO1NkJuKuH0Liq2dtKPhhxs.RajZW9UEc75x.reO', 'Kelvin', 'Pac', '0789654723', 'North Imenti', 'Gatundu', 'Contractor', NULL, '2018-06-30 21:00:00', '2018-07-03 21:00:00');
+INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `first_name`, `last_name`, `phone`, `user_constituency`, `user_role`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, 'masterfork5@gmail.com', 'password', 'Kevin', 'Kiprotich', '754304260', 'Buuri', 'Finance Officer', NULL, '2018-07-15 06:58:43', '2018-07-15 10:48:20'),
+(3, 'aushimedics@gmail.com', '$2y$10$JeyPFtsxm0J9o3jhmT2HXOfCkQjb4tp/1WY/YJEKZfWE5wyIO7ohm', 'Kelvin', 'Pac', '754304260', 'Buuri', 'Contractor', NULL, '2018-07-15 12:20:01', '2018-07-15 12:20:01');
 
 -- --------------------------------------------------------
 
@@ -252,9 +232,9 @@ INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`, `phon
 --
 
 CREATE TABLE `wards` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `constituency_id` int(10) UNSIGNED NOT NULL,
+  `ward_id` int(10) UNSIGNED NOT NULL,
+  `ward_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ward_constituency` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -263,11 +243,8 @@ CREATE TABLE `wards` (
 -- Dumping data for table `wards`
 --
 
-INSERT INTO `wards` (`id`, `name`, `constituency_id`, `created_at`, `updated_at`) VALUES
-(1, 'Giteretu', 6, '2018-06-30 21:00:00', '2018-07-03 21:00:00'),
-(2, 'Igembe East', 6, '2018-06-30 21:00:00', '2018-07-01 21:00:00'),
-(3, 'Igembe South', 6, '2018-06-30 21:00:00', '2018-07-01 21:00:00'),
-(4, 'Igembe South East', 6, '2018-07-01 21:00:00', '2018-07-02 21:00:00');
+INSERT INTO `wards` (`ward_id`, `ward_name`, `ward_constituency`, `created_at`, `updated_at`) VALUES
+(1, 'Gakoromone', 1, '2018-06-30 21:00:00', '2018-07-14 21:00:00');
 
 --
 -- Indexes for dumped tables
@@ -284,20 +261,20 @@ ALTER TABLE `admins`
 -- Indexes for table `constituencies`
 --
 ALTER TABLE `constituencies`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `constituencies_name_unique` (`constituency_name`);
+  ADD PRIMARY KEY (`constituency_id`),
+  ADD UNIQUE KEY `constituencies_constituency_name_unique` (`constituency_name`);
 
 --
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`department_id`);
 
 --
 -- Indexes for table `messages`
 --
 ALTER TABLE `messages`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`message_id`);
 
 --
 -- Indexes for table `migrations`
@@ -315,30 +292,30 @@ ALTER TABLE `password_resets`
 -- Indexes for table `photos`
 --
 ALTER TABLE `photos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `photos_project_id_foreign` (`project_id`);
+  ADD PRIMARY KEY (`photo_id`),
+  ADD KEY `photos_photo_project_foreign` (`photo_project`);
 
 --
 -- Indexes for table `projects`
 --
 ALTER TABLE `projects`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `projects_constituency_id_foreign` (`constituency_id`);
+  ADD PRIMARY KEY (`project_id`),
+  ADD KEY `projects_project_constituency_foreign` (`project_constituency`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `users_user_email_unique` (`user_email`);
 
 --
 -- Indexes for table `wards`
 --
 ALTER TABLE `wards`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `wards_name_unique` (`name`),
-  ADD KEY `wards_constituency_id_foreign` (`constituency_id`);
+  ADD PRIMARY KEY (`ward_id`),
+  ADD UNIQUE KEY `wards_ward_name_unique` (`ward_name`),
+  ADD KEY `wards_ward_constituency_foreign` (`ward_constituency`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -353,42 +330,42 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `constituencies`
 --
 ALTER TABLE `constituencies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `constituency_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `department_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `message_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `photo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `project_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `wards`
 --
 ALTER TABLE `wards`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ward_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
@@ -397,19 +374,19 @@ ALTER TABLE `wards`
 -- Constraints for table `photos`
 --
 ALTER TABLE `photos`
-  ADD CONSTRAINT `photos_project_id_foreign` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`);
+  ADD CONSTRAINT `photos_photo_project_foreign` FOREIGN KEY (`photo_project`) REFERENCES `projects` (`project_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `projects`
 --
 ALTER TABLE `projects`
-  ADD CONSTRAINT `projects_constituency_id_foreign` FOREIGN KEY (`constituency_id`) REFERENCES `projects` (`id`);
+  ADD CONSTRAINT `projects_project_constituency_foreign` FOREIGN KEY (`project_constituency`) REFERENCES `constituencies` (`constituency_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `wards`
 --
 ALTER TABLE `wards`
-  ADD CONSTRAINT `wards_constituency_id_foreign` FOREIGN KEY (`constituency_id`) REFERENCES `constituencies` (`id`);
+  ADD CONSTRAINT `wards_ward_constituency_foreign` FOREIGN KEY (`ward_constituency`) REFERENCES `constituencies` (`constituency_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
