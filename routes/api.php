@@ -19,26 +19,33 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/constituencies', [
+    'uses' => 'ProjectsController@getConstituencies'
+]);
+Route::get('/constituency/{id}/projects', [
+    'uses' => 'ProjectsController@getProjectsByConstituency'
+]);
+Route::get('/wards', [
+    'uses' => 'ProjectsController@getWards'
+]);
+Route::get('/departments', [
+    'uses' => 'ProjectsController@getDepartments'
+]);
+Route::get('/departments/{id}/projects', [
+    'uses' => 'ProjectsController@getProjectsByDepartment'
+]);
+Route::get('/photos', [
+    'uses' => 'ProjectsController@getPhotos'
+]);
 Route::get('/projects', [
-    'as' => 'projects.all',
     'uses' => 'ProjectsController@getProjects'
 ]);
-
-Route::post('/projects/create', [
-    'as' => 'projects.create',
-    'uses' => 'ProjectsController@createProject'
+Route::get('/projects/{id}', [
+    'uses' => 'ProjectsController@getProjectById'
 ]);
-
-Route::put('/projects/{id}', [
-    'as' => 'projects.update',
-    'uses' => 'ProjectsController@updateProject'
-]);
-
-Route::delete('/projects/{id}',[
-    'as' => 'projects.delete',
-    'uses' => 'ProjectsController@deleteProject'
-]);
-
+Route::post('/feedback', [
+    'uses' => 'ProjectsController@sendFeedback'
+])->middleware('cors');
 //For Charts
 Route::get('/count/',[
     'as' => 'count',

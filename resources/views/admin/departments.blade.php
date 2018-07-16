@@ -38,7 +38,6 @@
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
-                            <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                         </thead>
@@ -48,11 +47,6 @@
                                 <tr>
                                     <td>{{ $department->department_name }}</td>
                                     <td>{{ $department->department_description }}</td>
-                                    <td>
-                                        <a href="{{ route('department.edit',['id'=>$department->department_id]) }}" class="btn btn-primary">
-                                            Edit
-                                        </a>
-                                    </td>
                                     <td>
                                         <form action="{{ route('department.delete',['id'=>$department->department_id]) }}" method="post">
                                             {{ csrf_field() }}
