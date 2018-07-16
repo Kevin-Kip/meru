@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 15, 2018 at 11:35 PM
+-- Generation Time: Jul 16, 2018 at 08:51 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -76,7 +76,9 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`department_id`, `department_name`, `department_description`, `department_photo`, `created_at`, `updated_at`) VALUES
-(1, 'Health', 'The national government has invested heavily to make access to health care a reality for millions of Kenyans at affordable or no cost. The Government distributed World Class medical equipment to all counties, introduced a free maternity health program and expanded National Hospital Insurance Fund.', 'home/img/health.jpg', '2018-06-30 21:00:00', '2018-07-08 21:00:00');
+(1, 'Health', 'The national government has invested heavily to make access to health care a reality for millions of Kenyans at affordable or no cost. The Government distributed World Class medical equipment to all counties, introduced a free maternity health program and expanded National Hospital Insurance Fund.', 'home/img/health.jpg', '2018-06-30 21:00:00', '2018-07-08 21:00:00'),
+(5, 'water', 'New Department', 'home/img/BBM2kJAt5tsbLsbm8iXsvhv1mlRAcvpzWqu8y8MH.jpeg', '2018-07-16 08:59:59', '2018-07-16 08:59:59'),
+(6, 'ICT', 'ICT department', 'home/img/3BLCXN9IyDGZ1AWKZRQIrw3j3Ns9IYYKOGwIzLIa.png', '2018-07-16 13:19:41', '2018-07-16 13:19:41');
 
 -- --------------------------------------------------------
 
@@ -94,6 +96,13 @@ CREATE TABLE `messages` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`message_id`, `sender_first_name`, `sender_last_name`, `sender_email`, `sender_constituency`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'Kevin', 'Kip', 'masterfork5@gmail.com', 'Buuri', 'Test message', '2018-07-16 06:52:07', '2018-07-16 06:52:07');
 
 -- --------------------------------------------------------
 
@@ -164,7 +173,19 @@ INSERT INTO `photos` (`photo_id`, `photo_path`, `photo_project`, `created_at`, `
 (9, 'uploads/New Completed/CKME2AxcAdxFaZV3bF7jxpsD4valgu9KIc6ONGGE.jpeg', 9, '2018-07-15 18:18:52', '2018-07-15 18:18:52'),
 (10, 'uploads/New Completed/JwKBKb6Scb4uahrwHEOYvgAGNnGZfHZQZljLkKW7.jpeg', 9, '2018-07-15 18:18:52', '2018-07-15 18:18:52'),
 (11, 'uploads/New Completed/oFXzR6NjvnSdRVoAXt7FfQFWYVoWIShdaoca2Kfp.jpeg', 9, '2018-07-15 18:18:52', '2018-07-15 18:18:52'),
-(12, 'uploads/New Completed/nMhcJingIcuNPHk74QCxgNf4BfyHZsrRwQ4KCBdI.jpeg', 9, '2018-07-15 18:18:52', '2018-07-15 18:18:52');
+(12, 'uploads/New Completed/nMhcJingIcuNPHk74QCxgNf4BfyHZsrRwQ4KCBdI.jpeg', 9, '2018-07-15 18:18:52', '2018-07-15 18:18:52'),
+(13, 'uploads/newwwwwwwwwwwwwwwwwwwwwwwwww/yAp8a4teBGhw4C9zH4EcMNoIdOLFiPjzO58N5FTk.png', 10, '2018-07-16 09:05:09', '2018-07-16 09:05:09'),
+(14, 'uploads/newwwwwwwwwwwwwwwwwwwwwwwwww/pQskrmr3SeY8Mk7ElVxf3PTmpccbN7c4qOLzxk5h.png', 10, '2018-07-16 09:05:09', '2018-07-16 09:05:09'),
+(15, 'uploads/newwwwwwwwwwwwwwwwwwwwwwwwww/wcsjtshBSmnnM4OKEnNOmFeH8nGezCVr55k4ADmb.png', 10, '2018-07-16 09:05:09', '2018-07-16 09:05:09'),
+(16, 'uploads/newwwwwwwwwwwwwwwwwwwwwwwwww/WYERyyvGfZIjLNvK3AJS4Pb6tileXnsoldkpA6DW.png', 10, '2018-07-16 09:05:09', '2018-07-16 09:05:09'),
+(17, 'uploads/newwwwwwwwwwwwwwwwwwwwwwwwww/wRT8gQC0PZIgX0w9ZsSRWcRSdutARoeFr638GWiI.png', 10, '2018-07-16 09:05:09', '2018-07-16 09:05:09'),
+(18, 'uploads/newwwwwwwwwwwwwwwwwwwwwwwwww/ctRh8qNTUVhbLXDSm53wUpxzUdh6ZqFnlSLryd1N.png', 10, '2018-07-16 09:05:09', '2018-07-16 09:05:09'),
+(19, 'uploads/newwwwwwwwwwwwwwwwwwwwwwwwww/nKiIZFRt64BlQw3RScqhagsUShnuidyVffHzERH8.jpeg', 10, '2018-07-16 09:05:09', '2018-07-16 09:05:09'),
+(20, 'uploads/newwwwwwwwwwwwwwwwwwwwwwwwww/rmbUApDOfth43kulJpFNAvx9lMQ4qM4fVAPWoTHM.jpeg', 10, '2018-07-16 09:05:09', '2018-07-16 09:05:09'),
+(21, 'uploads/MMMMMMMMMMMM/mwzxBVXhzn7iJKirLLLn7DbkT41PYIoNsw24ayJl.jpeg', 11, '2018-07-16 13:21:55', '2018-07-16 13:21:55'),
+(22, 'uploads/MMMMMMMMMMMM/un1tS67Ugyjwilshwc0HQFKan5DxkhBTk8e6X7Py.jpeg', 11, '2018-07-16 13:21:55', '2018-07-16 13:21:55'),
+(23, 'uploads/MMMMMMMMMMMM/tq9cfGYPBxoTSZzPoEgF97ZvyZOxzXwBXliQXIjf.jpeg', 11, '2018-07-16 13:21:56', '2018-07-16 13:21:56'),
+(24, 'uploads/MMMMMMMMMMMM/VQjbcvkaLw6hyXKFvQtRuJca6vizF2NXmPzIxMd3.jpeg', 11, '2018-07-16 13:21:56', '2018-07-16 13:21:56');
 
 -- --------------------------------------------------------
 
@@ -195,7 +216,9 @@ CREATE TABLE `projects` (
 INSERT INTO `projects` (`project_id`, `project_name`, `project_description`, `project_category`, `project_constituency`, `project_ward`, `budget`, `completion`, `contractor`, `due_date`, `added_by`, `created_at`, `updated_at`) VALUES
 (7, 'A newer test', 'Vet nwe onw to tesy things out kabisa', 'Health', 1, 'Gakoromone', '345 Billion', 54, 'Kelvin Pac', '2018-08-04', 'Admin', '2018-07-15 14:51:22', '2018-07-15 14:51:22'),
 (8, 'vvvvvvvvvvvvvvvvvvvvvvvvvvvv', 'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv', 'Health', 1, 'Gakoromone', '6 Billion', 98, 'Kelvin Pac', '2019-10-19', 'Admin', '2018-07-15 16:25:36', '2018-07-15 16:25:36'),
-(9, 'New Completed', 'Completed Project to test', 'Health', 1, 'Gakoromone', '45 Million', 100, 'Kelvin Pac', '2018-07-28', 'Admin', '2018-07-15 18:18:52', '2018-07-15 18:18:52');
+(9, 'New Completed', 'Completed Project to test', 'Health', 1, 'Gakoromone', '45 Million', 100, 'Kelvin Pac', '2018-07-28', 'Admin', '2018-07-15 18:18:52', '2018-07-15 18:18:52'),
+(10, 'newwwwwwwwwwwwwwwwwwwwwwwwww', 'testing department', 'water', 1, 'Gakoromone', '56bMillion', 100, 'Kelvin Pac', '2018-03-04', 'Admin', '2018-07-16 09:05:09', '2018-07-16 12:00:28'),
+(11, 'MMMMMMMMMMMM', 'mmmmmmmmmmmmmmmmmmmmmmmmmm', 'ICT', 1, 'Gakoromone', '77 Billion', 19, 'Kelvin Pac', '2067-08-16', 'Admin', '2018-07-16 13:21:55', '2018-07-16 13:21:55');
 
 -- --------------------------------------------------------
 
@@ -223,7 +246,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `first_name`, `last_name`, `phone`, `user_constituency`, `user_role`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'masterfork5@gmail.com', 'password', 'Kevin', 'Kiprotich', '754304260', 'Buuri', 'Finance Officer', NULL, '2018-07-15 06:58:43', '2018-07-15 10:48:20'),
-(3, 'aushimedics@gmail.com', '$2y$10$JeyPFtsxm0J9o3jhmT2HXOfCkQjb4tp/1WY/YJEKZfWE5wyIO7ohm', 'Kelvin', 'Pac', '754304260', 'Buuri', 'Contractor', NULL, '2018-07-15 12:20:01', '2018-07-15 12:20:01');
+(3, 'aushimedics@gmail.com', 'password', 'Kelvin', 'Pac', '754304260', 'Buuri', 'Contractor', NULL, '2018-07-15 12:20:01', '2018-07-16 12:03:54');
 
 -- --------------------------------------------------------
 
@@ -335,7 +358,7 @@ ALTER TABLE `constituencies`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `department_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `department_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `messages`
 --
@@ -350,12 +373,12 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `photo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `photo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `project_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `project_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `users`
 --
