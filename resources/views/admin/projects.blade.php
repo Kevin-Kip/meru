@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+    @include('admin.cards')
 
     @if(session()->has('message'))
         @if(session()->get('message') == "success")

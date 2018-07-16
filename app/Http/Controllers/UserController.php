@@ -44,16 +44,16 @@ class UserController extends Controller
     }
 
     public function loguserin(Request $request){
-        if(Auth::attempt([
-            'email' => $request['email'],
-            'password' => $request['password']
-        ], false)){
-            if (Auth::user()->role = "Admin"){
-                return redirect()->route('admin.home')->with('user',Auth::user());
-            } else {
-                return redirect()->route('users.dashboard');
-            }
-        }
+//        if(Auth::attempt([
+//            'user_email' => $request['user_email'],
+//            'user_password' => $request['user_password']
+//        ])){
+//            if (Auth::user()->role = "Admin"){
+//                return redirect()->route('admin.home')->with('user',Auth::user());
+//            } else {
+//                return redirect()->route('users.dashboard');
+//            }
+//        }
     }
 
     public function logOut(){

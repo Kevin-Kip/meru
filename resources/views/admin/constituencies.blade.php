@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+    @include('admin.cards')
     <p></p>
     <!-- Example DataTables Card-->
     <div class="card mb-3">

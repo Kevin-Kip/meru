@@ -47,8 +47,14 @@
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                 <a class="nav-link" href="{{ route('constituencies.all') }}">
-                    <i class="fa fa-fw fa-envelope-o"></i>
+                    <i class="fa fa-fw fa-map-marker"></i>
                     <span class="nav-link-text">Constituencies</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+                <a class="nav-link" href="{{ url('/admin/departments') }}">
+                    <i class="fa fa-fw fa-sticky-note-o"></i>
+                    <span class="nav-link-text">Departments</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
@@ -96,84 +102,9 @@
             </li>
             <li class="breadcrumb-item active">Admin Dashboard</li>
         </ol>
-        <!-- Icon Cards-->
-        <div class="row">
-            <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-primary o-hidden h-100">
-                    <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fa fa-fw fa-comments"></i>
-                        </div>
-                        @if('messagecount')
-                            <div class="mr-5">{{ $messagecount }} Messages</div>
-                        @endif
-                    </div>
-                    <a class="card-footer text-white clearfix small z-1" href="{{ route('messages.all') }}">
-                        <span class="float-left">View Details</span>
-                        <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-warning o-hidden h-100">
-                    <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fa fa-fw fa-list"></i>
-                        </div>
-                        @if('projectcount')
-                            <div class="mr-5">{{ $projectcount }} Projects</div>
-                        @endif
-                    </div>
-                    <a class="card-footer text-white clearfix small z-1" href="{{ route('admin.projects') }}">
-                        <span class="float-left">View Details</span>
-                        <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-success o-hidden h-100">
-                    <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fa fa-fw fa-shopping-cart"></i>
-                        </div>
-                        @if('usercount')
-                            <div class="mr-5">{{ $usercount }} People</div>
-                        @endif
-                    </div>
-                    <a class="card-footer text-white clearfix small z-1" href="{{ route('users.all') }}">
-                        <span class="float-left">View Details</span>
-                        <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-danger o-hidden h-100">
-                    <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fa fa-fw fa-support"></i>
-                        </div>
-                        @if('constituencycount')
-                            <div class="mr-5">{{ $constituencycount }} Constituencies</div>
-                        @endif
-                    </div>
-                    <a class="card-footer text-white clearfix small z-1" href="{{ route('constituencies.all') }}">
-                        <span class="float-left">View Details</span>
-                        <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-                    </a>
-                </div>
-            </div>
-        </div>
+
 
         @yield('content')
-
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->

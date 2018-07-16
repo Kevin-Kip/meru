@@ -1,6 +1,5 @@
 @extends('admin.master')
 @section('content')
-
     @include('admin.cards')
 
     @if(session()->has('message'))
@@ -12,7 +11,7 @@
                 </button>
             </div>
         @elseif(session()->get('message') == "error")
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div class="alert alert-danger alert-dismissible show" role="alert">
                 <strong>Ooops!</strong> Could Not Delete
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -22,44 +21,40 @@
     @endif
 
         <div class="text-white">
-            <a class="btn btn-primary" href="{{ route('user.create') }}">
+            <a class="btn btn-primary" href="{{ route('department.create') }}">
             <i class="fa fa-plus"></i>
-                Add New User
+                Add New Department
             </a>
         </div>
         <p></p>
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> Users Table</div>
+                <i class="fa fa-table"></i> Departments Table</div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Role</th>
+                            <th>Description</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                         </thead>
-                        @if('users')
+                        @if('departments')
                             <tbody>
-                            @foreach($users as $user)
+                            @foreach($departments as $department)
                                 <tr>
-                                    <td>{{ $user->first_name ." ".$user->last_name }}</td>
-                                    <td>{{ $user->user_email }}</td>
-                                    <td>{{ $user->phone }}</td>
-                                    <td>{{ $user->user_role }}</td>
+                                    <td>{{ $department->department_name }}</td>
+                                    <td>{{ $department->department_description }}</td>
                                     <td>
-                                        <a href="{{ route('user.edit',['id'=>$user->user_id]) }}" class="btn btn-primary">
+                                        <a href="{{ route('department.edit',['id'=>$department->department_id]) }}" class="btn btn-primary">
                                             Edit
                                         </a>
                                     </td>
                                     <td>
-                                        <form action="{{ route('user.delete',['id'=>$user->user_id]) }}" method="post">
+                                        <form action="{{ route('department.delete',['id'=>$department->department_id]) }}" method="post">
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
@@ -69,7 +64,7 @@
                             </tbody>
                         @endif
                     </table>
-                    {{ $users->links() }}
+{{--                    {{ $departments->links() }}--}}
                 </div>
             </div>
         </div>

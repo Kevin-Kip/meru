@@ -25,7 +25,7 @@ class ProjectControllerWeb extends Controller
         $projects = DB::table('projects')->take(3)
             ->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->get();
         $constituencies = Constituency::all();
-        $photos = DB::table('photos')->take(10)->get();
+        $photos = DB::table('photos')->orderBy('photo_id','desc')->take(10)->get();
         $message = "";
         $departments  = Department::all();
         return view('index', compact('projects','constituencies','message','photos','departments'));
@@ -76,7 +76,7 @@ class ProjectControllerWeb extends Controller
         $categoryName = $department[0]->department_name;
         $constituencies = Constituency::all();
         $departments = Department::all();
-        $projects =  Project::with('photos')->get();
+        $projects =  Project::where('project_category',$categoryName)->get();
         return view('category',compact('projects','constituencies','categoryName','departments'));
     }
 

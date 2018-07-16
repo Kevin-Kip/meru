@@ -175,9 +175,33 @@ Route::get('/count/ongoing',[
     'uses' => 'PdfController@ongoing'
 ]);
 
-Route::get('/constituencies',[
-   'as' => 'constituencies.all',
-'uses' => 'ManagerController@showConstituencies'
-//   'uses' => 'WardController@constituencies' TODO
+Route::get('/admin/departments', [
+   'as' => 'departments.all',
+   'uses' => 'DepartmentController@index'
 ]);
-//counts
+
+Route::get('/admin/departments/create', [
+    'as' => 'department.create',
+    'uses' => 'DepartmentController@create'
+]);
+
+Route::post('/admin/departments/create', [
+    'as' => 'department.save',
+    'uses' => 'DepartmentController@store'
+]);
+
+Route::get('/admin/departments/{id}/edit', [
+    'as' => 'department.edit',
+    'uses' => 'DepartmentController@edit'
+]);
+
+Route::post('/admin/departments/{id}/edit', [
+    'as' => 'department.update',
+    'uses' => 'DepartmentController@update'
+]);
+
+Route::post('/admin/departments/{id}/delete', [
+    'as' => 'department.delete',
+    'uses' => 'DepartmentController@destroy'
+]);
+

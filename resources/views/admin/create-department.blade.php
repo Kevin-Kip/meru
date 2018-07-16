@@ -10,7 +10,7 @@
                     </button>
                 </div>
             @elseif(session()->get('message') == "error")
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible show" role="alert">
                     <strong>Ooops!</strong> Could not Save
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -25,21 +25,25 @@
                 </div>
         @endif
     @endif
-    <!-- Example DataTables Card-->
+        <!-- Example DataTables Card-->
         <div class="card mb-3 col-md-10">
             <div class="card-header">
-                <i class="fa fa-table"></i> New User</div>
+                <i class="fa fa-table"></i> New Department</div>
             <div class="card-bodyalign-content-center">
                 <div class="col-sm-12">
-                    <form action="{{ route('constituency.save') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('department.save') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="name">Constituency Name:</label>
-                            <input class="form-control" type="text" name="name" id="name" required autofocus>
+                            <label for="department_name">Department Name:</label>
+                            <input class="form-control" type="text" name="department_name" id="department_name" required autofocus>
                         </div>
                         <div class="form-group">
-                            <label for="ward">Ward Name:</label>
-                            <input class="form-control" type="text" name="ward" id="ward" required>
+                            <label for="department_description">Department Description:</label>
+                            <input class="form-control" type="text" name="department_description" placeholder="Max 500 words" id="department_description" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="file">Department Photo:</label>
+                            <input class="form-control" type="file" name="file" id="photos" required>
                         </div>
                         <div class="form-group">
                             <input type="submit" name="submit" id="dubmit" value="SAVE" class="col-md-4 btn btn-primary">
@@ -48,5 +52,5 @@
                 </div>
             </div>
         </div>
-    <!-- /.container-fluid-->
+    </div>
 @endsection

@@ -43,11 +43,11 @@
                 @endif
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input class="form-control" id="email" name="email" type="email" aria-describedby="emailHelp" required placeholder="Enter email">
+                    <input class="form-control" id="email" name="user_email" type="email" aria-describedby="emailHelp" required placeholder="Enter email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input class="form-control" id="password" name="password" type="password" required placeholder="Password">
+                    <input class="form-control" id="password" name="user_password" type="password" required placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
             </form>
