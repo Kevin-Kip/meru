@@ -58,7 +58,6 @@
                             </tbody>
                         @endif
                     </table>
-{{--                    {{ $departments->links() }}--}}
                 </div>
             </div>
         </div>
