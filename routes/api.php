@@ -52,12 +52,12 @@ Route::get('/count',[
     'uses' => 'PdfController@count'
 ])->middleware('cors');
 
-Route::get('/projects/completed',[
+Route::get('/completed',[
     'as' => 'projects.completed',
     'uses' => 'PdfController@completed'
 ])->middleware('cors');
 
-Route::get('/projects/ongoing',[
+Route::get('/ongoing',[
     'as' => 'projects.ongoing',
     'uses' => 'PdfController@ongoing'
 ])->middleware('cors');

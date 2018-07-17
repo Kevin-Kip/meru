@@ -30,7 +30,7 @@ class PdfController extends Controller
     }
 
     public function ongoing(){
-        return 5;
+        return Project::where('completion','<',100)->get();
     }
 
     public function completed(){

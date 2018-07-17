@@ -123,7 +123,7 @@
         $('#ongoingButton').on('click', function () {
             modalBody.empty();
            $.ajax({
-              url: 'http://127.0.0.1:8000/api/projects/ongoing',
+              url: 'http://127.0.0.1:8000/api/ongoing',
               method: 'GET',
               dataType: 'json',
               success: function (data) {
@@ -143,7 +143,7 @@
         $('#completedButton').on('click', function () {
             modalBody.empty();
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/projects/completed',
+                url: 'http://127.0.0.1:8000/api/completed',
                 method: 'GET',
                 dataType: 'json',
                 success: function (data) {
