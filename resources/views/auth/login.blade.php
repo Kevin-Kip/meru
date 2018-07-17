@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
+    <title>Login</title>
     <!-- Bootstrap core CSS-->
     <link href="{{ asset('admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -43,16 +43,16 @@
                 @endif
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input class="form-control" id="email" name="user_email" type="email" aria-describedby="emailHelp" required placeholder="Enter email">
+                    <input class="form-control" id="email" name="email" type="email" aria-describedby="emailHelp" required placeholder="Enter email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input class="form-control" id="password" name="user_password" type="password" required placeholder="Password">
+                    <input class="form-control" id="password" name="password" type="password" required placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
             </form>
             <div class="text-center">
-                <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+                <a class="d-block small" href="{{ route('password.request') }}">Forgot Password?</a>
                 {{--TODO add password reset--}}
             </div>
         </div>
@@ -72,7 +72,6 @@
     <!-- Custom scripts for this page-->
     <script src="{{ asset('admin/js/sb-admin-datatables.min.js')}}"></script>
     <script src="{{ asset('admin/js/sb-admin-charts.js')}}"></script>
-</div>
 </body>
 
 </html>

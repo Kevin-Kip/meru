@@ -45,11 +45,11 @@ class UserController extends Controller
 
     public function loguserin(Request $request){
 //        if(Auth::attempt([
-//            'user_email' => $request['user_email'],
-//            'user_password' => $request['user_password']
-//        ])){
+//            'email' => $request['email'],
+//            'password' => $request['password']
+//        ], true)){
 //            if (Auth::user()->role = "Admin"){
-//                return redirect()->route('admin.home')->with('user',Auth::user());
+//                return view('admin.admin')->with(['user' => Auth::user()]);
 //            } else {
 //                return redirect()->route('users.dashboard');
 //            }
@@ -79,8 +79,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = User::create([
-            'user_email' => $request['email'],
-            'user_password' => Hash::make($request['password']),
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
             'phone' => $request['phone'],

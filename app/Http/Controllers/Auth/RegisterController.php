@@ -54,7 +54,6 @@ class RegisterController extends Controller
             'last_name' => 'string|max:255',
             'phone' => 'string|max:25',
             'constituency' => 'string|max:20',
-            'ward' => 'string|max:20',
             'role' => 'string|max:20',
         ]);
     }

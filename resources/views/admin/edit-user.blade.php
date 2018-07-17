@@ -31,11 +31,11 @@
                         {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input class="form-control" value="{{ $users[0]->user_email }}" type="email" name="user_email" id="email" required autofocus>
+                                <input class="form-control" value="{{ $users[0]->email }}" type="email" name="email" id="email" required autofocus>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password:</label>
-                                <input class="form-control" value="{{ $users[0]->user_password }}" type="password" name="user_password" id="password" required>
+                                <input class="form-control" value="{{ $users[0]->password }}" type="password" name="password" id="password" required>
                             </div>
                         <div class="form-group">
                             <label for="first_name">First Name:</label>

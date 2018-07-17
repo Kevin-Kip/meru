@@ -61,7 +61,7 @@ Route::post('/auth/login/',[
     'as' => 'user.signin',
     'uses' => 'UserController@loguserin',
     'middleware' => 'guest'
-]);
+])->middleware('web');
 Route::post('/logout', [
    Auth::logout()
 ]);
@@ -205,3 +205,7 @@ Route::post('/admin/departments/{id}/delete', [
     'uses' => 'DepartmentController@destroy'
 ]);
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -45,19 +45,19 @@
                     <span class="nav-link-text">Messages</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Constituencies">
                 <a class="nav-link" href="{{ route('constituencies.all') }}">
                     <i class="fa fa-fw fa-map-marker"></i>
                     <span class="nav-link-text">Constituencies</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Departments">
                 <a class="nav-link" href="{{ url('/admin/departments') }}">
                     <i class="fa fa-fw fa-sticky-note-o"></i>
                     <span class="nav-link-text">Departments</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Generate Report">
                 <a class="nav-link" href="{{ url('/report') }}">
                     <i class="fa fa-fw fa-book"></i>
                     <span class="nav-link-text">Generate Report</span>

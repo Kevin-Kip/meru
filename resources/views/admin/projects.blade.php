@@ -4,14 +4,14 @@
 
     @if(session()->has('message'))
         @if(session()->get('message') == "success")
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible show" role="alert">
                 <strong>Success!</strong> Deleted Successfully
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         @elseif(session()->get('message') == "error")
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div class="alert alert-danger alert-dismissible show" role="alert">
                 <strong>Ooops!</strong> Could Not Delete
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
