@@ -88,6 +88,12 @@ class ProjectControllerWeb extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'project_'=>'max:30',
+            'project_description'=>'min:50|max:190',
+            'budget'=>'max:20',
+            'completion'=>'max:3'
+        ]);
         $project = Project::create([
             'project_name' => $request['name'],
             'project_description' => $request['description'],

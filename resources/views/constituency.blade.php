@@ -44,7 +44,7 @@
                             <p>Due: <strong>{{ $project->due_date }}</strong></p>
                             <p>Department: {{ $project->project_category }}</p>
                             @foreach($constituencies as $constituency)
-                                @if($project->project_constituency == 1)
+                                @if($project->project_constituency == $constituency->constituency_id)
                                     <p>{{ $constituency->constituency_name }} constituency</p>
                                 @endif
                             @endforeach

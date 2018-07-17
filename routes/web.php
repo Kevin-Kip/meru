@@ -162,9 +162,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/report',[
-    'as' => 'projects.report',
-   'uses' => 'PdfController@index'
+Route::get('admin/report',[
+    'as' => 'admin.report',
+   'uses' => 'PdfController@showForAdmin'
 ]);
 Route::get('/count',[
     'as' => 'count.all',

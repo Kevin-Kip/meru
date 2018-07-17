@@ -10,11 +10,15 @@ use App\Project;
 use App\User;
 use App\Ward;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectsController extends Controller
 {
     public function getProjects(){
-        return Project::all();
+        $projects = DB::table('projects')
+            ->leftJoin('photos','photos.photo_id','=','projects.project_id')
+            ->get();
+        return $projects;
     }
     public function getConstituencies(){
         return Constituency::all();

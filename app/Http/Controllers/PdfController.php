@@ -16,7 +16,12 @@ class PdfController extends Controller
      */
     public function index()
     {
+        return 6;
         return Excel::download(new ReportExport(),'report.xlsx');
+    }
+
+    public function showForAdmin(){
+        return view('admin.reports');
     }
 
     /**
@@ -30,11 +35,15 @@ class PdfController extends Controller
     }
 
     public function ongoing(){
-        return Project::where('completion','<',100)->get();
+        return Project::where('completion','<',100)
+            ->leftJoin('photos','photos.photo_project','=','projects.project_id')
+            ->get();
     }
 
     public function completed(){
-        return Project::where('completion','=',100)->get();
+        return Project::where('completion','=',100)
+            ->leftJoin('photos','photos.photo_project','=','projects.project_id')
+            ->get();
     }
 
     public function chartData(){

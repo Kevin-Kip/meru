@@ -58,7 +58,7 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Generate Report">
-                <a class="nav-link" href="{{ url('/report') }}">
+                <a class="nav-link" href="{{ url('/admin/report') }}">
                     <i class="fa fa-fw fa-book"></i>
                     <span class="nav-link-text">Generate Report</span>
                 </a>

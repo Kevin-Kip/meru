@@ -1,5 +1,5 @@
 $.ajax({
-    'url': "http://127.0.0.1:8000/api/chart-data",
+    'url': "/api/chart-data",
     'method': "GET",
     'dataType': "json",
     'success': function (data) {

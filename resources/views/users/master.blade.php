@@ -39,13 +39,13 @@
                     <span class="nav-link-text">Messages</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Constituencies">
                 <a class="nav-link" href="{{ route('users.constituencies') }}">
-                    <i class="fa fa-fw fa-envelope-o"></i>
+                    <i class="fa fa-fw fa-map-marker"></i>
                     <span class="nav-link-text">Constituencies</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Generate Report">
                 <a class="nav-link" href="{{ url('/report') }}">
                     <i class="fa fa-fw fa-book"></i>
                     <span class="nav-link-text">Generate Report</span>

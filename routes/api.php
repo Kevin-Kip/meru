@@ -39,10 +39,10 @@ Route::get('/photos', [
 ]);
 Route::get('/projects', [
     'uses' => 'ProjectsController@getProjects'
-]);
+])->middleware('cors');
 Route::get('/projects/{id}', [
     'uses' => 'ProjectsController@getProjectById'
-]);
+])->middleware('cors');
 Route::post('/feedback', [
     'uses' => 'ProjectsController@sendFeedback'
 ])->middleware('cors');
@@ -70,4 +70,9 @@ Route::get('/chart-data/',[
 Route::get('constituencies/{id}/wards',[
     'as' => 'wards',
     'uses' => 'WardController@getByConstituency'
+])->middleware('cors');
+
+Route::get('/reports/download', [
+    'as' => 'report.download',
+   'uses' => 'PdfController@index'
 ])->middleware('cors');
