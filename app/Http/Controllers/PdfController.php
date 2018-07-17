@@ -26,11 +26,11 @@ class PdfController extends Controller
      */
     public function count()
     {
-        return DB::table('projects')->where("name",'=',"Dam")->pluck('project_id');
+        return DB::table('projects')->get();
     }
 
     public function ongoing(){
-        return Project::where('completion','<',100)->get();
+        return 5;
     }
 
     public function completed(){

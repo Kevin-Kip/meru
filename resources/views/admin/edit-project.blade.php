@@ -80,11 +80,6 @@
                             <label for="ward">Ward:</label>
                             <select name="project_ward" id="ward" class="form-control" required>
                                 <option disabled selected value> -- select an option -- </option>
-                                @if('wards')
-                                    @foreach($wards as $ward)
-                                        <option value="{{ $ward->ward_name }}">{{ $ward->ward_name }}</option>
-                                    @endforeach
-                                @endif
                             </select>
                         </div>
                         <div class="form-group">
@@ -104,4 +99,28 @@
         </div>
         @endif
     <!-- /.container-fluid-->
+@endsection
+@section('customScripts')
+    <script>
+        let wardList = $('#ward');
+        $("#constituency").change(function () {
+            let id = document.getElementById('constituency').value;
+            wardList.empty();
+            $.ajax({
+                'url':"http://localhost:8000/api/constituencies/"+id+"/wards",
+                'method': "GET",
+                'dataType': 'json',
+                success: function (data) {
+                    wardList.append("<option disabled selected value> -- select an option -- </option>");
+                    for (let i = 0; i < data.length;i++ ){
+                        wardList.append("<option value='"+ data[i].ward_name +"'>"+data[i].ward_name+"</option>");
+                    }
+                },
+                error: function (error) {
+                    alert("An error occured. Cound not fetch wards");
+                    console.log(error)
+                }
+            })
+        })
+    </script>
 @endsection

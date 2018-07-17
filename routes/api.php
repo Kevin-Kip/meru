@@ -47,7 +47,7 @@ Route::post('/feedback', [
     'uses' => 'ProjectsController@sendFeedback'
 ])->middleware('cors');
 //For Charts
-Route::get('/count/',[
+Route::get('/count',[
     'as' => 'count',
     'uses' => 'PdfController@count'
 ])->middleware('cors');
