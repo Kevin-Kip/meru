@@ -1,0 +1,23 @@
+//get everything
+#constituencies
+http://127.0.0.1:8000/api/constituencies
+#wards
+http://127.0.0.1:8000/api/wards
+#projects
+http://127.0.0.1:8000/api/projects
+#departments
+http://127.0.0.1:8000/api/departments
+#photos
+http://127.0.0.1:8000/api/photos
+
+
+//get single project by ID
+http://127.0.0.1:8000/api/projects/id
+
+//get projects by department
+http://127.0.0.1:8000/api/departments/departmentID/projects
+
+//get projects by constituency
+http://127.0.0.1:8000/api/constituency/constituencyID/projects
+
+//send feedback
