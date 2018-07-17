@@ -10,7 +10,7 @@
                     </button>
                 </div>
             @elseif(session()->get('message') == "error")
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible show" role="alert">
                     <strong>Ooops!</strong> Could Not Update
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -77,8 +77,6 @@
                 </div>
             </div>
         </div>
-        {{--@endforeach--}}
         @endif
-    </div>
     <!-- /.container-fluid-->
 @endsection

@@ -10,6 +10,14 @@ http://127.0.0.1:8000/api/departments
 #photos
 http://127.0.0.1:8000/api/photos
 
+//ongoing projects
+http://127.0.0.1:8000/api/projects/ongoing
+
+//completed projects
+http://127.0.0.1:8000/api/projects/completed
+
+//more project data
+http://127.0.0.1:8000/api/chart-data
 
 //get single project by ID
 http://127.0.0.1:8000/api/projects/id
@@ -21,3 +29,11 @@ http://127.0.0.1:8000/api/departments/departmentID/projects
 http://127.0.0.1:8000/api/constituency/constituencyID/projects
 
 //send feedback
+http://127.0.0.1:8000/api/feedback
+    --data needed {
+    sender_first_name
+    sender_last_name
+    sender_email
+    sender_constituency
+    message
+    }

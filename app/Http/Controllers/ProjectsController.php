@@ -45,20 +45,18 @@ class ProjectsController extends Controller
         return Project::where('project_constituency', $id)->get();
     }
     public function sendFeedback(Request $request){
-        return $request->all();
-//        TODO fix this
-//        $message = Message::create([
-//            'sender_first_name' => $request['sender_first_name'],
-//            'sender_last_name' => $request['sender_last_name'],
-//            'sender_email' => $request['email'],
-//            'sender_constituency' => $request['sender_constituency'],
-//            'message' => $request['message']
-//        ]);
-//
-//        if ($message){
-//            return response()->json("success");
-//        } else {
-//            return response()->json("error");
-//        }
+        $message = Message::create([
+            'sender_first_name' => $request['sender_first_name'],
+            'sender_last_name' => $request['sender_last_name'],
+            'sender_email' => $request['email'],
+            'sender_constituency' => $request['sender_constituency'],
+            'message' => $request['message']
+        ]);
+
+        if ($message){
+            return response()->json("success");
+        } else {
+            return response()->json("error");
+        }
     }
 }

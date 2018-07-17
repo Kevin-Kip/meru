@@ -44,12 +44,12 @@ class UserController extends Controller
     }
 
     public function loguserin(Request $request){
-        if(Auth::attempt([
-            'email' => $request['email'],
-            'password' => $request['password']
-        ], true)){
-            if (Auth::user()->role = "Admin"){
-                return view('admin.admin')->with('user', Auth::user());
+        if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']],true)){
+            $user = Auth::user();
+            Auth::login($user);
+            Session::put('user',$user);
+            if ($user->role = "Admin"){
+                return redirect()->route('admin.home');
             } else {
                 return redirect()->route('users.dashboard');
             }
