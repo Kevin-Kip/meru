@@ -11,7 +11,7 @@
                 </div>
             @elseif($message == "error")
                 <div class="alert alert-danger alert-dismissible show" role="alert">
-                    <strong>Ooops!</strong> Could not Save Item
+                    <strong>Ooops!</strong> Could not Save
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -86,9 +86,6 @@
                             <label for="ward">Ward:</label>
                             <select name="ward" id="ward" class="form-control" required>
                                 <option disabled selected value> -- select an option -- </option>
-                                @foreach($wards as $ward)
-                                    <option value="{{ $ward->ward_name }}">{{ $ward->ward_name }}</option>
-                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -106,7 +103,6 @@
                 </div>
             </div>
         </div>
-    </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
@@ -143,16 +139,18 @@
 @endsection
 @section('customScripts')
     <script>
+        let wardList = $('#ward');
         $("#constituency").change(function () {
             let id = document.getElementById('constituency').value;
+            wardList.empty();
             $.ajax({
-                'url':"http://127.0.0.1:8000/"+id+"/constituencies/1/wards",
+                'url':"http://localhost:8000/api/constituencies/"+id+"/wards",
                 'method': "GET",
                 'dataType': 'json',
                 success: function (data) {
-                    alert(data);
+                    wardList.append("<option disabled selected value> -- select an option -- </option>");
                     for (let i = 0; i < data.length;i++ ){
-                        alert(i)
+                        wardList.append("<option value='"+ data[i].ward_name +"'>"+data[i].ward_name+"</option>");
                     }
                 },
                 error: function (error) {

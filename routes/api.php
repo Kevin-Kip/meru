@@ -26,7 +26,7 @@ Route::get('/constituency/{id}/projects', [
     'uses' => 'ProjectsController@getProjectsByConstituency'
 ]);
 Route::get('/wards', [
-    'uses' => 'ProjectsController@getWards'
+    'uses' => 'WardController@all'
 ]);
 Route::get('/departments', [
     'uses' => 'ProjectsController@getDepartments'
@@ -69,5 +69,5 @@ Route::get('/chart-data/',[
 
 Route::get('constituencies/{id}/wards',[
     'as' => 'wards',
-    'uses' => 'WardController@getById'
+    'uses' => 'WardController@getByConstituency'
 ])->middleware('cors');

@@ -116,7 +116,7 @@ class ProjectControllerWeb extends Controller
         if ($project){
             return redirect()->back()->with('message',"success");
         } else {
-            return back()->with('message',"error");
+            return redirect()->back()->with('message',"error");
         }
     }
 

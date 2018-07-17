@@ -9,15 +9,14 @@ use Illuminate\Support\Facades\DB;
 
 class WardController extends Controller
 {
-    public function all($id){
+    public function all(){
         return Ward::all();
     }
 
     public function constituencies(){
         return Constituency::all();
     }
-
-    public function getById($id){
-        return DB::table('wards')->where('ward_constituency','=',$id)->get();
+    public function getByConstituency($id){
+        return Ward::where('ward_constituency', $id)->get();
     }
 }
