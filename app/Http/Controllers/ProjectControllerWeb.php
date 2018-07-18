@@ -169,6 +169,12 @@ class ProjectControllerWeb extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'project_'=>'max:30',
+            'project_description'=>'min:50|max:190',
+            'budget'=>'max:20',
+            'completion'=>'max:3'
+        ]);
         if (Project::where('project_id',$id)->update($request->except('_token','submit'))){
             return redirect()->back()->with('message',"success");
         } else {

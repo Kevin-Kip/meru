@@ -61,9 +61,8 @@ class UserController extends Controller
     }
 
     public function logOut(){
-        if(Auth::logout()) {
-            return Redirect::route('projects.home');
-        }
+        Session::forget('user');
+        return \redirect()->route('user.signin');
     }
 
     /**
@@ -82,6 +81,13 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'email'=>'required|max:35|unique:users',
+            'password'=>'required|max:35|min:6',
+            'first_name'=>'required|max:35',
+            'last_name'=>'required|max:35',
+            'phone'=>'required|max:15'
+        ]);
         $user = User::create([
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
@@ -134,6 +140,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'email'=>'required|max:35|unique:users',
+            'password'=>'required|max:35|min:6',
+            'first_name'=>'required|max:35',
+            'last_name'=>'required|max:35',
+            'phone'=>'required|max:15'
+        ]);
         if (User::where('user_id',$id)->update($request->except('_token','submit'))){
             return redirect()->back()->with('message',"success");
         } else {

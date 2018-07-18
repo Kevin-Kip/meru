@@ -48,6 +48,13 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'sender_first_name'=>'required|max:35',
+            'sender_last_name'=>'required',
+            'email'=>'required|max:35',
+            'sender_constituency'=>'required',
+            'message'=>'required'
+        ]);
 
         $message = Message::create([
             'sender_first_name' => $request['sender_first_name'],

@@ -84,11 +84,17 @@
                     </div>
                 </form>
             </li>
-            @if(Auth::check())
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-            </li>
+            @if(session()->has('user'))
+                @if(session()->get('user')->user_role == "Admin")
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                    </li>
+                @else
+                    <script>window.location = "/auth/login"</script>
+                @endif
+            @else
+                <script>window.location = "/auth/login"</script>
             @endif
         </ul>
     </div>
@@ -102,7 +108,6 @@
             </li>
             <li class="breadcrumb-item active">Admin Dashboard</li>
         </ol>
-
 
         @yield('content')
     </div>
@@ -134,7 +139,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ url('logout') }}">Logout</a>
+                    <a class="btn btn-primary" href="{{ url('/sign-out') }}">Logout</a>
                 </div>
             </div>
         </div>

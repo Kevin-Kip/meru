@@ -14,10 +14,6 @@
                 <i class="fa fa-check"></i>
                 Completed Projects
             </button>
-            <a class="btn btn-info" id="downloadButton" href="#">
-                <i class="fa fa-download"></i>
-                Download
-            </a>
         </div>
         <p></p>
         <!-- Example DataTables Card-->
@@ -48,7 +44,6 @@
     <script>
         let reportBody = $('#reportBody');
         $('#allProjects').on('click', function () {
-            $('#downloadButton').attr("value","all");
             reportBody.empty();
             $.ajax({
                 url: '/api/projects',
@@ -56,8 +51,9 @@
                 dataType: 'json',
                 success: function (data) {
                     for (let i=0;i<data.length;i++) {
-                        reportBody.append("<tr><td>"+data[i].project_name+"</td><td>"+data[i].project_category+"</td><td>"+data[i].project_constituency+"</td><td>"+data[i].budget+"</td><td>"+data[i].completion+"</td><td>"+data[i].due_date+"</td></tr>");
+                        reportBody.append("<tr><td>"+data[i].project_name+"</td><td>"+data[i].project_category+"</td><td>"+data[i].project_constituency+"</td><td>"+data[i].budget+"</td><td>"+data[i].completion+"%</td><td>"+data[i].due_date+"</td></tr>");
                     }
+                    reportBody.append("<tr><td><a href='/reports/download' class='btn btn-primary'>Download</a></td></tr>")
                 },
                 error: function () {
                     alert('Error! Unable to fetch projects')
@@ -66,17 +62,16 @@
         });
 
         $('#ongoingButton').on('click', function () {
-            $('#downloadButton').attr("value","ongoing");
             reportBody.empty();
            $.ajax({
               url: '/api/ongoing',
               method: 'GET',
               dataType: 'json',
               success: function (data) {
-                  console.log(data);
                   for (let i=0;i<data.length;i++) {
-                      reportBody.append("<tr><td>"+data[i].project_name+"</td><td>"+data[i].project_category+"</td><td>"+data[i].project_constituency+"</td><td>"+data[i].budget+"</td><td>"+data[i].completion+"</td><td>"+data[i].due_date+"</td></tr>");
+                      reportBody.append("<tr><td>"+data[i].project_name+"</td><td>"+data[i].project_category+"</td><td>"+data[i].project_constituency+"</td><td>"+data[i].budget+"</td><td>"+data[i].completion+"%</td><td>"+data[i].due_date+"</td></tr>");
                   }
+                  reportBody.append("<tr><td><a href='/reports/download/ongoing' class='btn btn-primary'>Download</a></td></tr>")
               },
                error: function () {
                    alert('Error! Unable to fetch projects')
@@ -85,17 +80,16 @@
         });
 
         $('#completedButton').on('click', function () {
-            $('#downloadButton').attr("value","complete");
             reportBody.empty();
             $.ajax({
                 url: '/api/completed',
                 method: 'GET',
                 dataType: 'json',
                 success: function (data) {
-                    console.log(data);
                     for (let i=0;i<data.length;i++) {
-                        reportBody.append("<tr><td>"+data[i].project_name+"</td><td>"+data[i].project_category+"</td><td>"+data[i].project_constituency+"</td><td>"+data[i].budget+"</td><td>"+data[i].completion+"</td><td>"+data[i].due_date+"</td></tr>");
+                        reportBody.append("<tr><td>"+data[i].project_name+"</td><td>"+data[i].project_category+"</td><td>"+data[i].project_constituency+"</td><td>"+data[i].budget+"</td><td>"+data[i].completion+"%</td><td>"+data[i].due_date+"</td></tr>");
                     }
+                    reportBody.append("<tr><td><a href='/reports/download/completed' class='btn btn-primary'>Download</a></td></tr>")
                 },
                 error: function () {
                     alert('Error! Unable to fetch projects')
@@ -103,15 +97,5 @@
             });
         });
 
-        $('#downloadButton').on('click', function () {
-            let buttonValue = $('#downloadButton').val();
-            if (buttonValue === "all"){
-
-            } else if (buttonValue === "ongoing"){
-                alert("All of them going")
-            } else if (buttonValue === "complete"){
-                alert("All of them done")
-            }
-        });
     </script>
 @endsection

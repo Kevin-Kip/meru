@@ -10,23 +10,20 @@ namespace App\Http\Controllers;
 
 
 use App\Project;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ReportExport implements FromCollection, WithHeadings, ShouldAutoSize
+class ReportOngoing implements FromCollection, WithHeadings, ShouldAutoSize
 {
-    use Exportable;
+
     /**
-     * @return Builder
+     * @return Collection
      */
     public function collection()
     {
-        return Project::all();
+        return Project::where('completion','<',100)->get();
     }
 
     /**

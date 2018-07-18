@@ -8,6 +8,7 @@ use App\Message;
 use App\Project;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
 
 class DepartmentController extends Controller
 {
@@ -45,6 +46,10 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'department_name'=>'required|max:35',
+            'department_description'=>'required|max:190'
+        ]);
         $file = $request['file'];
         $path = '';
         if ($request->hasFile('file')){
@@ -62,40 +67,6 @@ class DepartmentController extends Controller
         } else {
             return redirect()->back()->with('message',"error");
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**

@@ -16,8 +16,15 @@ class PdfController extends Controller
      */
     public function index()
     {
-        return 6;
-        return Excel::download(new ReportExport(),'report.xlsx');
+        return Excel::download(new ReportExport(), "projects.xlsx");
+    }
+
+    public function reportOngoing(){
+        return Excel::download(new ReportOngoing(), "ongoingProjects.xlsx");
+    }
+
+    public function reportComplete(){
+        return Excel::download(new ReportCompleted(),'completedProjects.xlsx');
     }
 
     public function showForAdmin(){

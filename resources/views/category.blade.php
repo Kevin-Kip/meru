@@ -29,7 +29,7 @@
                         <div class="col-md-4 md-margin-bottom-40">
                             <div class="card small">
                                 <div class="card-image">
-                                    <img class="img-responsive" src="{{ asset($project->photos['photo_path'])}}" alt="">
+                                    <img class="img-responsive" style="height: 200px" src="{{ asset($project->photos['photo_path'])}}" alt="">
                                     <span class="card-title">{{ $project->project_name }}</span>
                                 </div>
                                 <div class="card-content">
@@ -44,7 +44,7 @@
                                     <p>Due: <strong>{{ $project->due_date }}</strong></p>
                                     <p>Department: {{ $project->project_category }}</p>
                                     @foreach($constituencies as $constituency)
-                                        @if($project->project_constituency == 1)
+                                        @if($project->project_constituency == $constituency->constituency_id)
                                             <p>{{ $constituency->constituency_name }} constituency</p>
                                         @endif
                                     @endforeach

@@ -107,7 +107,7 @@
             let id = document.getElementById('constituency').value;
             wardList.empty();
             $.ajax({
-                'url':"http://localhost:8000/api/constituencies/"+id+"/wards",
+                'url': "/api/constituencies/"+id+"/wards",
                 'method': "GET",
                 'dataType': 'json',
                 success: function (data) {

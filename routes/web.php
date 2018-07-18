@@ -65,6 +65,12 @@ Route::post('/auth/login/',[
 Route::post('/logout', [
    Auth::logout()
 ]);
+
+Route::get('/sign-out', [
+   'as' => 'user.signout',
+   'uses' => 'UserController@logOut'
+]);
+
 Route::get('/users/dashboard',[
    'as' => 'users.home',
    'uses' => 'ManagerController@userDashboard'
@@ -157,11 +163,6 @@ Route::post('/contact/', [
    'uses' => 'MessageController@store'
 ]);
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('admin/report',[
     'as' => 'admin.report',
    'uses' => 'PdfController@showForAdmin'
@@ -209,3 +210,18 @@ Route::post('/admin/departments/{id}/delete', [
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/reports/download', [
+    'as' => 'report.download',
+    'uses' => 'PdfController@index'
+]);
+
+Route::get('/reports/download/ongoing', [
+    'as' => 'report.download',
+    'uses' => 'PdfController@reportOngoing'
+]);
+
+Route::get('/reports/download/completed', [
+    'as' => 'report.download',
+    'uses' => 'PdfController@reportComplete'
+]);

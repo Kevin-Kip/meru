@@ -72,7 +72,3 @@ Route::get('constituencies/{id}/wards',[
     'uses' => 'WardController@getByConstituency'
 ])->middleware('cors');
 
-Route::get('/reports/download', [
-    'as' => 'report.download',
-   'uses' => 'PdfController@index'
-])->middleware('cors');

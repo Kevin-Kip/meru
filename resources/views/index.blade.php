@@ -50,10 +50,10 @@
                         <div class="col-md-4 md-margin-bottom-40">
                             <div class="card small">
                                 <div class="card-image">
-                                    <img class="img-responsive" src="{{ asset($department->department_photo)}}" alt="">
+                                    <img class="img-responsive" style="height: 200px" src="{{ asset($department->department_photo)}}" alt="">
                                     <span class="card-title">{{ $department->department_name }}</span>
                                 </div>
-                                <div class="card-content">
+                                <div class="card-content" style="height: 200px">
                                     <p>{{ $department->department_description }}</p>
                                 </div>
                             </div>

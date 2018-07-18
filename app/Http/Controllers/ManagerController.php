@@ -94,6 +94,9 @@ class ManagerController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name'=>'required|max:35|unique:constituencies'
+        ]);
         $constituency = Constituency::create([
            'name' => $request['name']
         ]);
