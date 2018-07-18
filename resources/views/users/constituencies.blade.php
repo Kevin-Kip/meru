@@ -1,5 +1,6 @@
 @extends('users.master')
 @section('content')
+    @include('users.cards')
     <p></p>
     <!-- Example DataTables Card-->
     <div class="card mb-3">

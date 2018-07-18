@@ -31,6 +31,10 @@ class PdfController extends Controller
         return view('admin.reports');
     }
 
+    public function showForUsers(){
+        return view('users.reports');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

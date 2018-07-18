@@ -225,3 +225,8 @@ Route::get('/reports/download/completed', [
     'as' => 'report.download',
     'uses' => 'PdfController@reportComplete'
 ]);
+
+Route::get('/users/reports', [
+    'as' => 'users.report',
+    'uses' => 'PdfController@showForUsers'
+]);

@@ -1,11 +1,6 @@
 @extends('users.master')
 @section('content')
-    <div class="text-white">
-        <a class="btn btn-primary" href="{{ url('/report') }}">
-            <i class="fa fa-plus"></i>
-            Generate Report
-        </a>
-    </div>
+    @include('users.cards')
     <p></p>
     <!-- Example DataTables Card-->
     <div class="card mb-3">
