@@ -33,7 +33,10 @@ class ProjectsController extends Controller
         return Photo::all();
     }
     public function getProjectById($id){
-        return Project::where('project_id',$id)->get();
+        $project = Project::where('project_id',$id)->get();
+        $photos = Photo::where('photo_project',$id)->get();
+        $project[0]["photos"] = $photos;
+        return $project;
     }
     public function getProjectsByDepartment($id){
         $department = Department::where('department_id', $id)->get();

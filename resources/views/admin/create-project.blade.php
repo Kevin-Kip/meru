@@ -2,14 +2,14 @@
 @section('content')
         <!-- Message Card-->
         @if('message')
-            @if($message == "success")
+            @if(session()->get('message') == "success")
                 <div class="alert alert-success alert-dismissible show" role="alert">
                     <strong>Success!</strong> Saved Successfully
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            @elseif($message == "error")
+            @elseif(session()->get('message') == "error")
                 <div class="alert alert-danger alert-dismissible show" role="alert">
                     <strong>Ooops!</strong> Could not Save
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
