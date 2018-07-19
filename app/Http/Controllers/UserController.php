@@ -57,6 +57,8 @@ class UserController extends Controller
             } else {
                 return redirect()->route('users.home');
             }
+        } else {
+            return \redirect()->back()->with('message',"error");
         }
     }
 
@@ -124,7 +126,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $users = DB::table('users')->where('user_id','=',$id)->get();
+        $users = DB::table('users')->where('id','=',$id)->get();
         $constituencies = Constituency::all();
         $contractors = DB::table('users')->where('user_role','=',"Contractor")->get();
         $wards = Ward::all();
@@ -141,17 +143,21 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'email'=>'required|max:35|unique:users',
+            'email'=>'required|max:35',
             'password'=>'required|max:35|min:6',
             'first_name'=>'required|max:35',
             'last_name'=>'required|max:35',
             'phone'=>'required|max:15'
         ]);
-        if (User::where('user_id',$id)->update($request->except('_token','submit'))){
-            return redirect()->back()->with('message',"success");
-        } else {
-            return redirect()->back()->with('message',"error");
-        }
+        $user = User::where('id',$id)->first();
+        $user->email = $request['email'];
+        $user->password = Hash::make($request['password']);
+        $user->first_name = $request['first_name'];
+        $user->last_name = $request['last_name'];
+        $user->phone = $request['phone'];
+        $user->user_constituency = $request['user_constituency'];
+        $user->user_role = $request['user_role'];
+        return $user->save() ? redirect()->back()->with('message', "success") : redirect()->back()->with('message', "error");
     }
 
     /**
@@ -162,11 +168,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::where('user_id',$id);
-        if ($user->delete()){
-            return redirect()->back()->with('message', "success");
-        } else {
-            return redirect()->back()->with('message', "error");
-        }
+        $user = User::where('id',$id);
+        return $user->delete() ? redirect()->back()->with('message', "success") : redirect()->back()->with('message', "error");
     }
 }

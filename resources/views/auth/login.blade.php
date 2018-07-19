@@ -33,7 +33,7 @@
                 {{ csrf_field() }}
                 @if($errors->any())
                     @foreach($errors->all() as $error)
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <div class="alert alert-danger alert-dismissible show" role="alert">
                             <strong>Oops!</strong> {{ $error }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -52,7 +52,7 @@
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
             </form>
             <div class="text-center">
-                <a class="d-block small" href="{{ route('password.request') }}">Forgot Password?</a>
+                {{--<a class="d-block small" href="{{ route('password.request') }}">Forgot Password?</a>--}}
                 {{--TODO add password reset--}}
             </div>
         </div>

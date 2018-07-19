@@ -136,7 +136,9 @@ class ProjectControllerWeb extends Controller
     {
         $departments = Department::all();
         $constituencies = Constituency::all();
-        $project = DB::table('projects')->where('project_id','=',$id)->get();
+        $project = DB::table('projects')->where('project_id','=',$id)
+            ->leftJoin('constituencies','constituencies.constituency_id','=','projects.project_constituency')
+            ->get();
         $photos = DB::table('photos')->where('photo_project','=',$id)->get();
         if ($project){
             return view('project', compact('departments','constituencies','project','photos'));

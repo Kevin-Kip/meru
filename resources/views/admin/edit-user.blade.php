@@ -27,7 +27,7 @@
                 <i class="fa fa-table"></i> New Project</div>
             <div class="card-bodyalign-content-center">
                 <div class="col-sm-12">
-                    <form action="{{ route('user.update',['id'=>$users[0]->user_id]) }}" method="post">
+                    <form action="{{ route('user.update',['id'=>$users[0]->id]) }}" method="post">
                         {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="email">Email:</label>

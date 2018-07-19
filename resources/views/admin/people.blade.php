@@ -54,12 +54,12 @@
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->user_role }}</td>
                                     <td>
-                                        <a href="{{ route('user.edit',['id'=>$user->user_id]) }}" class="btn btn-primary">
+                                        <a href="{{ route('user.edit',['id'=>$user->id]) }}" class="btn btn-primary">
                                             Edit
                                         </a>
                                     </td>
                                     <td>
-                                        <form action="{{ route('user.delete',['id'=>$user->user_id]) }}" method="post">
+                                        <form action="{{ route('user.delete',['id'=>$user->id]) }}" method="post">
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
