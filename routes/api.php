@@ -40,9 +40,11 @@ Route::get('/photos', [
 Route::get('/projects', [
     'uses' => 'ProjectsController@getProjects'
 ])->middleware('cors');
+
 Route::get('/projects/{id}', [
     'uses' => 'ProjectsController@getProjectById'
 ])->middleware('cors');
+
 Route::post('/feedback', [
     'uses' => 'ProjectsController@sendFeedback'
 ])->middleware('cors');

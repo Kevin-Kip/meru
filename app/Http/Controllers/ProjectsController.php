@@ -52,7 +52,7 @@ class ProjectsController extends Controller
         $message = Message::create([
             'sender_first_name' => $request['sender_first_name'],
             'sender_last_name' => $request['sender_last_name'],
-            'sender_email' => $request['email'],
+            'sender_email' => $request['sender_email'],
             'sender_constituency' => $request['sender_constituency'],
             'message' => $request['message']
         ]);
