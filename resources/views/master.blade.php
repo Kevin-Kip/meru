@@ -73,7 +73,7 @@
                 <div class="col-lg-6">
                     <div class="copyright">
                         <p>
-                            <span>&copy; Copyright 2017 All right reserved.</span>
+                            <span>&copy; Copyright 2018 Meru County Project Management System.</span>
                         </p>
                     </div>
                 </div>
