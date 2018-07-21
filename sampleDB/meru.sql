@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 17, 2018 at 01:29 PM
+-- Generation Time: Jul 21, 2018 at 09:20 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -84,9 +84,7 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`department_id`, `department_name`, `department_description`, `department_photo`, `created_at`, `updated_at`) VALUES
-(1, 'ICT', 'ICT department ICT department ICT department ICT departmentICT department ICT department ICT department ICT department ICT department ICT department', 'home/img/FqRBsRTzNG58uZUDwpYxj1SB3soNAOjNepzXose4.jpeg', '2018-07-17 03:46:43', '2018-07-17 03:46:43'),
-(2, 'Roads', 'Roads Department', 'home/img/iduY2DQPZLDAMEeevjsSc1qCC1VP1RwLDzZJ5xDB.jpeg', '2018-07-17 03:47:22', '2018-07-17 03:47:22'),
-(5, 'Educations', 'Educations', 'home/img/6OvJXvESLSjCjsRvdjyhK1rLj713hYzScWv95fKH.jpeg', '2018-07-17 03:48:40', '2018-07-17 03:48:40');
+(2, 'Education', 'Kenya is the 7th largest funder of Education in the world. The Education sector continues to be the largest recipient of government budget totalling over Ksh.300 billion annually.', 'home/img/kfOjrBYB9IpPXlIxXV2IHxvpKihBS9RYPxS6TWAq.jpeg', '2018-07-21 16:16:18', '2018-07-21 16:16:18');
 
 -- --------------------------------------------------------
 
@@ -105,13 +103,6 @@ CREATE TABLE `messages` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `messages`
---
-
-INSERT INTO `messages` (`message_id`, `sender_first_name`, `sender_last_name`, `sender_email`, `sender_constituency`, `message`, `created_at`, `updated_at`) VALUES
-(1, 'Kelvin', 'Pac', 'maruchui@gmail.com', 'Central Imenti', 'New Message', '2018-07-17 06:24:34', '2018-07-17 06:24:34');
-
 -- --------------------------------------------------------
 
 --
@@ -129,6 +120,7 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2018_06_09_154208_create_admins_table', 1),
 (4, '2018_06_24_100946_create_constituencies_table', 1),
@@ -136,8 +128,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2018_06_27_140620_create_messages_table', 1),
 (7, '2018_07_12_121820_create_departments_table', 1),
 (8, '2018_07_12_122428_create_projects_table', 1),
-(9, '2018_07_12_122516_create_photos_table', 1),
-(11, '2014_10_12_000000_create_users_table', 2);
+(9, '2018_07_12_122516_create_photos_table', 1);
 
 -- --------------------------------------------------------
 
@@ -165,22 +156,6 @@ CREATE TABLE `photos` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `photos`
---
-
-INSERT INTO `photos` (`photo_id`, `photo_path`, `photo_project`, `created_at`, `updated_at`) VALUES
-(1, 'uploads/Testing wards/WxICmId0QdZwQb1U1Zf0CR9rMfdbvmvbr3stygBQ.png', 1, '2018-07-17 06:57:17', '2018-07-17 06:57:17'),
-(2, 'uploads/mm/53ypbHJobpCfQsxLCeGlGDV8waokmOARTT2i2tbQ.jpeg', 2, '2018-07-17 08:05:44', '2018-07-17 08:05:44'),
-(3, 'uploads/Mmmmmmm/YlqMz03mWHyI714gcmpLbnU1ZgJWQS7G3jL1eJWG.jpeg', 3, '2018-07-17 08:06:32', '2018-07-17 08:06:32'),
-(4, 'uploads/n/B74Dpd3piLeFiggQLXKZ5INJhrOHj6X4myQVxBad.jpeg', 4, '2018-07-17 08:07:33', '2018-07-17 08:07:33'),
-(5, 'uploads/m/HttidXqgnhExgkfGzzQYheH8ul16zR5txI2U5lzS.jpeg', 5, '2018-07-17 08:09:10', '2018-07-17 08:09:10'),
-(6, 'uploads/b/mZQ5qCxNpC37hY8eK5wuitYvA0ZAMJmUX2MCJ6DF.jpeg', 6, '2018-07-17 08:09:48', '2018-07-17 08:09:48'),
-(7, 'uploads/m/xELcCDA3vNvhTEk3DFaLenxwAYci3G8hUG1nLzB2.jpeg', 7, '2018-07-17 08:10:47', '2018-07-17 08:10:47'),
-(8, 'uploads/m/6hJVcNt2WNoMzsQ9vXpp2JNtnkl53oZ4f38Gv8Wv.jpeg', 8, '2018-07-17 08:11:25', '2018-07-17 08:11:25'),
-(9, 'uploads/b/PGvxCo2vrSV5gpXvHddt7vbsU7LUvTt3Q4SfXh56.jpeg', 9, '2018-07-17 08:12:12', '2018-07-17 08:12:12'),
-(10, 'uploads/k/x6iJaXhvq41o8Omn68X3zn6Yk0EVEAy2pnd704Ea.jpeg', 10, '2018-07-17 08:12:50', '2018-07-17 08:12:50');
-
 -- --------------------------------------------------------
 
 --
@@ -202,22 +177,6 @@ CREATE TABLE `projects` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `projects`
---
-
-INSERT INTO `projects` (`project_id`, `project_name`, `project_description`, `project_category`, `project_constituency`, `project_ward`, `budget`, `completion`, `contractor`, `due_date`, `added_by`, `created_at`, `updated_at`) VALUES
-(1, 'Testing wards', 'ytesring qards', 'ICT', 8, 'Abogeta West', '56bMillion', 77, 'Kelvin Pac', '2018-07-07', 'Admin', '2018-07-17 06:57:17', '2018-07-17 06:57:17'),
-(2, 'mm', 'mmmmmmmmmmmmmmmmmmmmmmmmmm', 'Roads', 3, 'Igoji East', '77 Billion', 100, 'Kelvin Pac', '2018-08-02', 'Admin', '2018-07-17 08:05:44', '2018-07-17 08:05:44'),
-(3, 'Mmmmmmm', 'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww', 'Educations', 8, 'Abothuguchi West', '4 Billion', 1, 'Kelvin Pac', '2018-07-14', 'Admin', '2018-07-17 08:06:32', '2018-07-17 08:06:32'),
-(4, 'n', 'nnnnnnnnnnnnnnnnnnnnnnnnnnnn', 'ICT', 5, 'Thangatha', '234 Million', 23, 'Kelvin Pac', '2018-08-04', 'Admin', '2018-07-17 08:07:33', '2018-07-17 08:07:33'),
-(5, 'm', 'xxxxxxxxxxxxxxxx', 'ICT', 4, 'Ntima East', '4 Billion', 92, 'Kelvin Pac', '2018-08-04', 'Admin', '2018-07-17 08:09:10', '2018-07-17 08:09:10'),
-(6, 'b', 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 'Roads', 7, 'Athwana', '45 Million', 100, 'Kelvin Pac', '2018-07-07', 'Admin', '2018-07-17 08:09:48', '2018-07-17 08:09:48'),
-(7, 'm', 'mmmmmmmmmmmmmmmmmmmmmmmmmm', 'Roads', 2, 'Kegoi', '56bMillion', 65, 'Kelvin Pac', '2018-08-04', 'Admin', '2018-07-17 08:10:47', '2018-07-17 08:10:47'),
-(8, 'm', 'mmmmmmmmmmmmmmmmmmmmmmmmmm', 'ICT', 1, 'Kisima', '6 Billion', 43, 'Kelvin Pac', '2018-08-04', 'Admin', '2018-07-17 08:11:24', '2018-07-17 08:11:24'),
-(9, 'b', 'b', 'Educations', 9, 'Igembe East Njia', '6 Billion', 87, 'Kelvin Pac', '2018-08-03', 'Admin', '2018-07-17 08:12:11', '2018-07-17 08:12:11'),
-(10, 'k', 'k', 'ICT', 1, 'Kisima', '6 Billion', 56, 'Kelvin Pac', '2018-08-02', 'Admin', '2018-07-17 08:12:50', '2018-07-17 08:16:55');
 
 -- --------------------------------------------------------
 
@@ -244,8 +203,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`, `phone`, `user_constituency`, `user_role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'masterfork5@gmail.com', '$2y$10$65HKbFxlEEHGHBIQfiBOXO9cMeir5ZHmvXPQPQW7mNXRRmwl8MGHi', 'Kevin', 'Kiprotich', '0754304260', 'Central Imenti', 'Admin', '5d85S0hEwZWp3DfrpG03C91xQitAMlnbqbq6exlYjbXYhs1bhdmvaSxzyJdS', '2018-07-17 04:31:08', '2018-07-17 04:31:08'),
-(2, 'aushimedics@gmail.com', '$2y$10$N8D1ywwz.j/FrDmAdHyBnu59VkhCRGqlWEiu9M2V2N4cIbEIzlwm6', 'Kelvin', 'Pac', '0754304260', 'North Imenti', 'Contractor', 'zyK26ZbbSzsrshUtDQUh0sKVidCT6zLdTUS7Hm8KYoKVstOMvmEy467gtYYC', '2018-07-17 05:10:34', '2018-07-17 05:10:34');
+(1, 'masterfork5@gmail.com', '$2y$10$xc8T6QOwGPlG07mNCsldFuOYRWNSsLml77O0x6r/vty9vWaY8taYS', 'Kevin', 'Kiprotich', '0724963950', 'South Imenti', 'Admin', 'J3fMuWVhmFISc8cVmq6aZKBdmluPbtLRsVaYTmY1TKg89NCzuQqF1IrAOPzE', '2018-07-17 01:31:08', '2018-07-20 16:19:47'),
+(2, 'aushimedics@gmail.com', '$2y$10$fXmZVD8ZVluba6E.121JNu6tyusNcN6KXPqOTU.fxFQpnPaaaonJO', 'Kelvin', 'Pac', '072345678900', 'Igembe South', 'Contractor', '8QaKpac60u5N0mXSOkGUYyBiYe8pxM4zuT3jVY8GBY3ErqATc2JjXrAfpXmN', '2018-07-19 02:47:06', '2018-07-19 03:30:23');
 
 -- --------------------------------------------------------
 
@@ -266,50 +225,50 @@ CREATE TABLE `wards` (
 --
 
 INSERT INTO `wards` (`ward_id`, `ward_name`, `ward_constituency`, `created_at`, `updated_at`) VALUES
-(1, 'Thangatha', 5, '2018-07-03 15:00:00', '2018-07-17 15:00:00'),
-(2, 'Mikinduri', 5, '2018-07-15 15:00:00', '2018-07-16 15:00:00'),
-(3, 'Kiguchwa', 5, '2018-07-01 15:00:00', '2018-07-12 15:00:00'),
-(4, 'Mithara', 5, '2018-07-15 15:00:00', '2018-07-16 15:00:00'),
-(5, 'Karama', 5, '2018-07-01 15:00:00', '2018-07-17 15:00:00'),
-(6, 'Athwana', 7, '2018-07-01 15:00:00', '2018-07-11 15:00:00'),
-(7, 'Akithi', 7, '2018-07-02 15:00:00', '2018-07-16 15:00:00'),
-(8, 'Kianjai', 7, '2018-07-07 15:00:00', '2018-07-16 15:00:00'),
-(9, 'Nkomo', 7, '2018-07-01 15:00:00', '2018-07-11 15:00:00'),
-(10, 'Mbeu', 7, '2018-06-30 15:00:00', '2018-07-11 15:00:00'),
-(11, 'Antuambui', 6, '2018-07-01 15:00:00', '2018-07-16 15:00:00'),
-(12, 'Ntunene', 6, '2018-07-07 15:00:00', '2018-07-16 15:00:00'),
-(13, 'Antubetwe Kiongo', 6, '2018-07-01 15:00:00', '2018-07-10 15:00:00'),
-(14, 'Naathui', 6, '2018-07-14 15:00:00', '2018-07-15 15:00:00'),
-(15, 'Amwathi', 6, '2018-06-30 15:00:00', '2018-07-10 15:00:00'),
-(16, 'Maua', 2, '2018-07-14 15:00:00', '2018-07-16 15:00:00'),
-(17, 'Kegoi', 2, '2018-06-30 15:00:00', '2018-07-15 15:00:00'),
-(18, 'Athiru', 2, '2018-07-08 15:00:00', '2018-07-16 15:00:00'),
-(19, 'Gaiti', 2, '2018-07-01 15:00:00', '2018-07-01 15:00:00'),
-(20, 'Akachiu', 2, '2018-07-08 15:00:00', '2018-07-08 15:00:00'),
-(21, 'Kanuni', 2, '2018-07-02 15:00:00', '2018-07-16 15:00:00'),
-(22, 'Municipality', 4, '2018-07-15 15:00:00', '2018-07-15 15:00:00'),
-(23, 'Ntima East', 4, '2018-07-02 15:00:00', '2018-07-02 15:00:00'),
-(24, 'Ntima West', 4, '2018-07-16 15:00:00', '2018-07-16 15:00:00'),
-(25, 'Nyaki West', 4, '2018-07-03 15:00:00', '2018-07-04 15:00:00'),
-(26, 'Nyaki East', 4, '2018-07-15 15:00:00', '2018-07-15 15:00:00'),
-(27, 'Mitunguu', 3, '2018-07-01 15:00:00', '2018-07-16 15:00:00'),
-(28, 'Igoji East', 3, '2018-07-14 15:00:00', '2018-07-15 15:00:00'),
-(29, 'Igoji West', 3, '2018-07-07 15:00:00', '2018-07-14 15:00:00'),
-(30, 'Abogeta East', 3, '2018-07-15 15:00:00', '2018-07-16 15:00:00'),
-(31, 'Abogeta West', 3, '2018-07-01 15:00:00', '2018-07-05 15:00:00'),
-(32, 'Nkuene', 3, '2018-07-14 15:00:00', '2018-07-14 15:00:00'),
-(33, 'Timau', 1, '2018-07-03 15:00:00', '2018-07-03 15:00:00'),
-(34, 'Kisima', 1, '2018-07-14 15:00:00', '2018-07-16 15:00:00'),
-(35, 'Kiirua', 1, '2018-07-02 15:00:00', '2018-07-03 15:00:00'),
-(36, 'Ruiri', 1, '2018-07-08 15:00:00', '2018-07-09 15:00:00'),
-(37, 'Ruujine', 9, '2018-07-02 15:00:00', '2018-07-10 15:00:00'),
-(38, 'Igembe East Njia', 9, '2018-07-15 15:00:00', '2018-07-16 15:00:00'),
-(39, 'Kangeta', 9, '2018-07-03 15:00:00', '2018-07-04 15:00:00'),
-(40, 'Mwanganthia', 8, '2018-07-05 15:00:00', '2018-07-06 15:00:00'),
-(41, 'Abothuguchi Central', 8, '2018-07-16 15:00:00', '2018-07-16 15:00:00'),
-(42, 'Abothuguchi West', 8, '2018-07-15 15:00:00', '2018-07-15 15:00:00'),
-(43, 'Kiagu', 8, '2018-07-06 15:00:00', '2018-07-13 15:00:00'),
-(44, 'Kibirichia', 8, '2018-07-13 15:00:00', '2018-07-16 15:00:00');
+(1, 'Thangatha', 5, '2018-07-03 12:00:00', '2018-07-17 12:00:00'),
+(2, 'Mikinduri', 5, '2018-07-15 12:00:00', '2018-07-16 12:00:00'),
+(3, 'Kiguchwa', 5, '2018-07-01 12:00:00', '2018-07-12 12:00:00'),
+(4, 'Mithara', 5, '2018-07-15 12:00:00', '2018-07-16 12:00:00'),
+(5, 'Karama', 5, '2018-07-01 12:00:00', '2018-07-17 12:00:00'),
+(6, 'Athwana', 7, '2018-07-01 12:00:00', '2018-07-11 12:00:00'),
+(7, 'Akithi', 7, '2018-07-02 12:00:00', '2018-07-16 12:00:00'),
+(8, 'Kianjai', 7, '2018-07-07 12:00:00', '2018-07-16 12:00:00'),
+(9, 'Nkomo', 7, '2018-07-01 12:00:00', '2018-07-11 12:00:00'),
+(10, 'Mbeu', 7, '2018-06-30 12:00:00', '2018-07-11 12:00:00'),
+(11, 'Antuambui', 6, '2018-07-01 12:00:00', '2018-07-16 12:00:00'),
+(12, 'Ntunene', 6, '2018-07-07 12:00:00', '2018-07-16 12:00:00'),
+(13, 'Antubetwe Kiongo', 6, '2018-07-01 12:00:00', '2018-07-10 12:00:00'),
+(14, 'Naathui', 6, '2018-07-14 12:00:00', '2018-07-15 12:00:00'),
+(15, 'Amwathi', 6, '2018-06-30 12:00:00', '2018-07-10 12:00:00'),
+(16, 'Maua', 2, '2018-07-14 12:00:00', '2018-07-16 12:00:00'),
+(17, 'Kegoi', 2, '2018-06-30 12:00:00', '2018-07-15 12:00:00'),
+(18, 'Athiru', 2, '2018-07-08 12:00:00', '2018-07-16 12:00:00'),
+(19, 'Gaiti', 2, '2018-07-01 12:00:00', '2018-07-01 12:00:00'),
+(20, 'Akachiu', 2, '2018-07-08 12:00:00', '2018-07-08 12:00:00'),
+(21, 'Kanuni', 2, '2018-07-02 12:00:00', '2018-07-16 12:00:00'),
+(22, 'Municipality', 4, '2018-07-15 12:00:00', '2018-07-15 12:00:00'),
+(23, 'Ntima East', 4, '2018-07-02 12:00:00', '2018-07-02 12:00:00'),
+(24, 'Ntima West', 4, '2018-07-16 12:00:00', '2018-07-16 12:00:00'),
+(25, 'Nyaki West', 4, '2018-07-03 12:00:00', '2018-07-04 12:00:00'),
+(26, 'Nyaki East', 4, '2018-07-15 12:00:00', '2018-07-15 12:00:00'),
+(27, 'Mitunguu', 3, '2018-07-01 12:00:00', '2018-07-16 12:00:00'),
+(28, 'Igoji East', 3, '2018-07-14 12:00:00', '2018-07-15 12:00:00'),
+(29, 'Igoji West', 3, '2018-07-07 12:00:00', '2018-07-14 12:00:00'),
+(30, 'Abogeta East', 3, '2018-07-15 12:00:00', '2018-07-16 12:00:00'),
+(31, 'Abogeta West', 3, '2018-07-01 12:00:00', '2018-07-05 12:00:00'),
+(32, 'Nkuene', 3, '2018-07-14 12:00:00', '2018-07-14 12:00:00'),
+(33, 'Timau', 1, '2018-07-03 12:00:00', '2018-07-03 12:00:00'),
+(34, 'Kisima', 1, '2018-07-14 12:00:00', '2018-07-16 12:00:00'),
+(35, 'Kiirua', 1, '2018-07-02 12:00:00', '2018-07-03 12:00:00'),
+(36, 'Ruiri', 1, '2018-07-08 12:00:00', '2018-07-09 12:00:00'),
+(37, 'Ruujine', 9, '2018-07-02 12:00:00', '2018-07-10 12:00:00'),
+(38, 'Igembe East Njia', 9, '2018-07-15 12:00:00', '2018-07-16 12:00:00'),
+(39, 'Kangeta', 9, '2018-07-03 12:00:00', '2018-07-04 12:00:00'),
+(40, 'Mwanganthia', 8, '2018-07-05 12:00:00', '2018-07-06 12:00:00'),
+(41, 'Abothuguchi Central', 8, '2018-07-16 12:00:00', '2018-07-16 12:00:00'),
+(42, 'Abothuguchi West', 8, '2018-07-15 12:00:00', '2018-07-15 12:00:00'),
+(43, 'Kiagu', 8, '2018-07-06 12:00:00', '2018-07-13 12:00:00'),
+(44, 'Kibirichia', 8, '2018-07-13 12:00:00', '2018-07-16 12:00:00');
 
 --
 -- Indexes for dumped tables
@@ -401,7 +360,7 @@ ALTER TABLE `constituencies`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `department_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `department_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `messages`
 --
@@ -411,17 +370,17 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `photo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `photo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `project_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `project_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
