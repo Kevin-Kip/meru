@@ -92,7 +92,7 @@ class ProjectControllerWeb extends Controller
 //        return $request->all();
         $this->validate($request, [
             'name'=>'required|max:35',
-            'description'=>'required|max:190',
+            'description'=>'required|max:400',
             'budget'=>'required|max:20',
             'completion'=>'required|max:3'
         ]);
@@ -176,7 +176,7 @@ class ProjectControllerWeb extends Controller
 //        return $request->all();
         $this->validate($request, [
             'project_name'=>'required|max:35',
-            'project_description'=>'required|max:190',
+            'project_description'=>'required|max:400',
             'budget'=>'required|max:20',
             'completion'=>'required|max:3'
         ]);

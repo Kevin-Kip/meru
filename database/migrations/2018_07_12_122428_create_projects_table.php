@@ -16,7 +16,7 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('project_id');
             $table->string('project_name');
-            $table->string('project_description');
+            $table->longText('project_description');
             $table->string('project_category');
             $table->integer('project_constituency')->unsigned();
             $table->foreign('project_constituency')->references('constituency_id')->on('constituencies')->onDelete('cascade');

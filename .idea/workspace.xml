@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4f1afac1-792d-4903-9306-21f025c25d9f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectControllerWeb.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectControllerWeb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/create-department.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/create-department.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/create-project.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/create-project.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/create-user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/create-user.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/edit-project.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/edit-project.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/edit-user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/edit-user.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sampleDB/meru.sql" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,7 +33,17 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="2018_07_12_121820_create_departments_table.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2018_07_12_121820_create_departments_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -75,7 +78,6 @@
         <option value="$PROJECT_DIR$/resources/views/admin/create-constituency.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/departments.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2018_07_12_121820_create_departments_table.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/sslogin.blade.php" />
@@ -112,7 +114,6 @@
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" />
         <option value="$PROJECT_DIR$/resources/views/master.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/users/master.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/master.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/create-department.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/create-project.blade.php" />
@@ -121,6 +122,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProjectControllerWeb.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/edit-project.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/edit-user.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/users/master.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2018_07_12_121820_create_departments_table.php" />
       </list>
     </option>
   </component>
@@ -232,6 +235,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -337,7 +341,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -452,12 +455,13 @@
       <workItem from="1532009879177" duration="809000" />
       <workItem from="1532018266409" duration="2908000" />
       <workItem from="1532109816258" duration="3633000" />
-      <workItem from="1532198569376" duration="2190000" />
+      <workItem from="1532198569376" duration="2476000" />
+      <workItem from="1532260568164" duration="980000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="386192000" />
+    <option name="totallyTimeSpent" value="387458000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -470,6 +474,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="33" width="1366" height="733" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32890365" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -478,7 +483,7 @@
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.6710963" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.323217" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32852808" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32928678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -497,21 +502,21 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35432473" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32890365" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32890365" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32890365" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Database" order="3" weight="0.32928678" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.6744186" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32890365" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32890365" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="3" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -553,13 +558,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="79" column="39" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/messages.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-455">
@@ -711,13 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/users/messages.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PdfController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -814,13 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/users/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="67" column="39" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/master.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="39">
@@ -888,6 +872,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/users/master.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-695">
+          <caret line="72" column="64" selection-start-line="72" selection-start-column="64" selection-end-line="72" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/users/messages.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-66">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="15">
+            <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2018_07_12_121820_create_departments_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
         </state>
       </provider>
     </entry>

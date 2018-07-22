@@ -48,7 +48,7 @@ class DepartmentController extends Controller
     {
         $this->validate($request, [
             'department_name'=>'required|max:35',
-            'department_description'=>'required|max:190'
+            'department_description'=>'required|max:400'
         ]);
         $file = $request['file'];
         $path = '';
