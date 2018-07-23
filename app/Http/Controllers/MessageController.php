@@ -53,7 +53,7 @@ class MessageController extends Controller
             'sender_last_name'=>'required',
             'email'=>'required|max:35',
             'sender_constituency'=>'required',
-            'message'=>'required'
+            'message'=>'required|max:400'
         ]);
 
         $message = Message::create([
