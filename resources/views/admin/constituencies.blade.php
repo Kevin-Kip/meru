@@ -1,6 +1,17 @@
 @extends('admin.master')
 @section('content')
     @include('admin.cards')
+
+        <div class="text-white">
+            <a class="btn btn-primary" href="{{ route('constituency.create') }}">
+                <i class="fa fa-plus"></i>
+                Add New Constituency
+            </a>
+            <a class="btn btn-primary" href="{{ route('ward.create') }}">
+                <i class="fa fa-plus"></i>
+                Add New  Ward
+            </a>
+        </div>
     <p></p>
     <!-- Example DataTables Card-->
     <div class="card mb-3">

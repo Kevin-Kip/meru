@@ -216,6 +216,25 @@ Route::post('/admin/messages/{id}/reply', [
     'uses' => 'MessageController@sendReply'
 ]);
 
+Route::get('/admin/constituencies/new', [
+   'as' => 'constituency.create',
+   'uses' => 'ConstituencyController@create'
+]);
+
+Route::post('/admin/constituencies/new', [
+    'as' => 'constituency.save',
+    'uses' => 'ConstituencyController@store'
+]);
+
+Route::get('/admin/wards/new', [
+    'as' => 'ward.create',
+    'uses' => 'WardController@create'
+]);
+
+Route::post('/admin/wards/new', [
+    'as' => 'ward.save',
+    'uses' => 'WardController@store'
+]);
 
 Auth::routes();
 

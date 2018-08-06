@@ -35,7 +35,8 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Description:</label>
-                            <input class="form-control" type="text" name="description" id="description" required>
+                            <textarea class="form-control" name="description" id="description" required>
+                            </textarea>
                             @if($errors->has('description') )
                                 <span class="text-danger">{{ $errors->first('description') }}</span>
                             @endif
