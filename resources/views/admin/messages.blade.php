@@ -34,7 +34,7 @@
                             <th>Constituency</th>
                             <th>Message</th>
                             <th>Sent On</th>
-                            <th>Delete</th>
+                            <th>Reply</th>
                         </tr>
                         </thead>
                         @if('messages')
@@ -47,10 +47,7 @@
                                     <td>{{ $message->message }}</td>
                                     <td>{{ $message->created_at }}</td>
                                     <td>
-                                        <form action="{{ route('message.delete',['id'=>$message->message_id]) }}" method="post">
-                                            {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
+                                        <a href="{{ route('message.reply',['id' => $message->message_id]) }}" class="btn btn-info">Reply</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -60,4 +57,25 @@
                 </div>
             </div>
         </div>
+
+    <!-- Reply Modal-->
+    <div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="{{ url('/logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
     @endsection

@@ -21,7 +21,7 @@ class CreateProjectsTable extends Migration
             $table->integer('project_constituency')->unsigned();
             $table->foreign('project_constituency')->references('constituency_id')->on('constituencies')->onDelete('cascade');
             $table->string('project_ward');
-            $table->string('budget');
+            $table->bigInteger('budget');
             $table->integer('completion');
             $table->string('contractor');
             $table->date('due_date');

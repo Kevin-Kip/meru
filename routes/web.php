@@ -206,6 +206,16 @@ Route::post('/admin/departments/{id}/delete', [
     'uses' => 'DepartmentController@destroy'
 ]);
 
+Route::get('/admin/messages/{id}/reply', [
+    'as' => 'message.reply',
+    'uses' => 'MessageController@showReply'
+]);
+
+Route::post('/admin/messages/{id}/reply', [
+    'as' => 'message.respond',
+    'uses' => 'MessageController@sendReply'
+]);
+
 
 Auth::routes();
 

@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use App\Constituency;
+use App\Mail\Respond;
 use App\Message;
 use App\Project;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
@@ -75,26 +77,10 @@ class MessageController extends Controller
         return redirect()->back()->with(['message'=>$result,'constituencies'=>$constituencies]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function showReply($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $message = Message::where('message_id', $id)->get();
+        return view('admin.reply', compact('message'));
     }
 
     /**
@@ -104,9 +90,29 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function sendReply(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'response' => 'required|max:500|min:20',
+            'email' => 'required'
+        ]);
+
+        $email = $request['email'];
+        $response = $request['response'];
+
+        Mail::send(['text'=>'mail'], ['name','Kevin'], function ($message){
+            $message->to('kevkiprotich@gmail.com','To Kevin')->subject('Response');
+            $message->from('masterfork5@gmail.com', 'Master');
+        });
+//        TODO fix email
+
+
+//        Mail::to('kevkiprotich@gmail.com')->send(new Respond($response));
+//            return redirect()->back()->with('message','success');
+//        } else {
+//            return redirect()->back()->with('message','error');
+//        }
+
     }
 
     /**

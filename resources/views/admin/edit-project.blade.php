@@ -18,19 +18,6 @@
                 </div>
             @endif
         @endif
-
-        @if (count($errors) > 0)
-            <div class = "alert alert-danger alert-dismissible show" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
     @if('project')
         <!-- Example DataTables Card-->
         <div class="card mb-3 col-md-10">
@@ -43,10 +30,16 @@
                         <div class="form-group">
                             <label for="name">Project Name:</label>
                             <input class="form-control" value="{{ $project[0]->project_name }}" type="text" name="project_name" id="name" required autofocus>
+                            @if($errors->has('project_name') )
+                                <span class="text-danger">{{ $errors->first('project_name') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="description">Description:</label>
                             <input class="form-control" value="{{ $project[0]->project_description }}" type="text" name="project_description" id="description" required>
+                            @if($errors->has('project_description') )
+                                <span class="text-danger">{{ $errors->first('project_description') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="category">Department:</label>
@@ -58,6 +51,9 @@
                                     @endforeach
                                 @endif
                             </select>
+                            @if($errors->has('category') )
+                                <span class="text-danger">{{ $errors->first('category') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="constituency">Constituency:</label>
@@ -69,14 +65,23 @@
                                     @endforeach
                                 @endif
                             </select>
+                            @if($errors->has('constituency') )
+                                <span class="text-danger">{{ $errors->first('constituency') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="budget">Budget:</label>
                             <input class="form-control" value="{{ $project[0]->budget }}" placeholder="eg. 65.8 Billion" type="text" name="budget" id="budget" required>
+                            @if($errors->has('budget') )
+                                <span class="text-danger">{{ $errors->first('budget') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="completion">Completion (%):</label>
                             <input class="form-control" value="{{ $project[0]->completion }}" type="number" min="0" max="100" name="completion" id="completion" required>
+                            @if($errors->has('completion') )
+                                <span class="text-danger">{{ $errors->first('completion') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="contractor">Contractor:</label>
@@ -87,16 +92,25 @@
                                     @endforeach
                                 @endif
                             </select>
+                            @if($errors->has('contractor') )
+                                <span class="text-danger">{{ $errors->first('contractor') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="ward">Ward:</label>
                             <select name="project_ward" id="ward" class="form-control" required>
                                 <option disabled selected value> -- select an option -- </option>
                             </select>
+                            @if($errors->has('ward') )
+                                <span class="text-danger">{{ $errors->first('ward') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="due_date">Due Date:</label>
                             <input class="form-control" value="{{ $project[0]->due_date }}" type="date" name="due_date" id="due_date" required>
+                            @if($errors->has('due-date') )
+                                <span class="text-danger">{{ $errors->first('due-date') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="added_by">Added By:</label>

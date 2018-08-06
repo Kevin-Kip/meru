@@ -48,14 +48,23 @@
                         <div class="form-group">
                             <label for="department_name">Department Name:</label>
                             <input class="form-control" type="text" name="department_name" id="department_name" required autofocus>
+                            @if($errors->has('department_name') )
+                                <span class="text-danger">{{ $errors->first('department_name') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="department_description">Department Description:</label>
                             <input class="form-control" type="text" name="department_description" placeholder="Max 190 characters" id="department_description" required>
+                            @if($errors->has('department_description') )
+                                <span class="text-danger">{{ $errors->first('department_description') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="file">Department Photo:</label>
                             <input class="form-control" type="file" name="file" id="photos" required>
+                            @if($errors->has('file') )
+                                <span class="text-danger">{{ $errors->first('file') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <input type="submit" name="submit" id="dubmit" value="SAVE" class="col-md-4 btn btn-primary">

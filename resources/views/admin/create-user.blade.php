@@ -17,26 +17,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            @elseif(session()->get('message') == "")
-                <div class="alert alert-danger alert-dismissible show" role="alert">
-                    <strong>Welcome!</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-        @endif
-    @endif
-        @if (count($errors) > 0)
-            <div class = "alert alert-danger alert-dismissible show" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+            @endif
         @endif
         <!-- Example DataTables Card-->
         <div class="card mb-3 col-md-10">
@@ -49,22 +30,37 @@
                         <div class="form-group">
                             <label for="first_name">First Name:</label>
                             <input class="form-control" type="text" name="first_name" id="first_name" required autofocus>
+                            @if($errors->has('first_name') )
+                                <span class="text-danger">{{ $errors->first('first_name') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="last_name">Last Name:</label>
                             <input class="form-control" type="text" name="last_name" id="last_name" required>
+                            @if($errors->has('last_name') )
+                                <span class="text-danger">{{ $errors->first('last_name') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input class="form-control" type="email" name="email" id="email" required>
+                            @if($errors->has('email') )
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone:</label>
                             <input class="form-control" type="text" name="phone" id="phone" required>
+                            @if($errors->has('phone') )
+                                <span class="text-danger">{{ $errors->first('phone') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
                             <input class="form-control" type="password" name="password" id="password" required>
+                            @if($errors->has('password') )
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="constituency">Constituency</label>
@@ -74,6 +70,9 @@
                                     <option value="{{ $constituency->constituency_name }}">{{ $constituency->constituency_name }}</option>
                                 @endforeach
                             </select>
+                            @if($errors->has('constituency') )
+                                <span class="text-danger">{{ $errors->first('constituency') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="role">Role:</label>
