@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
+
 class MessageController extends Controller
 {
     /**
@@ -79,18 +80,18 @@ class MessageController extends Controller
 
     public function showReply($id)
     {
-        $message = Message::where('message_id', $id)->get();
-        return view('admin.reply', compact('message'));
+//        $message = Message::where('message_id', $id)->get();
+//        return view('admin.reply', compact('message'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param
      * @return \Illuminate\Http\Response
      */
-    public function sendReply(Request $request, $id)
+    public function sendReply(Request $request)
     {
         $this->validate($request, [
             'response' => 'required|max:500|min:20',
@@ -98,21 +99,15 @@ class MessageController extends Controller
         ]);
 
         $email = $request['email'];
-        $response = $request['response'];
+        $data['response'] = $request['response'];
 
-        Mail::send(['text'=>'mail'], ['name','Kevin'], function ($message){
-            $message->to('kevkiprotich@gmail.com','To Kevin')->subject('Response');
-            $message->from('masterfork5@gmail.com', 'Master');
-        });
-//        TODO fix email
+//        return Mail::to('masterfork5@gmail.com')->send(new Respond());
 
-
-//        Mail::to('kevkiprotich@gmail.com')->send(new Respond($response));
-//            return redirect()->back()->with('message','success');
-//        } else {
-//            return redirect()->back()->with('message','error');
-//        }
-
+//        Mail::send('mail', $data, function ($message){
+//            $message->to('kevkiprotich@gmail.com','Kevin Kip')
+//                ->subject('Sample Subject');
+//            $message->from('masterfork5@gmail.com','Master');
+//        });
     }
 
     /**
