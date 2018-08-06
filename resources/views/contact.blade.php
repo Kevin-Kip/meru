@@ -78,6 +78,9 @@
                 <label for="sender_first_name">First Name:</label>
                 <input type="text" class="form-control" name="sender_first_name" id="sender_first_name" required data-validation-required-message="Please enter your name.">
                 <p class="help-block"></p>
+                @if($errors->has('sender_first_name') )
+                  <span class="text-danger">{{ $errors->first('sender_first_name') }}</span>
+                @endif
               </div>
             </div>
             <div class="control-group form-group">
@@ -85,6 +88,9 @@
                 <label for="sender_last_name">Last Name:</label>
                 <input type="text" class="form-control" name="sender_last_name" id="sender_last_name" required data-validation-required-message="Please enter your name.">
                 <p class="help-block"></p>
+                @if($errors->has('sender_last_name') )
+                  <span class="text-danger">{{ $errors->first('sender_last_name') }}</span>
+                @endif
               </div>
             </div>
             <div class="control-group form-group">
@@ -99,6 +105,9 @@
                       @endif
                   </select>
                 <p class="help-block"></p>
+                @if($errors->has('constituency') )
+                  <span class="text-danger">{{ $errors->first('constituency') }}</span>
+                @endif
               </div>
             </div>
             <div class="control-group form-group">
@@ -112,6 +121,9 @@
                 <label for="message">Message:</label>
                 <textarea rows="10" cols="100" class="form-control" name="message" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
               </div>
+              @if($errors->has('message') )
+                <span class="text-danger">{{ $errors->first('message') }}</span>
+              @endif
             </div>
             <div id="success"></div>
             <!-- For success/fail messages -->
