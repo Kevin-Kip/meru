@@ -83,6 +83,7 @@
                             </tbody>
                         @endif
                     </table>
+                    {{ $projects->links() }}
                 </div>
             </div>
         </div>

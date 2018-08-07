@@ -23,14 +23,14 @@
     <!-- Example DataTables Card-->
     <div class="card mb-3 col-md-10">
         <div class="card-header">
-            <i class="fa fa-table"></i>New Ward</div>
+            <i class="fa fa-table"></i>Update Ward</div>
         <div class="card-bodyalign-content-center">
             <div class="col-sm-12">
-                <form action="{{ route('ward.save')}}" method="post">
+                <form action="{{ route('ward.update',['id'=>$ward->ward_id])}}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="ward_name"></label>
-                        <input class="form-control" type="text" name="ward_name" id="ward_name" required autofocus>
+                        <input class="form-control" type="text" value="{{ $ward->ward_name }}" name="ward_name" id="ward_name" required autofocus>
                         @if($errors->has('ward_name') )
                             <span class="text-danger">{{ $errors->first('ward_name') }}</span>
                         @endif
@@ -50,7 +50,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="submit" id="dubmit" value="SAVE" class="col-md-4 btn btn-primary">
+                        <input type="submit" name="submit" id="dubmit" value="UPDATE" class="col-md-4 btn btn-primary">
                     </div>
                 </form>
             </div>

@@ -226,6 +226,21 @@ Route::post('/admin/constituencies/new', [
     'uses' => 'ConstituencyController@store'
 ]);
 
+Route::get('/admin/constituencies/{id}/edit', [
+    'as' => 'constituency.edit',
+    'uses' => 'ConstituencyController@edit'
+]);
+
+Route::post('/admin/constituencies/{id}/edit', [
+    'as' => 'constituency.update',
+    'uses' => 'ConstituencyController@update'
+]);
+
+Route::get('/admin/constituencies/{id}/delete', [
+   'as' => 'constituency.delete',
+    'uses' => 'ConstituencyController@destroy'
+]);
+
 Route::get('/admin/wards/new', [
     'as' => 'ward.create',
     'uses' => 'WardController@create'
@@ -234,6 +249,26 @@ Route::get('/admin/wards/new', [
 Route::post('/admin/wards/new', [
     'as' => 'ward.save',
     'uses' => 'WardController@store'
+]);
+
+Route::get('/admin/wards', [
+   'as' => 'wards.all',
+   'uses' => 'WardController@index'
+]);
+
+Route::get('/admin/wards/{id}/edit', [
+    'as' => 'ward.edit',
+    'uses' => 'WardController@edit'
+]);
+
+Route::post('/admin/wards/{id}/edit', [
+    'as' => 'ward.update',
+    'uses' => 'WardController@update'
+]);
+
+Route::get('/admin/wards/{id}/delete', [
+    'as' => 'ward.delete',
+    'uses' => 'WardController@delete'
 ]);
 
 Auth::routes();
@@ -258,4 +293,10 @@ Route::get('/reports/download/completed', [
 Route::get('/users/reports', [
     'as' => 'users.report',
     'uses' => 'PdfController@showForUsers'
+]);
+
+//Finance
+Route::get('/users/finance', [
+    'as' => 'finance.home',
+    'uses' => 'FinanceController@goHome'
 ]);

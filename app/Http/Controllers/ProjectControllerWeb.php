@@ -45,7 +45,7 @@ class ProjectControllerWeb extends Controller
         $projectcount = Project::count();
         $usercount = User::count();
         $constituencycount = Constituency::count();
-        $projects = DB::table('projects')->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->get();
+        $projects = DB::table('projects')->join('constituencies','projects.project_constituency','=','constituencies.constituency_id')->paginate(10);
         return view('admin.projects',compact('messagecount','projectcount','usercount','constituencycount','projects'));
     }
     /**
@@ -64,8 +64,8 @@ class ProjectControllerWeb extends Controller
     }
 
     public function byConstituency($constituencyId){
-        $constituency = DB::table('constituencies')->where('constituency_id','=',$constituencyId)->get();
-        $constituencyName =  $constituency[0]->constituency_name;
+        $constituency = DB::table('constituencies')->where('constituency_id','=',$constituencyId)->first();
+        $constituencyName =  $constituency->constituency_name;
         $projects =  Project::with('photos')->get();
         $constituencies = Constituency::all();
         $departments = Department::all();
@@ -73,8 +73,8 @@ class ProjectControllerWeb extends Controller
     }
 
     public function byCategory($departmentId){
-        $department = DB::table('departments')->where('department_id','=',$departmentId)->get();
-        $categoryName = $department[0]->department_name;
+        $department = DB::table('departments')->where('department_id','=',$departmentId)->first();
+        $categoryName = $department->department_name;
         $constituencies = Constituency::all();
         $departments = Department::all();
         $projects =  Project::where('project_category',$categoryName)->get();

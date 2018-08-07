@@ -45,17 +45,27 @@ class UserController extends Controller
 
     public function loguserin(Request $request){
         $this->validate($request,[
-            'email'=>'required|max:30',
-            'password'=>'required|min:6'
+            'email'=>'required|max:30|min:10',
+            'password'=>'required|min:6|max:12',
+            'role' => 'required|min:5'
         ]);
-        if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']],true)){
+
+        $role = $request['role'];
+
+        if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']],false)){
             $user = Auth::user();
             Auth::login($user);
             Session::put('user',$user);
-            if ($user->user_role == "Admin"){
-                return redirect()->route('admin.home');
+            if ($user->user_role == $role) {
+                if ($user->user_role == "Admin") {
+                    return redirect()->route('admin.home');
+                } else if ($user->user_role == "Finance Officer") {
+                    return \redirect()->route('finance.home');
+                } else {
+                    return redirect()->route('users.home');
+                }
             } else {
-                return redirect()->route('users.home');
+                return \redirect()->back()->with('role_error','Please select your correct role.');
             }
         } else {
             return \redirect()->back()->with('message',"error");
@@ -85,7 +95,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'email'=>'required|max:35|unique:users',
-            'password'=>'required|max:35|min:6',
+            'password'=>'required|max:12|min:6',
             'first_name'=>'required|max:35',
             'last_name'=>'required|max:35',
             'phone'=>'required|max:15'

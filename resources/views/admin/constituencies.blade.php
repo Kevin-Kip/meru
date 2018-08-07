@@ -7,12 +7,26 @@
                 <i class="fa fa-plus"></i>
                 Add New Constituency
             </a>
-            <a class="btn btn-primary" href="{{ route('ward.create') }}">
-                <i class="fa fa-plus"></i>
-                Add New  Ward
-            </a>
         </div>
     <p></p>
+    <!-- Message Card-->
+    @if('message')
+        @if(session()->get('message') == "success")
+            <div class="alert alert-success alert-dismissible show" role="alert">
+                <strong>Success!</strong> Deleted successfully
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @elseif(session()->get('message') == "error")
+            <div class="alert alert-danger alert-dismissible show" role="alert">
+                <strong>Ooops!</strong> Unable to Delete
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+    @endif
     <!-- Example DataTables Card-->
     <div class="card mb-3">
         <div class="card-header">
@@ -24,6 +38,8 @@
                     <tr>
                         <th>Name</th>
                         <th>Wards</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     @if('users')
@@ -32,6 +48,13 @@
                             <tr>
                                 <td>{{ $constituency->constituency_name }}</td>
                                 <td><button class="btn btn-success" id="val" onclick="showDialog({{ $constituency->constituency_id }})">View Wards</button></td>
+                                <td><a href="{{ route('constituency.edit',['id'=>$constituency->constituency_id]) }}" class="btn btn-info">Edit</a></td>
+                                <td>
+                                    <form action="{{ route('constituency.delete',['id'=>$constituency->constituency_id]) }}">
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

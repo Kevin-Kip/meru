@@ -36,7 +36,7 @@ class ConstituencyController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-           'constituency_name' => 'required|max:100|min:3'
+           'constituency_name' => 'required|max:20|min:3'
         ]);
         $constituency = Constituency::create([
            'constituency_name' => $request['constituency_name']
@@ -57,7 +57,7 @@ class ConstituencyController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -68,7 +68,8 @@ class ConstituencyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $constituency = Constituency::where('constituency_id',$id)->first();
+        return view('admin.edit-constituency',compact('constituency'));
     }
 
     /**
@@ -80,7 +81,15 @@ class ConstituencyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'constituency_name' => 'required|max:20|min:3'
+        ]);
+
+        if (Constituency::where('constituency_id',$id)->update($request->except('_token','submit'))){
+            return redirect()->back()->with('message',"success");
+        } else {
+            return redirect()->back()->with('message',"error");
+        }
     }
 
     /**
@@ -91,6 +100,7 @@ class ConstituencyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $constituency = Constituency::where('constituency_id', $id);
+        return $constituency->delete() ? redirect()->back()->with('message',"success") : redirect()->back()->with('message', "error");
     }
 }

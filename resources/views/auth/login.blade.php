@@ -31,23 +31,34 @@
         <div class="card-body">
             <form method="post" action="{{ route('user.signin') }}">
                 {{ csrf_field() }}
-                @if($errors->any())
-                    @foreach($errors->all() as $error)
-                        <div class="alert alert-danger alert-dismissible show" role="alert">
-                            <strong>Oops!</strong> {{ $error }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endforeach
-                @endif
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input class="form-control" id="email" name="email" type="email" aria-describedby="emailHelp" required placeholder="Enter email">
+                    <input class="form-control" id="email" name="email" type="email" aria-describedby="emailHelp" required placeholder="Enter email" autocomplete="false">
+                    @if($errors->has('email') )
+                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input class="form-control" id="password" name="password" type="password" required placeholder="Password">
+                    <input class="form-control" id="password" name="password" type="password" required placeholder="Password" autocomplete="false">
+                    @if($errors->has('password') )
+                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <select name="role" id="role" class="form-control">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="Admin">Admin</option>
+                        <option value="Secretary">Secretary</option>
+                        <option value="Contractor">Contractor</option>
+                        <option value="Procurement Manager">Procurement Manager</option>
+                        <option value="Procurement Officer">Procurement Officer</option>
+                        <option value="Finance Officer">Finance Officer</option>
+                    </select>
+                    @if(session()->has('role_error') )
+                        <span class="text-danger">{{ session()->get('role_error') }}</span>
+                    @endif
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
             </form>
