@@ -33,7 +33,7 @@
                                     <span class="card-title">{{ $project->project_name }}</span>
                                 </div>
                                 <div class="card-content">
-                                    <p>Budget: {{ $project->budget }}</p>
+                                    <p>Budget: KSh. {{ $project->budget }}</p>
                                     <p><strong>{{ $project->completion }}% Completed</strong></p>
                                     <div class="progress">
                                         <div class="progress-bar" role="progressbar" aria-valuenow="{{ $project->completion }}"

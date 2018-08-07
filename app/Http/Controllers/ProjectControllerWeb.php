@@ -107,7 +107,8 @@ class ProjectControllerWeb extends Controller
             'contractor' => $request['contractor'],
             'due_date' => $request['due_date'],
             'added_by' => "Admin",
-            'project_status' => 0
+            'project_status' => 0,
+            'balance' => 0
         ]);
 
         $files = $request['file'];

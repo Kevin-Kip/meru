@@ -98,7 +98,7 @@ class UserController extends Controller
             'password'=>'required|max:12|min:6',
             'first_name'=>'required|max:35',
             'last_name'=>'required|max:35',
-            'phone'=>'required|max:15'
+            'phone'=>'required|max:13|min:10'
         ]);
         $user = User::create([
             'email' => $request['email'],

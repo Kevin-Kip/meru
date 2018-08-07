@@ -50,7 +50,7 @@
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone:</label>
-                            <input class="form-control" type="text" name="phone" id="phone" required>
+                            <input class="form-control" type="text" name="phone" id="phone" pattern="[0-9]{10}" aria-errormessage="Math" required>
                             @if($errors->has('phone') )
                                 <span class="text-danger">{{ $errors->first('phone') }}</span>
                             @endif
@@ -93,4 +93,12 @@
                 </div>
             </div>
         </div>
+@endsection
+
+@section('customScripts')
+    <script>
+        $('form').on('submit', function () {
+
+        })
+    </script>
 @endsection

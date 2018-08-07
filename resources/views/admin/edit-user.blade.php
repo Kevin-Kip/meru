@@ -59,7 +59,7 @@
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone:</label>
-                            <input class="form-control" value="{{ $users[0]->phone }}" type="text" name="phone" id="phone" required>
+                            <input class="form-control" value="{{ $users[0]->phone }}" type="text" name="phone" id="phone" pattern="[0-9]{10}" required>
                             @if($errors->has('phone') )
                                 <span class="text-danger">{{ $errors->first('phone') }}</span>
                             @endif

@@ -4,14 +4,14 @@
     @if(session()->has('message'))
         @if(session()->get('message') == "success")
             <div class="alert alert-success alert-dismissible show" role="alert">
-                <strong>Success!</strong> Saved Successfully
+                <strong>Success!</strong> Payment made Successfully
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         @elseif(session()->get('message') == "error")
             <div class="alert alert-danger alert-dismissible show" role="alert">
-                <strong>Ooops!</strong> Could not Save
+                <strong>Ooops!</strong> Unable to complete transaction
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -28,15 +28,24 @@
                     <br/>
                     <p>Name: {{ $project->project_name }}</p>
                     <p>Budget: KSh. {{ $project->budget }}</p>
-                    <p>Amount to Pay: {{ ($project->budget)*2 }}</p>
+                    <p>Maximum Payable now:
+                        @if($project->balance == 0)
+                            {{ $project->budget}}
+                        @else
+                            {{ $project->balance }}
+                        @endif
+                    </p>
                 </div>
-                <form action="{{ route('user.save') }}" method="post" enctype="multipart/form-data" autocomplete="off">
+                <form action="{{ route('finance.makepay',['id'=>$project->project_id]) }}" method="post" enctype="multipart/form-data" autocomplete="off">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label for="first_name">Amount to Pay:</label>
-                        <input class="form-control" type="number" name="first_name" id="first_name" required autofocus>
-                        @if($errors->has('first_name') )
-                            <span class="text-danger">{{ $errors->first('first_name') }}</span>
+                        <label for="price">Amount to Pay (KSh.):</label>
+                        <input class="form-control" type="number" name="price" id="price" required autofocus>
+                        @if($errors->has('price') )
+                            <span class="text-danger">{{ $errors->first('price') }}</span>
+                        @endif
+                        @if(session()->has('price_error') )
+                            <span class="text-danger">{{ session()->get('price_error') }}</span>
                         @endif
                     </div>
                     <div class="form-group">
