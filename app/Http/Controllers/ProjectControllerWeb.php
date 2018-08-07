@@ -118,7 +118,7 @@ class ProjectControllerWeb extends Controller
                 $path = $file->storePublicly('/uploads/'.$request['name'],'public');
                 $photo = new Photo();
                 $photo->photo_path = $path;
-                $photo->photo_project = $project->id;
+                $photo->photo_project = $project->project_id;
                 $photo->save();
             }
         }
