@@ -46,12 +46,12 @@
                     <div class="mr-5">{{ $usercount }} People</div>
                 @endif
             </div>
-            <p class="card-footer text-white clearfix small z-1">
+            <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
-            </p>
+            </a>
         </div>
     </div>
     <div class="col-xl-3 col-sm-6 mb-3">

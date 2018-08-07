@@ -21,34 +21,16 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="{{ route('users.home') }}">Dashboard</a>
+    <a class="navbar-brand" href="{{ route('finance.home') }}">Dashboard</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
-                <a class="nav-link" href="{{ route('users.home') }}">
+                <a class="nav-link" href="{{ route('finance.home') }}">
                     <i class="fa fa-fw fa-home"></i>
                     <span class="nav-link-text">Home</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projects">
-                <a class="nav-link" href="{{ route('users.projects') }}">
-                    <i class="fa fa-fw fa-tasks"></i>
-                    <span class="nav-link-text">Projects</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-                <a class="nav-link" href="{{ route('users.messages') }}">
-                    <i class="fa fa-fw fa-envelope-o"></i>
-                    <span class="nav-link-text">Messages</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Constituencies">
-                <a class="nav-link" href="{{ route('users.constituencies') }}">
-                    <i class="fa fa-fw fa-map-marker"></i>
-                    <span class="nav-link-text">Constituencies</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Generate Report">
@@ -86,7 +68,7 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ route('admin.home') }}">Dashboard</a>
+                <a href="{{ route('finance.home') }}">Dashboard</a>
             </li>
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>

@@ -49,7 +49,18 @@
                                         @endif
                                     @endforeach
                                     <p>{{ $project->project_ward }} ward</p>
-                                    <p>Contractor: <strong>{{ $project->contractor }}</strong></p>
+                                    <p>Contractor: <strong>{{ $project->contractor }}</strong></p><br/>
+                                    <p> Status:
+                                        @if($project->project_status == 0)
+                                            New
+                                        @elseif($project->project_status == 1)
+                                            Ongoing
+                                        @elseif($project->project_status == 2)
+                                            Completed
+                                        @else
+                                            Unknown
+                                        @endif
+                                    </p>
                                 </div>
                             </div>
                         </div>

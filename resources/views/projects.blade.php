@@ -33,7 +33,7 @@
                           <span class="card-title">{{ $project->project_name }}</span>
                         </div>
                         <div class="card-content">
-                            <p>Budget: {{ $project->budget }}</p>
+                            <p>Budget: KSh. {{ $project->budget }}</p>
                             <p><strong>{{ $project->completion }}% Completed</strong></p>
                             <div class="progress">
                                 <div class="progress-bar col-sm-10 col-md-6 col-lg-6" role="progressbar" aria-valuenow="{{ $project->completion }}"
@@ -49,7 +49,18 @@
                                 @endif
                             @endforeach
                             <p>{{ $project->project_ward }} ward</p>
-                            <p>Contractor: <strong>{{ $project->contractor }}</strong></p>
+                            <p>Contractor: <strong>{{ $project->contractor }}</strong></p><br/>
+                            <p> Status:
+                                @if($project->project_status == 0)
+                                    New
+                                @elseif($project->project_status == 1)
+                                    Ongoing
+                                @elseif($project->project_status == 2)
+                                    Completed
+                                @else
+                                    Unknown
+                                @endif
+                            </p>
                         </div>
                       </div>
                     </div>

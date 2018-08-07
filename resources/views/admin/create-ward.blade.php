@@ -26,7 +26,7 @@
             <i class="fa fa-table"></i>New Ward</div>
         <div class="card-bodyalign-content-center">
             <div class="col-sm-12">
-                <form action="{{ route('ward.save')}}" method="post">
+                <form action="{{ route('ward.save')}}" method="post" autocomplete="off">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="ward_name"></label>

@@ -26,7 +26,7 @@
             <i class="fa fa-table"></i>Update Constituency</div>
         <div class="card-bodyalign-content-center">
             <div class="col-sm-12">
-                <form action="{{ route('constituency.update',['id'=>$constituency->constituency_id])}}" method="post">
+                <form action="{{ route('constituency.update',['id'=>$constituency->constituency_id])}}" method="post" autocomplete="off">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="constituency_name">Constituency Name:</label>

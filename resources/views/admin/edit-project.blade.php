@@ -25,7 +25,7 @@
                 <i class="fa fa-table"></i> New Project</div>
             <div class="card-bodyalign-content-center">
                 <div class="col-sm-12">
-                    <form action="{{ route('project.update',['id'=>$project[0]->project_id]) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('project.update',['id'=>$project[0]->project_id]) }}" autocomplete="off" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="name">Project Name:</label>

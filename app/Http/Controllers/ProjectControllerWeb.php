@@ -64,9 +64,9 @@ class ProjectControllerWeb extends Controller
     }
 
     public function byConstituency($constituencyId){
-        $constituency = DB::table('constituencies')->where('constituency_id','=',$constituencyId)->first();
-        $constituencyName =  $constituency->constituency_name;
-        $projects =  Project::with('photos')->get();
+        $constituency = DB::table('constituencies')->where('constituency_id','=',$constituencyId)->get();
+        $constituencyName =  $constituency[0]->constituency_name;
+        $projects =  Project::where('project_constituency',$constituencyId)->get();
         $constituencies = Constituency::all();
         $departments = Department::all();
         return view('constituency',compact('constituencies','projects','constituencyName','departments'));
@@ -106,7 +106,8 @@ class ProjectControllerWeb extends Controller
             'completion' => $request['completion'],
             'contractor' => $request['contractor'],
             'due_date' => $request['due_date'],
-            'added_by' => "Admin"
+            'added_by' => "Admin",
+            'project_status' => 0
         ]);
 
         $files = $request['file'];

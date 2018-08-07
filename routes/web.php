@@ -300,3 +300,7 @@ Route::get('/users/finance', [
     'as' => 'finance.home',
     'uses' => 'FinanceController@goHome'
 ]);
+Route::get('/users/finance/{id}/pay', [
+    'as' => 'finance.pay',
+    'uses' => 'FinanceController@makePayment'
+]);

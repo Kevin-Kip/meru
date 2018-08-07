@@ -47,13 +47,13 @@ class PdfController extends Controller
 
     public function ongoing(){
         return Project::where('completion','<',100)
-            ->leftJoin('photos','photos.photo_project','=','projects.project_id')
+//            ->leftJoin('photos','photos.photo_project','=','projects.project_id')
             ->get();
     }
 
     public function completed(){
         return Project::where('completion','=',100)
-            ->leftJoin('photos','photos.photo_project','=','projects.project_id')
+//            ->leftJoin('photos','photos.photo_project','=','projects.project_id')
             ->get();
     }
 

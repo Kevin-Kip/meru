@@ -1,21 +1,21 @@
 @extends('admin.master')
 @section('content')
-        <!-- Message Card-->
-        @if(session()->has('message'))
-            @if(session()->get('message') == "success")
-                <div class="alert alert-success alert-dismissible show" role="alert">
-                    <strong>Success!</strong> Updated Successfully
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @elseif(session()->get('message') == "error")
-                <div class="alert alert-danger alert-dismissible show" role="alert">
-                    <strong>Ooops!</strong> Could Not Update
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+    <!-- Message Card-->
+    @if(session()->has('message'))
+        @if(session()->get('message') == "success")
+            <div class="alert alert-success alert-dismissible show" role="alert">
+                <strong>Success!</strong> Updated Successfully
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @elseif(session()->get('message') == "error")
+            <div class="alert alert-danger alert-dismissible show" role="alert">
+                <strong>Ooops!</strong> Could Not Update
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         @endif
     @endif
 
@@ -27,7 +27,7 @@
                 <i class="fa fa-table"></i> New Project</div>
             <div class="card-bodyalign-content-center">
                 <div class="col-sm-12">
-                    <form action="{{ route('user.update',['id'=>$users[0]->id]) }}" method="post">
+                    <form action="{{ route('user.update',['id'=>$users[0]->id]) }}" method="post" autocomplete="off">
                         {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="email">Email:</label>

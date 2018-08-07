@@ -43,7 +43,7 @@
                 <i class="fa fa-table"></i> New Department</div>
             <div class="card-bodyalign-content-center">
                 <div class="col-sm-12">
-                    <form action="{{ route('department.save') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('department.save') }}" method="post" enctype="multipart/form-data" autocomplete="off">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="department_name">Department Name:</label>

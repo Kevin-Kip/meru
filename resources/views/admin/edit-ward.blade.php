@@ -26,7 +26,7 @@
             <i class="fa fa-table"></i>Update Ward</div>
         <div class="card-bodyalign-content-center">
             <div class="col-sm-12">
-                <form action="{{ route('ward.update',['id'=>$ward->ward_id])}}" method="post">
+                <form action="{{ route('ward.update',['id'=>$ward->ward_id])}}" method="post" autocomplete="off">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="ward_name"></label>

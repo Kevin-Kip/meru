@@ -26,6 +26,7 @@ class CreateProjectsTable extends Migration
             $table->string('contractor');
             $table->date('due_date');
             $table->string('added_by');
+            $table->integer('project_status');
             $table->timestamps();
         });
     }

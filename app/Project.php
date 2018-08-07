@@ -15,7 +15,8 @@ class Project extends Model
             'completion',
             'contractor',
             'due_date',
-            'added_by'];
+            'added_by',
+            'project_status'];
 
     public function photos(){
         return $this->belongsTo(Photo::class,'project_id','photo_project');
