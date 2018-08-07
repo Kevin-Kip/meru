@@ -27,6 +27,7 @@ class CreateProjectsTable extends Migration
             $table->date('due_date');
             $table->string('added_by');
             $table->integer('project_status');
+            $table->integer('balance');
             $table->timestamps();
         });
     }
