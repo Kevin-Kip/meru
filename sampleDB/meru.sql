@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 08, 2018 at 09:51 AM
+-- Generation Time: Aug 08, 2018 at 11:38 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -163,7 +163,13 @@ CREATE TABLE `photos` (
 INSERT INTO `photos` (`photo_id`, `photo_path`, `photo_project`, `created_at`, `updated_at`) VALUES
 (1, 'uploads/Dam/8wqbWAzzbXKMbCgN61QEANwc0cYC0brFFzlBLmA6.png', 1, '2018-08-07 14:14:48', '2018-08-07 14:14:48'),
 (2, 'uploads/Dam/RJLeWxjBAfEsYvbtEDOIqnoOJ478qtYohK2SD2RU.png', 1, '2018-08-07 14:14:48', '2018-08-07 14:14:48'),
-(3, 'uploads/Dam/wbntImOsdUlsN7wo5AFruhlyQPBV0A5U9L6oGf2r.png', 1, '2018-08-07 14:14:48', '2018-08-07 14:14:48');
+(3, 'uploads/Dam/wbntImOsdUlsN7wo5AFruhlyQPBV0A5U9L6oGf2r.png', 1, '2018-08-07 14:14:48', '2018-08-07 14:14:48'),
+(4, 'uploads/new/EWWU2u7crTqSITv0z97jDS0VG2whyhICTveuDHPJ.png', 2, '2018-08-08 05:16:49', '2018-08-08 05:16:49'),
+(5, 'uploads/Sampe/4798HwS9Ld5biZXkbNGig4c3GzbBekmZXzv6F8VU.png', 3, '2018-08-08 05:27:48', '2018-08-08 05:27:48'),
+(6, 'uploads/Newest project/mGi5TbhccDTac6hxzXJNqf7Wu0vhLkxZVQhejwlN.png', 4, '2018-08-08 06:14:32', '2018-08-08 06:14:32'),
+(7, 'uploads/Newewst of all/xEuq6ih27uxa6LbixmKyazB2muns9H96EWBeFuuq.png', 5, '2018-08-08 06:32:51', '2018-08-08 06:32:51'),
+(8, 'uploads/Newewst of all/b1sQKmbquS7wPFBIXkQKOYY5sJBFbz9gmjuyrCWz.png', 6, '2018-08-08 06:33:14', '2018-08-08 06:33:14'),
+(9, 'uploads/ANother new/cygs27PKWbVuLfUDKYdxVNH4mQD4R9o8QsvKlSkU.png', 7, '2018-08-08 06:35:51', '2018-08-08 06:35:51');
 
 -- --------------------------------------------------------
 
@@ -194,7 +200,13 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`project_id`, `project_name`, `project_description`, `project_category`, `project_constituency`, `project_ward`, `budget`, `completion`, `contractor`, `due_date`, `added_by`, `project_status`, `balance`, `created_at`, `updated_at`) VALUES
-(1, 'Dam', 'Sample description over here. nothing important..', 'Education', 4, 'Ntima East', 1000000, 43, 'Kelvin Pac', '2018-08-25', 'Admin', 1, 900, '2018-08-07 14:14:48', '2018-08-07 15:23:33');
+(1, 'Dam', 'Sample description over here. nothing important..', 'Education', 4, 'Ntima East', 1000000, 43, 'Kelvin Pac', '2018-08-25', 'Admin', 1, 0, '2018-08-07 14:14:48', '2018-08-08 05:14:03'),
+(2, 'new', 'New project description going on.', 'Education', 8, 'Abothuguchi Central', 10000, 33, 'Kelvin Pac', '2018-08-31', 'Admin', 1, 0, '2018-08-08 05:16:49', '2018-08-08 05:44:48'),
+(3, 'Sampe', 'Project to test balance payable', 'Education', 4, 'Ntima East', 10000, 77, 'Brian Kim', '2018-08-30', 'Admin', 1, 0, '2018-08-08 05:27:48', '2018-08-08 06:07:49'),
+(4, 'Newest project', 'Very new one just to test the API endpoint for all projects.', 'Education', 6, 'Ntunene', 100000, 87, 'Kelvin Pac', '2018-08-30', 'Admin', 0, 0, '2018-08-08 06:14:32', '2018-08-08 06:14:32'),
+(5, 'Newewst of all', 'Am adding another project as proof', 'Education', 2, 'Kegoi', 1000000, 0, 'Kelvin Pac', '2018-08-18', 'Admin', 0, 0, '2018-08-08 06:32:42', '2018-08-08 06:32:42'),
+(6, 'Newewst of all', 'Am adding another project as proof', 'Education', 2, 'Kegoi', 1000000, 0, 'Kelvin Pac', '2018-08-18', 'Admin', 0, 0, '2018-08-08 06:33:11', '2018-08-08 06:33:11'),
+(7, 'ANother new', 'Very new to verify things', 'Education', 1, 'Kiirua', 100000, 0, 'Brian Kim', '2018-09-01', 'Admin', 0, 0, '2018-08-08 06:35:51', '2018-08-08 06:35:51');
 
 -- --------------------------------------------------------
 
@@ -395,12 +407,12 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `photo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `photo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `project_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `project_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `users`
 --
