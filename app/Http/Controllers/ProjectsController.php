@@ -41,15 +41,18 @@ class ProjectsController extends Controller
     public function getProjectsByDepartment($id){
         $department = Department::where('department_id', $id)->get();
         $departmentName = $department[0]->department_name;
-        $projects = Project::where('project_category',$departmentName)->get();
-        foreach ($projects as $project){
-            $projectPhotos = Photo::where('photo_project',$project->project_id)->get();
-            $project['photos'] = $projectPhotos;
-        }
+        $projects = DB::table('projects')
+            ->where('project_category',$departmentName)
+            ->leftJoin('photos','photos.photo_id','=','projects.project_id')
+            ->get();
         return $projects;
     }
     public function getProjectsByConstituency($id){
-        return Project::where('project_constituency', $id)->get();
+        $projects = DB::table('projects')
+            ->where('project_constituency',$id)
+            ->leftJoin('photos','photos.photo_id','=','projects.project_id')
+            ->get();
+        return $projects;
     }
     public function sendFeedback(Request $request){
         $message = Message::create([
