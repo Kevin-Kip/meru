@@ -38,7 +38,6 @@ class FinanceController extends Controller
             if ($currentBalance == 0){
                 return redirect()->back()->with('price_error',"This project is fully paid for.");
             }
-            return redirect()->back()->with('price_error',"Amount must be equal to or less than the current balance.");
         }
 
         if ($currentBalance == 0) {
