@@ -310,5 +310,5 @@ Route::post('/users/finance/{id}/pay', [
 ]);
 Route::get('/finance/reports', [
    'as' =>'finance.reports' ,
-    'uses'=>  ''
+    'uses'=>  'PdfController@showForFinance'
 ]);

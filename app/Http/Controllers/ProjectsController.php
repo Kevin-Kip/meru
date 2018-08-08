@@ -15,9 +15,13 @@ use Illuminate\Support\Facades\DB;
 class ProjectsController extends Controller
 {
     public function getProjects(){
-        $projects = DB::table('projects')
-            ->leftJoin('photos','photos.photo_id','=','projects.project_id')
-            ->get();
+        $projects = DB::select('
+            select * from projects join photos on photos.photo_id = (
+            select photo_id from photos
+            where photos.photo_project = projects.project_id
+            order by created_at desc
+            limit 1)
+        ');
         return $projects;
     }
     public function getConstituencies(){
@@ -41,10 +45,17 @@ class ProjectsController extends Controller
     public function getProjectsByDepartment($id){
         $department = Department::where('department_id', $id)->get();
         $departmentName = $department[0]->department_name;
-        $projects = DB::table('projects')
-            ->where('project_category',$departmentName)
-            ->leftJoin('photos','photos.photo_id','=','projects.project_id')
-            ->get();
+//        $projects = DB::table('projects')
+//            ->where('project_category',$departmentName)
+//            ->leftJoin('photos','photos.photo_id','=','projects.project_id')
+//            ->get();
+        $projects = DB::select('
+            select * from projects join photos on photos.photo_id = (
+            select photo_id from photos
+            where photos.photo_project = projects.project_id
+            order by created_at desc
+            limit 1)
+        ');
         return $projects;
     }
     public function getProjectsByConstituency($id){

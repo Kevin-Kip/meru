@@ -1,4 +1,4 @@
-@extends('users.master')
+@extends('finance.master')
 @section('content')
 
         <div class="text-white">

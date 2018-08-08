@@ -28,6 +28,7 @@
                         <th>Name</th>
                         <th>Status</th>
                         <th>Budget (KSh.)</th>
+                        <th>Balance (KSh.)</th>
                         <th>Completion</th>
                         <th>Contractor</th>
                         <th>Pay</th>
@@ -49,7 +50,8 @@
                                         Unknown
                                     @endif
                                 </td>
-                                <td>{{ $project->budget }}</td>
+                                <td>KSh. {{ $project->budget }}</td>
+                                <td>KSh. {{ $project->balance }}</td>
                                 <td>{{ $project->completion }}%</td>
                                 <td>{{ $project->contractor }}</td>
                                 <td><a class="btn btn-primary" href="{{ route('finance.pay', ['id'=>$project->project_id]) }}">Make Payment</a></td>
