@@ -29,8 +29,10 @@
                     <p>Name: {{ $project->project_name }}</p>
                     <p>Budget: KSh. {{ $project->budget }}</p>
                     <p>Maximum Payable now:
-                        @if($project->balance == 0)
+                        @if($project->balance == 0 && $project->project_status == 0)
                             {{ $project->budget}}
+                        @elseif($project->balance == 0 && $project->project_status > 0)
+                            This project is fully paid for
                         @else
                             {{ $project->balance }}
                         @endif

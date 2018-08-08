@@ -34,7 +34,10 @@ class FinanceController extends Controller
             return redirect()->back()->with('price_error',"Amount must be greater than KSh. 100");
         }
 
-        if ($paid > $currentBalance){
+        if ($project->project_status > 0){
+            if ($currentBalance == 0){
+                return redirect()->back()->with('price_error',"This project is fully paid for.");
+            }
             return redirect()->back()->with('price_error',"Amount must be equal to or less than the current balance.");
         }
 

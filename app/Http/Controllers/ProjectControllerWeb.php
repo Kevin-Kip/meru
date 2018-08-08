@@ -92,7 +92,7 @@ class ProjectControllerWeb extends Controller
 //        return $request->all();
         $this->validate($request, [
             'name'=>'required|max:35',
-            'description'=>'required|max:400',
+            'description'=>'required|max:1000',
             'budget'=>'required|max:20',
             'completion'=>'required|max:3'
         ]);
@@ -178,7 +178,7 @@ class ProjectControllerWeb extends Controller
 //        return $request->all();
         $this->validate($request, [
             'project_name'=>'required|max:35',
-            'project_description'=>'required|max:400',
+            'project_description'=>'required|max:1000',
             'budget'=>'required|max:20',
             'completion'=>'required|max:3'
         ]);
@@ -198,10 +198,6 @@ class ProjectControllerWeb extends Controller
     public function destroy($id)
     {
         $project = Project::where('project_id',$id);
-        if ($project->delete()){
-            return redirect()->back()->with('message',"success");
-        } else {
-            return redirect()->back()->with('message',"error");
-        }
+        return $project->delete() ? redirect()->back()->with('message', "success") : redirect()->back()->with('message', "error");
     }
 }

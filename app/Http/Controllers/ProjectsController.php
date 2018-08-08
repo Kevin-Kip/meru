@@ -42,11 +42,11 @@ class ProjectsController extends Controller
         $department = Department::where('department_id', $id)->get();
         $departmentName = $department[0]->department_name;
         $projects = Project::where('project_category',$departmentName)->get();
+        foreach ($projects as $project){
+            $projectPhotos = Photo::where('photo_project',$project->project_id)->get();
+            $project['photos'] = $projectPhotos;
+        }
         return $projects;
-    }
-    public function getProjectByDepartment($id){
-        $department = Department::where('department_id',$id)->get();
-        return Project::where('project_category', $department[0]->department_name)->get();
     }
     public function getProjectsByConstituency($id){
         return Project::where('project_constituency', $id)->get();
