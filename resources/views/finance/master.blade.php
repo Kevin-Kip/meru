@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Generate Report">
-                <a class="nav-link" href="{{ url('/users/reports') }}">
+                <a class="nav-link" href="{{ url('/finance/reports') }}">
                     <i class="fa fa-fw fa-book"></i>
                     <span class="nav-link-text">Generate Report</span>
                 </a>

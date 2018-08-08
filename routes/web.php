@@ -308,3 +308,7 @@ Route::post('/users/finance/{id}/pay', [
     'as' => 'finance.makepay',
     'uses' => 'FinanceController@submitPayment'
 ]);
+Route::get('/finance/reports', [
+   'as' =>'finance.reports' ,
+    'uses'=>  ''
+]);
