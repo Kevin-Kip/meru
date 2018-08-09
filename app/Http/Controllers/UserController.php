@@ -61,6 +61,8 @@ class UserController extends Controller
                     return redirect()->route('admin.home');
                 } else if ($user->user_role == "Finance Officer") {
                     return \redirect()->route('finance.home');
+                } else if ($user->user_role == "Contractor") {
+                    return \redirect()->route('contractor.home');
                 } else {
                     return redirect()->route('users.home');
                 }
@@ -108,6 +110,7 @@ class UserController extends Controller
             'phone' => $request['phone'],
             'user_constituency' => $request['constituency'],
             'user_role' => $request['role']
+//            'verified' => 0
         ]);
 
         if ($user){

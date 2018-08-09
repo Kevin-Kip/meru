@@ -312,3 +312,28 @@ Route::get('/finance/reports', [
    'as' =>'finance.reports' ,
     'uses'=>  'PdfController@showForFinance'
 ]);
+
+//
+Route::get('/users/contractor', [
+   'as' => 'contractor.home',
+   'uses' => 'ContractorController@index'
+]);
+
+Route::get('/users/contractor/projects/{id}', [
+   'as' => 'contractor.projects',
+   'uses' => 'ContractorController@show'
+]);
+
+Route::get('/users/contractor/reports', [
+    'as' => 'contractor.reports',
+    'uses' => 'ContractorController@reports'
+]);
+
+Route::get('/users/contractor/projects/update/{id}', [
+    'as' => 'show.progress',
+    'uses' => 'ContractorController@goToProgress'
+]);
+Route::post('/users/contractor/projects/update/{id}', [
+   'as' => 'update.progress',
+   'uses' => 'ContractorController@update'
+]);

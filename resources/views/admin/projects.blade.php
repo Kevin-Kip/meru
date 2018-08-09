@@ -49,6 +49,7 @@
                             <th>Department</th>
                             <th>Constituency</th>
                             <th>Budget</th>
+                            <th>Balance</th>
                             <th>Completion</th>
                             <th>Due Date</th>
                             <th>Edit</th>
@@ -64,8 +65,9 @@
                                     <td>{{ $project->project_description }}</td>
                                     <td>{{ $project->project_category }}</td>
                                     <td>{{ $project->constituency_name }}</td>
-                                    <td>{{ $project->budget }}</td>
-                                    <td>{{ $project->completion }}</td>
+                                    <td>KSh. {{ $project->budget }}</td>
+                                    <td>KSh. {{ $project->balance }}</td>
+                                    <td>{{ $project->completion }}%</td>
                                     <td>{{ $project->due_date }}</td>
                                     <td>
                                         <a href="{{ route('project.edit',['id'=>$project->project_id]) }}" class="btn btn-primary">
