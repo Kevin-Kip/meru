@@ -313,7 +313,7 @@ Route::get('/finance/reports', [
     'uses'=>  'PdfController@showForFinance'
 ]);
 
-//
+//Contractor
 Route::get('/users/contractor', [
    'as' => 'contractor.home',
    'uses' => 'ContractorController@index'

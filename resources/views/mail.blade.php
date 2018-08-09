@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome Email</title>
+    <title>Meru project Management System</title>
 </head>
 
 <body>
-<h2>Welcome to the site</h2>
-<br/>
-This is a email demo from My Project
-{{--{{ $response }}--}}
+{{ $response }}
 </body>
 
 </html>

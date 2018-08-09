@@ -35,6 +35,7 @@
                             <th>Message</th>
                             <th>Sent On</th>
                             <th>Reply</th>
+                            <th>Forward</th>
                         </tr>
                         </thead>
                         @if('messages')
@@ -48,6 +49,9 @@
                                     <td>{{ $message->created_at }}</td>
                                     <td>
                                         <a href="{{ route('message.reply',['id' => $message->message_id]) }}" class="btn btn-info">Reply</a>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary">Forward</button>
                                     </td>
                                 </tr>
                             @endforeach

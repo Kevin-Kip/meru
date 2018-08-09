@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use App\Constituency;
-use App\Mail\Respond;
 use App\Message;
 use App\Project;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
+//use Mail;
 
 
 class MessageController extends Controller
@@ -80,8 +79,8 @@ class MessageController extends Controller
 
     public function showReply($id)
     {
-//        $message = Message::where('message_id', $id)->get();
-//        return view('admin.reply', compact('message'));
+        $message = Message::where('message_id', $id)->get();
+        return view('admin.reply', compact('message'));
     }
 
     /**
@@ -99,15 +98,18 @@ class MessageController extends Controller
         ]);
 
         $email = $request['email'];
-        $data['response'] = $request['response'];
+        $response = $request['response'];
+        $data = array('response'=>$response,'email'=>$email);
 
-//        return Mail::to('masterfork5@gmail.com')->send(new Respond());
+        $mailer = app()['mailer'];
 
-//        Mail::send('mail', $data, function ($message){
-//            $message->to('kevkiprotich@gmail.com','Kevin Kip')
-//                ->subject('Sample Subject');
-//            $message->from('masterfork5@gmail.com','Master');
-//        });
+        if ($mailer->send('mail', $data, function ($message) use ($data){
+            $message->from('admin@meru.go.ke','Meru Project Management');
+            $message->to($data['email'],'Kevin Kip');
+            $message->subject('Response to you Email');
+        })){
+                return redirect()->back()->with('message', "success");
+        }
     }
 
     /**
