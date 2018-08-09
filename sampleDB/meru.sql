@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 08, 2018 at 11:38 AM
+-- Generation Time: Aug 10, 2018 at 01:16 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -102,6 +102,14 @@ CREATE TABLE `messages` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`message_id`, `sender_first_name`, `sender_last_name`, `sender_email`, `sender_constituency`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'Kev', 'Kip', 'masterfork5@gmail.com', 'South Imenti', 'Sample message', '2018-08-09 17:35:55', '2018-08-09 17:35:55'),
+(2, 'Kip', 'Kin', 'kevkiprotich@gmail.com', 'South Imenti', 'Another sample', '2018-08-09 18:42:51', '2018-08-09 18:42:51');
 
 -- --------------------------------------------------------
 
@@ -203,10 +211,10 @@ INSERT INTO `projects` (`project_id`, `project_name`, `project_description`, `pr
 (1, 'Dam', 'Sample description over here. nothing important..', 'Education', 4, 'Ntima East', 1000000, 43, 'Kelvin Pac', '2018-08-25', 'Admin', 1, 0, '2018-08-07 14:14:48', '2018-08-08 05:14:03'),
 (2, 'new', 'New project description going on.', 'Education', 8, 'Abothuguchi Central', 10000, 33, 'Kelvin Pac', '2018-08-31', 'Admin', 1, 0, '2018-08-08 05:16:49', '2018-08-08 05:44:48'),
 (3, 'Sampe', 'Project to test balance payable', 'Education', 4, 'Ntima East', 10000, 77, 'Brian Kim', '2018-08-30', 'Admin', 1, 0, '2018-08-08 05:27:48', '2018-08-08 06:07:49'),
-(4, 'Newest project', 'Very new one just to test the API endpoint for all projects.', 'Education', 6, 'Ntunene', 100000, 87, 'Kelvin Pac', '2018-08-30', 'Admin', 0, 0, '2018-08-08 06:14:32', '2018-08-08 06:14:32'),
-(5, 'Newewst of all', 'Am adding another project as proof', 'Education', 2, 'Kegoi', 1000000, 0, 'Kelvin Pac', '2018-08-18', 'Admin', 0, 0, '2018-08-08 06:32:42', '2018-08-08 06:32:42'),
-(6, 'Newewst of all', 'Am adding another project as proof', 'Education', 2, 'Kegoi', 1000000, 0, 'Kelvin Pac', '2018-08-18', 'Admin', 0, 0, '2018-08-08 06:33:11', '2018-08-08 06:33:11'),
-(7, 'ANother new', 'Very new to verify things', 'Education', 1, 'Kiirua', 100000, 0, 'Brian Kim', '2018-09-01', 'Admin', 0, 0, '2018-08-08 06:35:51', '2018-08-08 06:35:51');
+(4, 'Newest project', 'Very new one just to test the API endpoint for all projects.', 'Education', 6, 'Ntunene', 100000, 100, 'Kelvin Pac', '2018-08-30', 'Admin', 0, 0, '2018-08-08 06:14:32', '2018-08-09 16:53:36'),
+(5, 'Newewst of all', 'Am adding another project as proof', 'Education', 2, 'Kegoi', 1000000, 100, 'Kelvin Pac', '2018-08-18', 'Admin', 0, 0, '2018-08-08 06:32:42', '2018-08-09 16:58:45'),
+(6, 'Newewst of all', 'Am adding another project as proof', 'Education', 2, 'Kegoi', 1000000, 100, 'Kelvin Pac', '2018-08-18', 'Admin', 0, 0, '2018-08-08 06:33:11', '2018-08-08 06:33:11'),
+(7, 'ANother new', 'Very new to verify things', 'Education', 1, 'Kiirua', 100000, 100, 'Brian Kim', '2018-09-01', 'Admin', 1, 85000, '2018-08-08 06:35:51', '2018-08-08 08:45:59');
 
 -- --------------------------------------------------------
 
@@ -397,7 +405,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `message_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `message_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
