@@ -22,10 +22,10 @@
 
     <div class="card mb-3 col-md-10">
         <div class="card-header">
-            <i class="fa fa-table"></i> Reply To</div>
+            <i class="fa fa-table"></i> Forward Email</div>
         <div class="card-bodyalign-content-center">
             <div class="col-sm-12">
-                <p>{{ $message[0]->message }}</p>
+                <p>{{ $message->message }}</p>
             </div>
         </div>
     </div>
@@ -33,25 +33,20 @@
     <!-- Example DataTables Card-->
     <div class="card mb-3 col-md-10">
         <div class="card-header">
-            <i class="fa fa-table"></i>Response</div>
+            <i class="fa fa-table"></i>Email:</div>
         <div class="card-bodyalign-content-center">
             <div class="col-sm-12">
-                <form action="{{ route('message.respond',['id'=>$message[0]->message_id]) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('message.sendforward',['id'=>$message->message_id]) }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label for="response"></label>
-                        <textarea class="form-control" type="text" name="response" id="response" required autofocus>
-                        </textarea>
-                        @if($errors->has('response') )
-                            <span class="text-danger">{{ $errors->first('response') }}</span>
+                        <label for="email"></label>
+                        <input class="form-control" type="email" name="email" id="email" required autofocus>
+                        @if($errors->has('email') )
+                            <span class="text-danger">{{ $errors->first('email') }}</span>
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="email"></label>
-                        <input class="form-control" type="email" name="email" value="{{ $message[0]->sender_email }}" id="email" hidden>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" name="submit" id="submit" value="SEND REPLY" class="col-md-4 btn btn-primary">
+                        <input type="submit" name="submit" id="submit" value="FORWARD" class="col-md-4 btn btn-primary">
                     </div>
                 </form>
             </div>

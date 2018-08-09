@@ -337,3 +337,14 @@ Route::post('/users/contractor/projects/update/{id}', [
    'as' => 'update.progress',
    'uses' => 'ContractorController@update'
 ]);
+
+//forward message
+Route::get('/admin/messages/{id}/forward', [
+    'as' => 'message.forward',
+    'uses' => 'MessageController@showForward'
+]);
+
+Route::post('/admin/messages/{id}/forward', [
+    'as' => 'message.sendforward',
+    'uses' => 'MessageController@forward'
+]);

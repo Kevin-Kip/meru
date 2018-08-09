@@ -112,6 +112,27 @@ class MessageController extends Controller
         }
     }
 
+    public function showForward($id){
+        $message = Message::where('message_id',$id)->first();
+        return view('admin.forward', compact('message'));
+    }
+
+    public function forward(Request $request, $id){
+        $message = Message::where('message_id',$id)->first();
+        $body = $message->message;
+        $email = $request['email'];
+
+        $data = array('body'=>$body,'email'=>$email);
+
+        $mailer = app()['mailer'];
+        $mailer->send('forward-template', $data, function ($message) use ($data){
+            $message->from('admin@meru.go.ke','Meru Project Management');
+            $message->to($data['email'],'Kevin Kip');
+            $message->subject('Forwarded from Meru Project Management System');
+        });
+        return redirect()->back()->with('message', "success");
+    }
+
     /**
      * Remove the specified resource from storage.
      *

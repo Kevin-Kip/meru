@@ -51,7 +51,7 @@
                                         <a href="{{ route('message.reply',['id' => $message->message_id]) }}" class="btn btn-info">Reply</a>
                                     </td>
                                     <td>
-                                        <button class="btn btn-primary">Forward</button>
+                                        <a href="{{ route('message.forward',['id'=>$message->message_id]) }}" class="btn btn-primary">Forward</a>
                                     </td>
                                 </tr>
                             @endforeach
