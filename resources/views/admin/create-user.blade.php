@@ -63,18 +63,6 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="constituency">Constituency</label>
-                            <select name="constituency" id="constituency" class="form-control">
-                                <option disabled selected value> -- select an option -- </option>
-                                @foreach($constituencies as $constituency)
-                                    <option value="{{ $constituency->constituency_name }}">{{ $constituency->constituency_name }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('constituency') )
-                                <span class="text-danger">{{ $errors->first('constituency') }}</span>
-                            @endif
-                        </div>
-                        <div class="form-group">
                             <label for="role">Role:</label>
                             <select name="role" id="role" class="form-control">
                                 <option disabled selected value> -- select an option -- </option>
@@ -85,6 +73,13 @@
                                 <option value="Procurement Officer">Procurement Officer</option>
                                 <option value="Finance Officer">Finance Officer</option>
                             </select>
+                        </div>
+                        <div class="form-group" hidden id="verified-parent">
+                            <label for="verified">Is the Contractor Verified?</label>
+                            <input type="checkbox" id="verified" name="verified">
+                            @if($errors->has('verified') )
+                                <span class="text-danger">{{ $errors->first('verified') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <input type="submit" name="submit" id="dubmit" value="SAVE" class="col-md-4 btn btn-primary">
@@ -97,8 +92,12 @@
 
 @section('customScripts')
     <script>
-        $('form').on('submit', function () {
-
+        $('#role').on('change', function () {
+            if ($('#role').val() === "Contractor"){
+                $('#verified-parent').attr('hidden', false)
+            } else {
+                $('#verified-parent').attr('hidden', true)
+            }
         })
     </script>
 @endsection

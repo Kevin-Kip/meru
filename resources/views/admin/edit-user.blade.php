@@ -65,18 +65,6 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="constituency">Constituency</label>
-                            <select name="user_constituency" id="constituency" class="form-control">
-                                <option disabled selected value> -- select an option -- </option>
-                                @foreach($constituencies as $constituency)
-                                    <option value="{{ $constituency->constituency_name }}">{{ $constituency->constituency_name }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('constituency') )
-                                <span class="text-danger">{{ $errors->first('constituency') }}</span>
-                            @endif
-                        </div>
-                        <div class="form-group">
                             <label for="role">Role:</label>
                             <select name="user_role" id="role" class="form-control">
                                 <option disabled selected value> -- select an option -- </option>

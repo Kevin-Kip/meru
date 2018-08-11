@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Constituency;
+use App\Contractor;
 use App\Message;
 use App\Project;
 use App\User;
@@ -12,7 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -108,10 +108,23 @@ class UserController extends Controller
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
             'phone' => $request['phone'],
-            'user_constituency' => $request['constituency'],
             'user_role' => $request['role']
-//            'verified' => 0
         ]);
+
+        $verified = $request['verified'];
+
+        if ($verified == "on"){
+            $isVerified = 1;
+        } else {
+            $isVerified = 0;
+        }
+
+        if ($user) {
+            Contractor::create([
+                'user_id' => $user->id,
+                'verified' => $isVerified
+            ]);
+        }
 
         if ($user){
             return redirect()->back()->with('message',"success");
@@ -120,16 +133,6 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -168,9 +171,10 @@ class UserController extends Controller
         $user->first_name = $request['first_name'];
         $user->last_name = $request['last_name'];
         $user->phone = $request['phone'];
-        $user->user_constituency = $request['user_constituency'];
         $user->user_role = $request['user_role'];
-        return $user->save() ? redirect()->back()->with('message', "success") : redirect()->back()->with('message', "error");
+        return $user->save() ?
+            redirect()->back()->with('message', "success") :
+            redirect()->back()->with('message', "error");
     }
 
     /**
@@ -182,6 +186,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::where('id',$id);
-        return $user->delete() ? redirect()->back()->with('message', "success") : redirect()->back()->with('message', "error");
+        return $user->delete() ?
+            redirect()->back()->with('message', "success") :
+            redirect()->back()->with('message', "error");
     }
 }

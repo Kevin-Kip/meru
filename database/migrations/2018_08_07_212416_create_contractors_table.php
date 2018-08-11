@@ -14,7 +14,10 @@ class CreateContractorsTable extends Migration
     public function up()
     {
         Schema::create('contractors', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('contractor_id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('verified');
             $table->timestamps();
         });
     }
