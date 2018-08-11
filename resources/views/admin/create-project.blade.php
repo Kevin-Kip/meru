@@ -89,7 +89,9 @@
                                 <option disabled selected value> -- select an contractor -- </option>
                                 @if('contractors')
                                     @foreach($contractors as $contractor)
+                                        @if($contractor->verified == 1)
                                         <option value="{{ $contractor->first_name." ".$contractor->last_name }}">{{ $contractor->first_name." ".$contractor->last_name }}</option>
+                                        @endif
                                     @endforeach
                                 @endif
                             </select>

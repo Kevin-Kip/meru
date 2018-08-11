@@ -59,7 +59,9 @@ class ProjectControllerWeb extends Controller
         $constituencies = Constituency::all();
         $wards = Ward::all();
         $departments = Department::all();
-        $contractors = DB::table('users')->where('user_role','=',"Contractor")->get();
+        $contractors = DB::table('users')->where('user_role','=','Contractor')
+        ->leftJoin('contractors','contractors.user_id','=','users.id')
+        ->get();
         return view('admin.create-project',compact('departments','message','constituencies','contractors','wards'));
     }
 
@@ -89,7 +91,6 @@ class ProjectControllerWeb extends Controller
      */
     public function store(Request $request)
     {
-//        return $request->all();
         $this->validate($request, [
             'name'=>'required|max:35',
             'description'=>'required|max:1000',
@@ -198,6 +199,8 @@ class ProjectControllerWeb extends Controller
     public function destroy($id)
     {
         $project = Project::where('project_id',$id);
-        return $project->delete() ? redirect()->back()->with('message', "success") : redirect()->back()->with('message', "error");
+        return $project->delete() ?
+            redirect()->back()->with('message', "success") :
+            redirect()->back()->with('message', "error");
     }
 }

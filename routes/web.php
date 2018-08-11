@@ -348,3 +348,12 @@ Route::post('/admin/messages/{id}/forward', [
     'as' => 'message.sendforward',
     'uses' => 'MessageController@forward'
 ]);
+//Contractors
+Route::get('/admin/contractors', [
+    'as' => 'contractors.all',
+    'uses' => 'ContractorController@showAll'
+]);
+Route::post('/admin/contractors/{id}/verify', [
+    'as' => 'contractor.verify',
+    'uses' => 'ContractorController@verify'
+]);

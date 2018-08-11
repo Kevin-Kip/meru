@@ -45,6 +45,12 @@
                     <span class="nav-link-text">People</span>
                 </a>
             </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="People">
+                <a class="nav-link" href="{{ route('contractors.all') }}">
+                    <i class="fa fa-fw fa-user-o"></i>
+                    <span class="nav-link-text">Contractors</span>
+                </a>
+            </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
                 <a class="nav-link" href="{{ route('messages.all') }}">
                     <i class="fa fa-fw fa-envelope-o"></i>

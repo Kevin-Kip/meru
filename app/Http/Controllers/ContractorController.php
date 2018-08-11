@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Constituency;
+use App\Contractor;
+use App\Message;
 use App\Project;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContractorController extends Controller
 {
@@ -26,20 +30,31 @@ class ContractorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function showAll()
     {
-        //
+        $messagecount = Message::count();
+        $projectcount = Project::count();
+        $usercount = User::count();
+        $constituencycount = Constituency::count();
+        $users = DB::table('users')->where('user_role','=','Contractor')
+            ->leftJoin('contractors','contractors.user_id','=','users.id')
+            ->paginate(10);
+        return view('admin.contractors', compact('users','messagecount','projectcount','usercount','constituencycount'));
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Request
+     * @param $id
+     * @return void
      */
-    public function store(Request $request)
+    public function verify($id)
     {
-        //
+        $contractor = Contractor::where('contractor_id',$id)->first();
+        $contractor->verified = 1;
+        return $contractor->update() ?
+            redirect()->back()->with('message',"success") :
+            redirect()->back()->with('message',"error");
     }
 
     /**
