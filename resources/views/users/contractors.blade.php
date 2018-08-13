@@ -4,28 +4,26 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> Messages</div>
+                <i class="fa fa-table"></i> Contractors</div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>Sender</th>
+                            <th>Name</th>
                             <th>Email</th>
-                            <th>Constituency</th>
-                            <th>Message</th>
-                            <th>Sent On</th>
+                            <th>Phone</th>
+                            <th>Assigned Projects</th>
                         </tr>
                         </thead>
                         @if('messages')
                             <tbody>
-                            @foreach($messages as $message)
+                            @foreach($contractors as $contractor)
                                 <tr>
-                                    <td>{{ $message->sender_first_name ." ".$message->sender_last_name }}</td>
-                                    <td>{{ $message->sender_email }}</td>
-                                    <td>{{ $message->sender_constituency }}</td>
-                                    <td>{{ $message->message }}</td>
-                                    <td>{{ $message->created_at }}</td>
+                                    <td>{{ $contractor->first_name ." ".$contractor->last_name }}</td>
+                                    <td>{{ $contractor->email }}</td>
+                                    <td>{{ $contractor->phone }}</td>
+                                    <td>{{ $contractor->assigned_projects }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

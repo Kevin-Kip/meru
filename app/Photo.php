@@ -8,7 +8,5 @@ class Photo extends Model
 {
     protected $fillable = ['photo_path','photo_project'];
 
-    public function project(){
-        return $this->belongsTo(Project::class);
-    }
+    protected $primaryKey = 'photo_id';
 }

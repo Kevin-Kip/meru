@@ -10,7 +10,7 @@
                     <div class="mr-5">{{ $messagecount }} Messages</div>
                 @endif
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="{{ route('users.messages') }}">
+            <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -64,7 +64,7 @@
                     <div class="mr-5">{{ $constituencycount }} Constituencies</div>
                 @endif
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="{{ route('users.constituencies') }}">
+            <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                 <i class="fa fa-angle-right"></i>

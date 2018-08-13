@@ -23,7 +23,7 @@ class Project extends Model
             'balance'];
 
     public function photos(){
-        return $this->belongsTo(Photo::class,'photo_project','project_id');
+        return $this->belongsTo(Photo::class,'project_id','photo_project');
     }
 
     public function constituency(){

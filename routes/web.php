@@ -79,13 +79,9 @@ Route::get('/users/projects',[
     'as' => 'users.projects',
     'uses' => 'ManagerController@userProjects'
 ]);
-Route::get('/users/constituencies',[
-    'as' => 'users.constituencies',
-    'uses' => 'ManagerController@userConstituencies'
-]);
-Route::get('/users/messages',[
-    'as' => 'users.messages',
-    'uses' => 'ManagerController@userMessages'
+Route::get('/users/contractors',[
+    'as' => 'users.contractors',
+    'uses' => 'ManagerController@userContractors'
 ]);
 Route::get('/users/people/new', [
    'as' => 'user.create',

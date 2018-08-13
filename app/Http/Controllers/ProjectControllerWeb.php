@@ -33,7 +33,13 @@ class ProjectControllerWeb extends Controller
     }
 
     public function fetchAll(){
-        $projects =  Project::with('photos')->get();
+        $projects = DB::select('
+            select * from projects join photos on photos.photo_id = (
+            select photo_id from photos
+            where photos.photo_project = projects.project_id
+            order by created_at desc
+            limit 1)
+        ');
         $constituencies = Constituency::all();
         $departments = Department::all();
         return view('projects',compact('photos','constituencies','projects','departments'));
@@ -79,7 +85,7 @@ class ProjectControllerWeb extends Controller
         $categoryName = $department->department_name;
         $constituencies = Constituency::all();
         $departments = Department::all();
-        $projects =  Project::where('project_category',$categoryName)->get();
+        $projects = Project::with('photos')->get();
         return view('category',compact('projects','constituencies','categoryName','departments'));
     }
 

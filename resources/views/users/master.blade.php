@@ -39,16 +39,10 @@
                     <span class="nav-link-text">Projects</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-                <a class="nav-link" href="{{ route('users.messages') }}">
-                    <i class="fa fa-fw fa-envelope-o"></i>
-                    <span class="nav-link-text">Messages</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Constituencies">
-                <a class="nav-link" href="{{ route('users.constituencies') }}">
-                    <i class="fa fa-fw fa-map-marker"></i>
-                    <span class="nav-link-text">Constituencies</span>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="COntractors">
+                <a class="nav-link" href="{{ route('users.contractors') }}">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span class="nav-link-text">Contractors</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Generate Report">

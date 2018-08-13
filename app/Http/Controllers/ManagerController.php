@@ -67,13 +67,16 @@ class ManagerController extends Controller
         return view('users.constituencies', compact('messagecount','projectcount','usercount','constituencycount','constituencies'));
     }
 
-    public function userMessages(){
+    public function userContractors(){
         $messagecount = Message::count();
         $projectcount = Project::count();
         $usercount = User::count();
         $constituencycount = Constituency::count();
-        $messages = Message::all();
-        return view('users.messages', compact('messagecount','projectcount','usercount','constituencycount','messages'));
+        $contractors = User::where('user_role',"Contractor")->get();
+        foreach ($contractors as $contractor) {
+            $contractor->assigned_projects = Project::where('contractor',$contractor->first_name." ".$contractor->last_name)->count();
+        }
+        return view('users.contractors', compact('messagecount','projectcount','usercount','constituencycount','contractors'));
     }
 
     /**
